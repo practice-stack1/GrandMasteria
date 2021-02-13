@@ -133,8 +133,8 @@ h6 {
 
 @font-face {
   font-family: 'icons';
-  src: url("../../fonts/icons.eot?e0kult");
-  src: url("../../fonts/icons.eot?e0kult#iefix") format("embedded-opentype"), url("../../fonts/icons.ttf?e0kult") format("truetype"), url("../../fonts/icons.woff?e0kult") format("woff"), url("../../fonts/icons.svg?e0kult#icons") format("svg");
+  src: url("../fonts/icons.eot?e0kult");
+  src: url("../fonts/icons.eot?e0kult#iefix") format("embedded-opentype"), url("../fonts/icons.ttf?e0kult") format("truetype"), url("../fonts/icons.woff?e0kult") format("woff"), url("../fonts/icons.svg?e0kult#icons") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -142,6 +142,7 @@ h6 {
 
 [class^="_icon-"]::before,
 [class*=" _icon-"]::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icons' !important;
   speak: never;
   font-style: normal;
@@ -168,4 +169,160 @@ h6 {
 
 ._icon-letter:before {
   content: "\e903";
+}
+
+.container {
+  height: 100%;
+  padding: 0 15px;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #0F3924;
+  min-width: 100vw;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.header {
+  position: relative;
+}
+
+.header nav {
+  height: 100%;
+}
+
+.header__info {
+  min-height: 126px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 100%;
+}
+
+.header__logo {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  max-height: 82px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 454px;
+          flex: 0 1 454px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.header__logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.header__contacts {
+  font-family: "CenturyGothic", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fdc324;
+  text-align: right;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.header__menu {
+  background-color: #000000;
+}
+
+.header__menu-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 53px;
+}
+
+.header__sublogo {
+  cursor: pointer;
+  width: 454px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "CormorantSC", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  color: #fff;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.header__sublogo span {
+  display: block;
+}
+
+.header__list {
+  height: 100%;
+  max-width: 579px;
+}
+
+.header__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  font-family: "CenturyGothic", sans-serif;
+  font-weight: 700;
+  font-size: calc(16px + 2 * ((100vw - 320px) / 1600));
+  white-space: nowrap;
+}
+
+.header__item {
+  padding: 0 36px 0 0;
+}
+
+.header__item:last-child {
+  padding: 0 0 0 0;
+}
+
+.header__item a {
+  color: #ffffff;
+  display: block;
+  line-height: 22.07px;
+}
+
+.header__item a:after {
+  content: '';
+  height: 1px;
+  width: inherit;
+  background-color: #fdc324;
+  display: none;
+}
+
+.header__item a:hover:after {
+  display: block;
 }

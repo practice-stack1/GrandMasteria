@@ -1,4 +1,5 @@
 let source_folder = 'src';
+// let project_folder = 'E:/OpenServer/domains/localhost/test';
 let project_folder = 'dist';
 
 let fs = require('fs');

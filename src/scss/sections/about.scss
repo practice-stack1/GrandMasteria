@@ -1,0 +1,128 @@
+
+.about {
+	overflow: hidden;
+  min-height: 657px;
+  margin: 0 0 113px 0;
+  display: flex;
+  @media(max-width: 767px){
+    flex-direction: column-reverse;
+    min-height: 633px;
+  }
+}
+
+
+
+.about__content {
+	flex: 0 0 100%;
+	display: flex;
+  overflow: hidden;
+}
+.about__container {
+  position: relative;
+	max-width: 1170px;
+	padding: 0px 15px;
+	margin: 0px auto;
+	display: flex;
+	align-items: center;
+}
+.about__body-inner{
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -79px;
+  z-index: 3;
+  max-width: 648px;
+  min-height: 357px;
+  padding: 43px 62px;
+  background-color: rgba(0, 0, 0, 0.7px);
+  @media (min-width: 1370px) {
+    display: block;
+  }
+}
+.about__body {
+  opacity: 1;
+  width: 50%;
+  padding: 43px 62px;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.7px);
+  @media (min-width: 1370px) {
+    width: 60%;
+    opacity: 0;
+  }
+  @media(max-width: 767px){
+    width: 100%;
+    min-height: 300px;
+    padding: 24px 40px 29px 40px;
+
+  }
+}
+
+
+
+.about__title {
+  margin: 0 0 16px 0;
+}
+.about__text {
+  color: #fff;
+  font-family: "CenturyGothic", sans-serif;
+  font-weight: 400;
+  @include adaptiv-value('font-size', 17, 15, 0);
+  line-height: 20.84px;
+  p{
+    text-indent: 20px;
+  }
+  a{
+    color: $yellow;
+  }
+}
+.about__image {
+}
+.about__image img {
+	max-width: 100%;
+  @media(min-width: 1921px){
+    max-width: 90%;
+  }
+}
+
+
+	.about__image {
+    position: relative;
+    flex: 0 1 100%;
+    padding: 0 0 56% 0;
+    @media (min-width: 767px) {
+      flex: 0 0 calc(((100vw - 30px) * 0.6) + 15px);
+      padding: 0 0 31% 0;
+      transform: translate(-100%, 0px);
+    }
+
+    @media(min-width: 1921px){
+      padding: 0 0 29% 0;
+    }
+    @media(min-width: 1370px){
+      flex: 0 0 calc(((100vw - 30px) * 0.5) + 15px);
+    }
+    @media(max-width: 767px){
+      transform: translateY(24px);
+    }
+	}
+	.about__image img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+    @media (min-width: 767px) {
+      border-radius: 7px;
+    }
+    @media(max-width: 767px){
+      z-index: -1;
+    }
+	}
+
+@media (min-width: 1370px) {
+	.about__image {
+		flex: 0 0 calc(50vw - (0.4 - 0.5) * 1170px);
+	}
+}

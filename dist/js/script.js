@@ -2495,22 +2495,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./basic/ibg */ "./src/js/basic/ibg.js");
 /* harmony import */ var _basic_webp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./basic/webp */ "./src/js/basic/webp.js");
 /* harmony import */ var _basic_webp__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_basic_webp__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _modules_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/header */ "./src/js/modules/header.js");
+/* harmony import */ var _modules_sections_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/sections/header */ "./src/js/modules/sections/header.js");
+/* harmony import */ var _modules_spoiler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/spoiler */ "./src/js/modules/spoiler.js");
+
 
 
 
 window.addEventListener('DOMContentLoaded', function () {
   "use strict";
 
-  Object(_modules_header__WEBPACK_IMPORTED_MODULE_2__["default"])('.header__burger', '.header__menu', '.header__contacts a', '.header__item a');
+  Object(_modules_sections_header__WEBPACK_IMPORTED_MODULE_2__["default"])('.header__burger', '.header__menu', '.header__contacts a', '.header__item a');
+  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_3__["default"])('.about__body', '.about__body .about__text');
 });
 
 /***/ }),
 
-/***/ "./src/js/modules/header.js":
-/*!**********************************!*\
-  !*** ./src/js/modules/header.js ***!
-  \**********************************/
+/***/ "./src/js/modules/sections/header.js":
+/*!*******************************************!*\
+  !*** ./src/js/modules/sections/header.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2526,7 +2529,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../basic/checkMobile */ "./src/js/basic/checkMobile.js");
+/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../basic/checkMobile */ "./src/js/basic/checkMobile.js");
 
 
 
@@ -2549,17 +2552,7 @@ var header = function header(header_burger, header_menu, header__contacts, heade
       menu.classList.add('active');
       document.body.classList.add('lock');
     }
-  }); // items.forEach(item => {
-  //   item.addEventListener('click', (e) => {
-  //     // e.preventDefault();
-  //     const navigation = window.location.pathname;
-  //     const filename = navigation.replace(/(\\|\/)+/ig, '');
-  //     if(filename === item.dataset.path){
-  //       item.classList.add('active');
-  //     }
-  //     console.log(filename);
-  //   });
-  // });
+  });
 
   if (_basic_checkMobile__WEBPACK_IMPORTED_MODULE_5__["default"].any()) {
     var phone = "tel:+";
@@ -2593,6 +2586,71 @@ var header = function header(header_burger, header_menu, header__contacts, heade
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (header);
+
+/***/ }),
+
+/***/ "./src/js/modules/spoiler.js":
+/*!***********************************!*\
+  !*** ./src/js/modules/spoiler.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var spoiler = function spoiler(body, text_container) {
+  if (document.body.clientWidth <= 500) {
+    console.log(document.body.clientWidth);
+    var container = document.querySelector(text_container);
+    var wrapper = document.querySelector(body);
+    container.children.forEach(function (p) {
+      if (p.dataset.hide === 'true') {
+        p.classList.add('no-display');
+      }
+    });
+    createArrow(wrapper);
+    var arrows = document.querySelectorAll('.arrow-wrapper');
+    arrows.forEach(function (arrow) {
+      arrow.addEventListener('click', function () {
+        var img = document.querySelector('.arrow-img');
+
+        if (img.classList.contains('rotate')) {
+          img.classList.remove('rotate');
+          document.querySelector('[data-hide]').classList.add('no-display');
+        } else {
+          img.classList.add('rotate');
+          document.querySelector('[data-hide]').classList.remove('no-display');
+        }
+      });
+    });
+  }
+
+  function createArrow(wrapper) {
+    var div = document.createElement('div');
+    div.classList.add('arrow-wrapper');
+    var img = document.createElement('img');
+    img.classList.add('arrow-img');
+    makeStyle(div, img);
+    img.setAttribute('src', 'icons/arrow_b.svg');
+    img.setAttribute('alt', 'arrow-bottom');
+    div.appendChild(img);
+    wrapper.appendChild(div);
+  }
+
+  function makeStyle(div, img) {
+    div.style.cssText = "\n      width: 22px;\n      height: 9px;\n      margin: 12px auto 8px auto;\n    ";
+    img.style.cssText = "\n      width: 100%;\n      transition: 0.5s transform ease;\n    ";
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (spoiler);
 
 /***/ })
 

@@ -1,4 +1,4 @@
-import isMobile from '../basic/checkMobile';
+import isMobile from '../../basic/checkMobile';
 
 const header = (header_burger, header_menu, header__contacts, header__items) => {
   const burger = document.querySelector(header_burger),
@@ -18,21 +18,6 @@ const header = (header_burger, header_menu, header__contacts, header__items) => 
     }
   });
 
-  // items.forEach(item => {
-  //   item.addEventListener('click', (e) => {
-  //     // e.preventDefault();
-  //     const navigation = window.location.pathname;
-  //     const filename = navigation.replace(/(\\|\/)+/ig, '');
-  //     if(filename === item.dataset.path){
-  //       item.classList.add('active');
-  //     }
-
-  //     console.log(filename);
-  //   });
-  // });
-
-
-
   if(isMobile.any()){
     const phone = "tel:+";
     conetions(tels, phone);
@@ -40,7 +25,7 @@ const header = (header_burger, header_menu, header__contacts, header__items) => 
     const viber = "viber://chat?number=+";
     conetions(tels, viber);
   }
-  
+
   itemActivity(items);
 
   function itemActivity(elements) {

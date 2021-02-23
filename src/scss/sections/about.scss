@@ -1,20 +1,13 @@
 
 .about {
-	overflow: hidden;
   min-height: 657px;
   margin: 0 0 113px 0;
-  display: flex;
   @media(max-width: 767px){
     flex-direction: column-reverse;
-    min-height: 533px;
+    min-height: 453px;
   }
 }
 
-.about__content {
-	flex: 0 0 100%;
-	display: flex;
-  overflow: hidden;
-}
 .about__container {
   position: relative;
 	max-width: 1170px;

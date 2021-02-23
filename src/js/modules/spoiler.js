@@ -1,27 +1,50 @@
 const spoiler = (body, text_container) => {
-  if(document.body.clientWidth <= 500){
-    console.log(document.body.clientWidth);
-    const container = document.querySelector(text_container);
-    const wrapper = document.querySelector(body);
-    container.children.forEach(p => {
-      if(p.dataset.hide === 'true'){
-        p.classList.add('no-display');
+  const container = document.querySelector(text_container);
+  const wrapper = document.querySelector(body);
+
+  window.addEventListener('orientationchange', () => {
+    window.addEventListener('resize', () => {
+      if(wrapper.dataset.changed === 'true'){
+        clearStyle(wrapper);
       }
+        styleChange(container, wrapper);
+        console.log(document.body.clientWidth);
     });
-    createArrow(wrapper);
-    const arrows = document.querySelectorAll('.arrow-wrapper');
-    arrows.forEach(arrow => {
-      arrow.addEventListener('click', () => {
-        const img = document.querySelector('.arrow-img');
-        if(img.classList.contains('rotate')){
-          img.classList.remove('rotate');
-          document.querySelector('[data-hide]').classList.add('no-display');
-        } else {
-          img.classList.add('rotate');
-          document.querySelector('[data-hide]').classList.remove('no-display');
+
+  });
+  styleChange(container, wrapper);
+
+
+
+  function styleChange(container, wrapper){
+    if(document.body.clientWidth <= 500){
+      wrapper.dataset.changed = 'true';
+      container.children.forEach(p => {
+        if(p.dataset.hide === 'true'){
+          p.classList.add('no-display');
         }
       });
-    });
+      createArrow(wrapper);
+      const arrows = document.querySelectorAll('.arrow-wrapper');
+      arrows.forEach(arrow => {
+        arrow.addEventListener('click', () => {
+          const img = document.querySelector('.arrow-img');
+          if(img.classList.contains('rotate')){
+            img.classList.remove('rotate');
+            document.querySelector('[data-hide]').classList.add('no-display');
+          } else {
+            img.classList.add('rotate');
+            document.querySelector('[data-hide]').classList.remove('no-display');
+          }
+        });
+      });
+    }
+  }
+
+  function clearStyle(wrapper){
+    document.querySelector('.arrow-wrapper').remove();
+    document.querySelector('[data-hide]').classList.remove('no-display');
+    wrapper.dataset.changed = 'false';
   }
 
   function createArrow(wrapper){

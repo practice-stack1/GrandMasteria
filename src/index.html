@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="description" content="короткий опис вмісту сторіки до 140 символів">
-  <meta name="keywords" content="ключові слова веб сторінки, які можуть співпасти із запитами користувачів">
-  <meta name="Author" content="Maslovskyi Vadym">
-  <meta http-equive="refresh" content="0, url=">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Grand Masteria</title>
-</head>
+  @@include('html/head.html')
 <body>
   <div class="wrapper">
     @@include('html/header.html')
@@ -65,29 +55,59 @@
           <h2 class="short-nav__title title">Галерея</h2>
           <div class="short-nav__wrapper">
             <div class="short-nav__row">
-              <div class="short-nav__column">
-                <img src="" alt="">
-                <span></span>
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/single.jpg" alt="Одинарні пам'ятники"></a>
+                <span>Одинарні пам'ятники</span>
               </div>
-              <div class="short-nav__column">
-                <img src="" alt="">
-                <span></span>
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/couple.jpg" alt="Подвійні пам'ятники"></a>
+                <span>Подвійні пам'ятники</span>
               </div>
             </div>
             <div class="short-nav__row">
-              <div class="short-nav__column">
-                <img src="" alt="">
-                <span></span>
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/tripl.jpg" alt="Потрійні пам'ятники"></a>
+                <span>Потрійні пам'ятники</span>
               </div>
-              <div class="short-nav__column">
-                <img src="" alt="">
-                <span></span>
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/child.jpg" alt="Дитячі пам'ятники"></a>
+                <span>Дитячі пам'ятники</span>
               </div>
             </div>
           </div>
+          <div class="short-nav__btn button"><a href="#">Перейти у галерею</a></div>
+        </div>
+      </section>
+      <section class="short-nav mbn">
+        <div class="container">
+          <h2 class="short-nav__title title">ХУДОЖНЄ ОФОРМЛЕННЯ</h2>
+          <div class="short-nav__wrapper">
+            <div class="short-nav__row">
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/works_of_art.jpg" alt="Художні роботи"></a>
+                <span>Художні роботи</span>
+              </div>
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/insciptionos.jpg" alt="Написи"></a>
+                <span>Написи</span>
+              </div>
+            </div>
+            <div class="short-nav__row">
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/vaza.jpg" alt="Аксесуари"></a>
+                <span>Аксесуари</span>
+              </div>
+              <div class="short-nav__column ibg">
+                <a href="#"><img src="img/main/short-nav/type_of_hyanite.jpg" alt="Види граніту"></a>
+                <span>Види граніту</span>
+              </div>
+            </div>
+          </div>
+          <div class="short-nav__btn button"><a href="#">Переглянути детальніше</a></div>
         </div>
       </section>
     </main>
+    @@include('html/footer.html')
   </div>
 
   <script src="js/script.js"></script>

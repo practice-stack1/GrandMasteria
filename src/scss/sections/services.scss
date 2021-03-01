@@ -10,6 +10,7 @@
   @media(max-width: 767px){
     flex-direction: column-reverse;
     min-height: 421px;
+    margin: 0 0 40px 0;
   }
   @media(max-width: 360px){
     min-height: 385px;
@@ -115,8 +116,7 @@
   &:last-child{
     margin: 0;
   }
-  span{
-  }
+
   &:before{
     content: '';
     width: 20px;
@@ -129,6 +129,7 @@
 
 .services__image {
   position: relative;
+  margin: 0 0 10px 0;
   @media (min-width: 1360px) {
     flex: 0 0 calc(50vw - (0.4 - 0.5) * 1170px);
   }
@@ -150,6 +151,7 @@
   top: 0;
   left: 0;
   object-fit: cover;
+  box-shadow: 41px 7px 36px rgba(0, 0, 0, 0.5);
 }
 
 

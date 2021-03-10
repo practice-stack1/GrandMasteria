@@ -102,4 +102,8 @@
 }
 .mbn{
   margin: 0;
+  border-bottom: none;
+  @media(max-width: 612px){
+    margin: 0;
+  }
 }

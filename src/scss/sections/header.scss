@@ -1,11 +1,6 @@
 .header{
   position: relative;
-  margin: 0 0 48px 0;
-  @media(max-width: 767px){
-    margin: 0 0 24px 0;
-  }
   @media(max-width: 567px){
-    margin: 0;
     padding: 16px 0 0 0;
   }
   &__info{
@@ -190,7 +185,7 @@
       }
     }
     a.active{
-      &:after, &:before{
+      &:after{
         display: block;
       }
     }

@@ -4,11 +4,17 @@
   margin: 0 0 113px 0;
   overflow: hidden;
   display: flex;
+  padding: 48px 0 0 0;
   @media(max-width: 767px){
     flex-direction: column-reverse;
     min-height: 453px;
     margin: 0 0 40px 0;
+    padding: 24px 0 0 0;
   }
+  @media(max-width: 567px){
+    padding: 0;
+  }
+
 
 }
 .about__content{

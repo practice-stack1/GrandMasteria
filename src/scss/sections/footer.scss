@@ -1,15 +1,32 @@
 .footer{
   padding: 36px 0 92px 0;
   min-height: 500px;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.7);
+  @media(max-width: 904px){
+    padding: 24px 0 40px 0;
+  }
   &__title{
     margin: 0 0 66px 0;
+    @media(max-width: 904px){
+      margin: 0 0 24px 0;;
+    }
   }
   &__wrapper{
     width: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
     flex-wrap: wrap;
+    @media(max-width: 1164px){
+      width: 70%;
+    }
+    @media(max-width: 904px){
+      width: 100%;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
   }
   &__phone{
     min-height: 139px;
@@ -20,11 +37,21 @@
     width: 251px;
     margin: 0 117px 0 0;
     &_tel{
+      a{
+        color: #fff;
+      }
       margin: 0 0 8px 0;
       &:last-child{
         margin: 0;
       }
     }
+    @media(max-width: 1164px){
+      margin: 0 117px 32px 0;
+    }
+    @media(max-width: 904px){
+      margin: 0;
+    }
+
   }
   &__mail{
     min-height: 101px;
@@ -34,6 +61,15 @@
     flex-direction: column;
     width: 244;
     margin: 0 117px 0 0;
+    a{
+      color: #fff;
+    }
+    @media(max-width: 1164px){
+      margin: 0 0 32px 0;
+    }
+    @media(max-width: 604px){
+      max-width: 288px;
+    }
   }
   &__text{
     font-family: "CenturyGothic", sans-serif;
@@ -58,19 +94,35 @@
       text-align: center;
       font-family: "CormorantSC", sans-serif;
       font-weight: 700;
-      font-size: 20px;
+      @include adaptiv-value('font-size', 20, 16, 0);
       color: #fff;
       line-height: 24.22px;
-      margin-bottom: 40px;
+      margin: 0 0 40px 0;
+      @media(max-width: 904px){
+        margin: 0 0 24px 0;
+      }
+    }
+    @media(max-width: 904px){
+      margin: 0 0 32px 0;
+      max-width: 406px;
+    }
+    @media(max-width: 604px){
+      width: 288px;
     }
   }
   &__forms{
     width: 386px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin: 0 auto 40px auto;
     min-height: 94px;
+    margin: 0 auto;
+    @media(max-width: 904px){
+      max-width: 386px;
+      min-height: 66px;
+    }
+    @media(max-width: 604px){
+      width: 100%;
+    }
   }
   &__input{
     width: 100%;
@@ -84,6 +136,19 @@
     font-family: 'CenturyGothic', sans-serif;
     font-weight: 400;
     font-size: 16px;
+    margin: 0 0 36px 0;
+    @media(max-width: 604px){
+      margin: 0 0 16px 0;
+    }
+    &:nth-child(2){
+      margin: 0 0 40px 0;
+      @media(max-width: 604px){
+        margin: 0 0 24px 0;
+      }
+    }
+  }
+  &__input._error{
+    border-bottom: 1px solid red;
   }
   &__button{
     display: flex;
@@ -93,7 +158,7 @@
   }
   &__policy{
     margin: 0 auto;
-    width: 285px;
+    width: 100%;
     color: #fff;
     font-family: "CenturyGothic", sans-serif;
     font-weight: 700;
@@ -102,8 +167,80 @@
     line-height: 18px;
     display: flex;
     align-items: center;
-    input{
-      margin: 0 10px 0 0;
+
+  }
+  .checkbox._error .checkbox__label::before {
+    box-shadow: 0 0 15px red;
+  }
+  .checkbox__input {
+    display: none;
+  }
+  .checkbox__input:checked + .checkbox__label::after {
+    transform: scale(1);
+  }
+
+  .checkbox__label {
+    font-size: 14px;
+    line-height: 140%;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  .checkbox__label::before {
+    content: "";
+    align-self: flex-start;
+    flex: 0 0 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 0px 10px 0px 0px;
+  }
+  .checkbox__label::after {
+    transition: transform 0.5s ease 0s;
+    content: "";
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background-color: $yellow;
+    border-radius: 2px;
+    transform: scale(0);
+  }
+
+  .checkbox__label a {
+    color: $yellow;
+  }
+  .message{
+    &-err{
+      color: red;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 0 15px 0;
     }
-}
+  }
+
+  .status{
+    position: relative;
+    min-height: 200px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    img{
+      position: absolute;
+      top: 30px;
+      left: 30%;
+      object-fit: cover;
+      width: 44%;
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+    @media(max-width: 904px){
+      min-height: 100px;
+    }
+  }
 }

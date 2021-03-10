@@ -1,4 +1,5 @@
-<footer class="footer">
+<footer class="footer ibg">
+  <img src="img/main/footer/footer.jpg" alt="Фон підвалу">
   <h2 class="title footer__title">Контакти</h2>
   <div class="container">
     <div class="footer__wrapper">
@@ -6,26 +7,30 @@
         <div class="footer__phone_img ibg">
           <img src="icons/telephone.svg" alt="Іконка мобільника">
         </div>
-        <div class="footer__phone_tel footer__text">+38 (097) 896 6267 (Viber)</div>
-        <div class="footer__phone_tel footer__text">+38 (097) 248 4942 (Viber)</div>
+        <div class="footer__phone_tel footer__text"><a data-tel="true" href="viber://chat?number=+380978966267">+38 (097) 896 6267 (Viber)</a></div>
+        <div class="footer__phone_tel footer__text"><a data-tel="true" href="viber://chat?number=+380972484942">+38 (097) 248 4942 (Viber)</a></div>
       </div>
       <div class="footer__mail">
         <div class="footer__mail_img ibg">
           <img src="icons/mail.svg" alt="Іконка листа">
         </div>
-        <div class="footer__mail_email footer__text">grandmaster@gmail.com</div>
+        <div class="footer__mail_email footer__text"><a data-tel="false" href="mailto:imrovemylife25@gmail.com">grandmaster@gmail.com</a></div>
       </div>
       <div class="footer__communication">
         <h3 class="footer__communication_title">Залишіть ваші контакти<br>
           і ми зв’яжемося з вами найближчим часом</h3>
-        <form action="" class="footer__forms">
-          <input type="text" class="footer__input" placeholder="Ім'я">
-          <input type="text" class="footer__input" placeholder="Телефон">
-        </form>
-        <button class="footer__button button">Надіслати</button>
-        <div class="footer__policy">
-          <input type="checkbox" required>
-          <span>Я згідний(а) з <a href="/policy.html">політикою конфіденційності</a></span>
+        <div class="form__wrapper">
+          <form class="footer__forms" action=# method=POST enctype=multipart/form-data>
+            <input name="name" type="text" class="footer__input _req _no-num" placeholder="Ім'я"  autocomplete="off">
+            <input name="phone" type="text" class="footer__input _req _no-symbol" placeholder="Телефон"  autocomplete="off">
+            <button type="submit" class="footer__button button">Надіслати</button>
+            <div class="footer__policy">
+              <div class="checkbox">
+                <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input _req">
+                <label for="formAgreement" class="checkbox__label"><span>Я даю згоду на опрацювання моїх персональних данних згідно з <a href="#">умовами</a>*</span></label>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

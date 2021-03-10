@@ -1,9 +1,7 @@
-import isMobile from '../../basic/checkMobile';
 
-const header = (header_burger, header_menu, header__contacts, header__items) => {
+const header = (header_burger, header_menu, header__items) => {
   const burger = document.querySelector(header_burger),
       menu = document.querySelector(header_menu),
-      tels = document.querySelectorAll(header__contacts),
       items = document.querySelectorAll(header__items);
 
   burger.addEventListener('click', () => {
@@ -18,13 +16,7 @@ const header = (header_burger, header_menu, header__contacts, header__items) => 
     }
   });
 
-  if(isMobile.any()){
-    const phone = "tel:+";
-    conetions(tels, phone);
-  } else {
-    const viber = "viber://chat?number=+";
-    conetions(tels, viber);
-  }
+
 
   itemActivity(items);
 
@@ -39,14 +31,6 @@ const header = (header_burger, header_menu, header__contacts, header__items) => 
     });
   }
 
-  function conetions(phones, type) {
-    phones.forEach(tel => {
-     if(tel.dataset.tel === 'true'){
-        let number = tel.textContent.replace(/\D/g, '');
-        tel.setAttribute('href', `${type}${number}`);
-     }
-    });
-  }
 }
 
 export default header;

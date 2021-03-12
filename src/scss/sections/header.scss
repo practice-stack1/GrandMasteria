@@ -174,19 +174,21 @@
       &:after{
         content: '';
         height: 1px;
-        width: inherit;
+        width: 0;
         background-color: $yellow;
-        display: none;
+        transition: 0.5s all;
+        display: block;
+        margin: 0 auto;
       }
       &:hover{
         &:after{
-          display: block;
+          width: 100%;
         }
       }
     }
     a.active{
       &:after{
-        display: block;
+        width: 100%;
       }
     }
   }

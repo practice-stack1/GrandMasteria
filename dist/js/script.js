@@ -307,6 +307,46 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/array-last-index-of.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/internals/array-last-index-of.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
+var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+var min = Math.min;
+var nativeLastIndexOf = [].lastIndexOf;
+var NEGATIVE_ZERO = !!nativeLastIndexOf && 1 / [1].lastIndexOf(1, -0) < 0;
+var STRICT_METHOD = arrayMethodIsStrict('lastIndexOf');
+// For preventing possible almost infinite loop in non-standard implementations, test the forward version of the method
+var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
+var FORCED = NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH;
+
+// `Array.prototype.lastIndexOf` method implementation
+// https://tc39.es/ecma262/#sec-array.prototype.lastindexof
+module.exports = FORCED ? function lastIndexOf(searchElement /* , fromIndex = @[*-1] */) {
+  // convert -0 to +0
+  if (NEGATIVE_ZERO) return nativeLastIndexOf.apply(this, arguments) || 0;
+  var O = toIndexedObject(this);
+  var length = toLength(O.length);
+  var index = length - 1;
+  if (arguments.length > 1) index = min(index, toInteger(arguments[1]));
+  if (index < 0) index = length + index;
+  for (;index >= 0; index--) if (index in O && O[index] === searchElement) return index || 0;
+  return -1;
+} : nativeLastIndexOf;
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/array-method-has-species-support.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/core-js/internals/array-method-has-species-support.js ***!
@@ -2892,6 +2932,25 @@ $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.array.last-index-of.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.last-index-of.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var lastIndexOf = __webpack_require__(/*! ../internals/array-last-index-of */ "./node_modules/core-js/internals/array-last-index-of.js");
+
+// `Array.prototype.lastIndexOf` method
+// https://tc39.es/ecma262/#sec-array.prototype.lastindexof
+$({ target: 'Array', proto: true, forced: lastIndexOf !== [].lastIndexOf }, {
+  lastIndexOf: lastIndexOf
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.object.to-string.js":
 /*!*************************************************************!*\
   !*** ./node_modules/core-js/modules/es.object.to-string.js ***!
@@ -4438,7 +4497,7 @@ var isMobile = {
 /*!*****************************!*\
   !*** ./src/js/basic/ibg.js ***!
   \*****************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4460,7 +4519,7 @@ function ibg() {
   });
 }
 
-ibg();
+/* harmony default export */ __webpack_exports__["default"] = (ibg);
 
 /***/ }),
 
@@ -4511,6 +4570,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/checkNumInputs */ "./src/js/modules/checkNumInputs.js");
 /* harmony import */ var _modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/checkTextInputs */ "./src/js/modules/checkTextInputs.js");
 /* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
+/* harmony import */ var _modules_tab__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/tab */ "./src/js/modules/tab.js");
+/* harmony import */ var _modules_showMore__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/showMore */ "./src/js/modules/showMore.js");
+
+
+
 
 
 
@@ -4524,6 +4588,7 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', function () {
   "use strict";
 
+  Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_0__["default"])();
   Object(_modules_sections_header__WEBPACK_IMPORTED_MODULE_2__["default"])('.header__burger', '.header__menu', '.header__item a');
   Object(_modules_conections__WEBPACK_IMPORTED_MODULE_6__["default"])('.header__contacts a');
   Object(_modules_conections__WEBPACK_IMPORTED_MODULE_6__["default"])('.footer__phone_tel a');
@@ -4533,6 +4598,8 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_7__["default"])('._no-symbol');
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_8__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_9__["default"])('[name="phone"]');
+  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_10__["default"])('.tab', '.tab__item', '.galary__slide', 'active', 'block');
+  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_11__["default"])('.galary__btn');
 });
 
 /***/ }),
@@ -4708,7 +4775,7 @@ var forms = function forms(current_form) {
     failure: 'Щось пішло не так!',
     inputfail: 'Заповніть будь ласка поля коректними данними',
     spinner: 'img/main/footer/spinner.gif',
-    ok: 'img/main/footer/ok.png',
+    ok: 'icons/ok.svg',
     fail: 'img/main/footer/fail.png'
   };
   forms.forEach(function (form) {
@@ -4724,29 +4791,30 @@ var forms = function forms(current_form) {
 
   function _sendForm() {
     _sendForm = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(form) {
-      var error, formData;
+      var error, formData, btn;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               error = formValidate(form);
               formData = new FormData(form);
+              btn = form.querySelector('.footer__submit-section');
 
               if (error === 0) {
                 form.classList.add('_sending');
-                makeStatusMsg(form, message.spinner, message.loading);
-                Object(_services_requests__WEBPACK_IMPORTED_MODULE_7__["default"])('./sendmail.php', formData).then(function () {
-                  makeStatusMsg(form, message.ok, message.success);
+                makeStatusMsg(btn, message.spinner, message.loading);
+                Object(_services_requests__WEBPACK_IMPORTED_MODULE_7__["postData"])('./sendmail.php', formData).then(function () {
+                  makeStatusMsg(btn, message.ok, message.success);
                 })["catch"](function () {
-                  makeStatusMsg(form, message.fail, message.failure);
+                  makeStatusMsg(btn, message.fail, message.failure);
                 })["finally"](function () {
                   clearInputs();
                   form.classList.remove('_sending');
                   setTimeout(function () {
-                    removeStatusMsg(form);
-                    form.style.display = 'block';
-                    form.classList.remove('fadeOutUp');
-                    form.classList.add('fadeInUp');
+                    removeStatusMsg(btn);
+                    btn.style.display = 'block';
+                    btn.classList.remove('fadeOutUp');
+                    btn.classList.add('fadeInUp');
                   }, 5000);
                 });
               } else {
@@ -4756,7 +4824,7 @@ var forms = function forms(current_form) {
                 }
               }
 
-            case 3:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -4815,30 +4883,32 @@ var forms = function forms(current_form) {
   };
 
   function makeStatusMsg(form, status, text_msg) {
-    if (document.querySelector('.status')) {
-      document.querySelector('.status').remove();
+    if (document.querySelector('.footer .status')) {
+      document.querySelector('.footer .status').remove();
     }
 
     var statusMessage = document.createElement('div');
     var statusImg = document.createElement('img');
     var textMessage = document.createElement('div');
+    var imgWrapper = document.createElement('div');
+    imgWrapper.classList.add('status__wrapper');
     statusImg.setAttribute('src', status);
+    imgWrapper.appendChild(statusImg);
     textMessage.textContent = text_msg;
+    textMessage.classList.add('status__text');
     statusMessage.classList.add('status');
-    statusMessage.appendChild(statusImg);
+    statusMessage.appendChild(imgWrapper);
     statusMessage.appendChild(textMessage);
     form.classList.add('animated', 'fadeOutUp');
     setTimeout(function () {
       form.style.display = 'none';
     }, 400);
-    console.log(form.parentNode, statusMessage);
     form.parentNode.appendChild(statusMessage);
-    statusImg.classList.add('animated', 'fadeInUp');
   }
 
   function removeStatusMsg(form) {
     if (form.parentNode.querySelector('.status')) {
-      document.querySelector('.status').remove();
+      form.parentNode.querySelector('.status').remove();
     }
   }
 };
@@ -4930,13 +5000,10 @@ var mask = function mask(selector) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
-/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
-
+/* harmony import */ var core_js_modules_es_array_last_index_of_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.last-index-of.js */ "./node_modules/core-js/modules/es.array.last-index-of.js");
+/* harmony import */ var core_js_modules_es_array_last_index_of_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_last_index_of_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -4960,10 +5027,12 @@ var header = function header(header_burger, header_menu, header__items) {
 
   function itemActivity(elements) {
     var navigation = window.location.pathname;
-    var filename = navigation.replace(/(\\|\/)+/ig, '');
-    console.log(filename);
+    var der = navigation.substring(navigation.length, navigation.lastIndexOf('/') + 1);
     elements.forEach(function (element) {
-      if (filename === element.dataset.path) {
+      if (der === element.dataset.path) {
+        elements.forEach(function (element) {
+          element.classList.remove('active');
+        });
         element.classList.add('active');
       }
     });
@@ -5001,6 +5070,99 @@ var navigation = function navigation(columns) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (navigation);
+
+/***/ }),
+
+/***/ "./src/js/modules/showMore.js":
+/*!************************************!*\
+  !*** ./src/js/modules/showMore.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
+/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.promise.finally.js */ "./node_modules/core-js/modules/es.promise.finally.js");
+/* harmony import */ var core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _services_requests__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/requests */ "./src/js/services/requests.js");
+/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
+
+
+
+
+
+
+
+
+
+var showMore = function showMore(btn__trigger) {
+  var triggers = document.querySelectorAll(btn__trigger);
+  triggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var _this = this;
+
+      var wrap = trigger.parentElement;
+      var section = wrap.dataset.section;
+      Object(_services_requests__WEBPACK_IMPORTED_MODULE_6__["getResource"])('./db.json').then(function (res) {
+        switchSection(res, wrap, section);
+        Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_7__["default"])();
+      })["catch"](function (err) {
+        return console.log(err);
+      })["finally"](function () {
+        return _this.remove();
+      });
+    });
+  });
+
+  function createItem(response, wrap) {
+    response.forEach(function (_ref) {
+      var src = _ref.src,
+          counter = _ref.counter,
+          price = _ref.price,
+          size = _ref.size;
+      var item = document.createElement('div');
+      item.classList.add('galary__item');
+      item.innerHTML = "\n        <div class=\"galary__img ibg\">\n          <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n        </div>\n        <div class=\"galary__counter\">").concat(counter, "</div>\n        <div class=\"galary__short-info\">\n          <div class=\"galary__info\">").concat(price, "</div>\n          <div class=\"galary__info\">").concat(size, "</div>\n        </div>\n      ");
+      item.classList.add('animated', 'fadeInLeft');
+      wrap.querySelector('.galary__slide-wrapper').appendChild(item);
+    });
+  }
+
+  function switchSection(res, wrap, section) {
+    switch (section) {
+      case 'single':
+        createItem(res.single, wrap);
+        break;
+
+      case 'double':
+        createItem(res["double"], wrap);
+        break;
+
+      case 'triple':
+        createItem(res.triple, wrap);
+        break;
+
+      case 'child':
+        createItem(res.child, wrap);
+        break;
+
+      default:
+        break;
+    }
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (showMore);
 
 /***/ }),
 
@@ -5089,21 +5251,92 @@ var spoiler = function spoiler(body, text_container) {
 
 /***/ }),
 
-/***/ "./src/js/services/requests.js":
-/*!*************************************!*\
-  !*** ./src/js/services/requests.js ***!
-  \*************************************/
+/***/ "./src/js/modules/tab.js":
+/*!*******************************!*\
+  !*** ./src/js/modules/tab.js ***!
+  \*******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
-/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! regenerator-runtime/runtime.js */ "./node_modules/regenerator-runtime/runtime.js");
-/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+var tab = function tab(headerSelector, tabSelector, contentSelector, activeClass) {
+  var display = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'block';
+  var header = document.querySelector(headerSelector),
+      tab = document.querySelectorAll(tabSelector),
+      content = document.querySelectorAll(contentSelector);
+
+  try {
+    var hideTabContent = function hideTabContent() {
+      content.forEach(function (item) {
+        item.style.display = "none";
+      });
+      tab.forEach(function (item) {
+        item.classList.remove(activeClass);
+      });
+    };
+
+    var showTabContent = function showTabContent() {
+      var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      content[i].style.display = display;
+      content[i].classList.add('animated', 'fadeInLeft');
+      tab[i].classList.add(activeClass);
+    };
+
+    header.addEventListener('click', function (e) {
+      var target = e.target;
+
+      if (target && (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))) {
+        tab.forEach(function (item, i) {
+          if (target == item || target.parentNode == item) {
+            hideTabContent();
+            showTabContent(i);
+          }
+        });
+      }
+    });
+    hideTabContent();
+    showTabContent();
+  } catch (error) {}
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (tab);
+
+/***/ }),
+
+/***/ "./src/js/services/requests.js":
+/*!*************************************!*\
+  !*** ./src/js/services/requests.js ***!
+  \*************************************/
+/*! exports provided: postData, getResource */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postData", function() { return postData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getResource", function() { return getResource; });
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
+/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! regenerator-runtime/runtime.js */ "./node_modules/regenerator-runtime/runtime.js");
+/* harmony import */ var regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime_js__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -5117,37 +5350,77 @@ function postData(_x, _x2) {
 }
 
 function _postData() {
-  _postData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(api, formData) {
+  _postData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(api, formData) {
     var response;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
-            _context.next = 2;
+            _context2.next = 2;
             return fetch("".concat(api), {
               method: 'POST',
               body: formData
             });
 
           case 2:
-            response = _context.sent;
-            _context.next = 5;
+            response = _context2.sent;
+            _context2.next = 5;
             return response.text();
 
           case 5:
-            return _context.abrupt("return", _context.sent);
+            return _context2.abrupt("return", _context2.sent);
 
           case 6:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _postData.apply(this, arguments);
+}
+
+var getResource = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(url) {
+    var res;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return fetch(url);
+
+          case 2:
+            res = _context.sent;
+
+            if (res.ok) {
+              _context.next = 5;
+              break;
+            }
+
+            throw new Error("Couldn't fetch ".concat(url, ", status: ").concat(res.status));
+
+          case 5:
+            _context.next = 7;
+            return res.json();
+
+          case 7:
+            return _context.abrupt("return", _context.sent);
+
+          case 8:
           case "end":
             return _context.stop();
         }
       }
     }, _callee);
   }));
-  return _postData.apply(this, arguments);
-}
 
-/* harmony default export */ __webpack_exports__["default"] = (postData);
+  return function getResource(_x3) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+
 
 /***/ })
 

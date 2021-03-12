@@ -17,15 +17,16 @@ const header = (header_burger, header_menu, header__items) => {
   });
 
 
-
   itemActivity(items);
 
   function itemActivity(elements) {
     const navigation = window.location.pathname;
-    const filename = navigation.replace(/(\\|\/)+/ig, '');
-    console.log(filename);
+    const der = navigation.substring(navigation.length, navigation.lastIndexOf('/') + 1);
     elements.forEach(element => {
-      if(filename === element.dataset.path){
+      if(der === element.dataset.path){
+        elements.forEach(element => {
+          element.classList.remove('active');
+        });
         element.classList.add('active');
       }
     });

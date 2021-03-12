@@ -8,10 +8,13 @@ import conection from './modules/conections';
 import checkNumInput from './modules/checkNumInputs';
 import checkTextInputs from './modules/checkTextInputs';
 import mask from './modules/mask';
+import tab from './modules/tab';
+import showMore from './modules/showMore';
+import ibg from './basic/ibg';
 
 window.addEventListener('DOMContentLoaded', () => {
   "use strict"
-
+  ibg();
   header('.header__burger', '.header__menu', '.header__item a');
   conection('.header__contacts a');
   conection('.footer__phone_tel a');
@@ -21,4 +24,6 @@ window.addEventListener('DOMContentLoaded', () => {
   checkNumInput('._no-symbol');
   checkTextInputs('._no-num');
   mask('[name="phone"]');
+  tab('.tab', '.tab__item', '.galary__slide', 'active', 'block');
+  showMore('.galary__btn');
 });

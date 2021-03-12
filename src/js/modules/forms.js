@@ -1,4 +1,4 @@
-import postData from '../services/requests';
+import {postData} from '../services/requests';
 const forms = (current_form) => {
   const forms = document.querySelectorAll(current_form),
         inputs = document.querySelectorAll('input');
@@ -8,7 +8,7 @@ const forms = (current_form) => {
     failure: 'Щось пішло не так!',
     inputfail: 'Заповніть будь ласка поля коректними данними',
     spinner: 'img/main/footer/spinner.gif',
-    ok: 'img/main/footer/ok.png',
+    ok: 'icons/ok.svg',
     fail: 'img/main/footer/fail.png'
   };
 
@@ -23,25 +23,26 @@ const forms = (current_form) => {
   async function sendForm(form) {
     let error = formValidate(form);
     let formData = new FormData(form);
+		const btn = form.querySelector('.footer__submit-section');
     if (error === 0) {
 			form.classList.add('_sending');
-			makeStatusMsg(form, message.spinner, message.loading);
+			makeStatusMsg(btn, message.spinner, message.loading);
 
 			postData('./sendmail.php', formData)
 				.then(() => {
-					makeStatusMsg(form, message.ok, message.success);
+					makeStatusMsg(btn, message.ok, message.success);
 				})
 				.catch(() => {
-					makeStatusMsg(form, message.fail, message.failure);
+					makeStatusMsg(btn, message.fail, message.failure);
 				})
 				.finally(() => {
 					clearInputs();
 					form.classList.remove('_sending');
 					setTimeout(() => {
-						removeStatusMsg(form);
-						form.style.display = 'block';
-						form.classList.remove('fadeOutUp');
-						form.classList.add('fadeInUp');
+						removeStatusMsg(btn);
+						btn.style.display = 'block';
+						btn.classList.remove('fadeOutUp');
+						btn.classList.add('fadeInUp');
 					}, 5000);
 				});
 		} else {
@@ -95,26 +96,27 @@ const forms = (current_form) => {
     });
   };
 	function makeStatusMsg(form, status, text_msg){
-		if(document.querySelector('.status')) {	document.querySelector('.status').remove();}
+		if(document.querySelector('.footer .status')) {	document.querySelector('.footer .status').remove();}
 		let statusMessage = document.createElement('div');
 		let statusImg = document.createElement('img');
 		let textMessage = document.createElement('div');
+		let imgWrapper = document.createElement('div');
+		imgWrapper.classList.add('status__wrapper');
 		statusImg.setAttribute('src', status);
+		imgWrapper.appendChild(statusImg);
 		textMessage.textContent = text_msg;
+		textMessage.classList.add('status__text');
   	statusMessage.classList.add('status');
-		statusMessage.appendChild(statusImg);
+		statusMessage.appendChild(imgWrapper);
 		statusMessage.appendChild(textMessage);
-
 		form.classList.add('animated', 'fadeOutUp');
 		setTimeout(() => {
 			form.style.display = 'none';
 		}, 400);
-		console.log(form.parentNode, statusMessage);
 		form.parentNode.appendChild(statusMessage);
-		statusImg.classList.add('animated', 'fadeInUp');
 	}
 	function removeStatusMsg(form){
-		if(form.parentNode.querySelector('.status')) {document.querySelector('.status').remove();}
+		if(form.parentNode.querySelector('.status')) {form.parentNode.querySelector('.status').remove();}
 	}
 };
 

@@ -1,5 +1,6 @@
 import './basic/ibg';
 import './basic/webp';
+import './basic/dynamic_adaptive';
 import header from './modules/sections/header';
 import spoiler from './modules/spoiler';
 import navigation from './modules/sections/short_nav';
@@ -11,6 +12,8 @@ import mask from './modules/mask';
 import tab from './modules/tab';
 import showMore from './modules/showMore';
 import ibg from './basic/ibg';
+import modal from './modules/modal';
+import tabSlider from './modules/slider';
 
 window.addEventListener('DOMContentLoaded', () => {
   "use strict"
@@ -20,10 +23,12 @@ window.addEventListener('DOMContentLoaded', () => {
   conection('.footer__phone_tel a');
   spoiler('.about__body', '.about__body .about__text');
   navigation('.short-nav__column');
-  forms('.footer__forms');
+  forms('.form');
   checkNumInput('._no-symbol');
   checkTextInputs('._no-num');
   mask('[name="phone"]');
   tab('.tab', '.tab__item', '.galary__slide', 'active', 'block');
   showMore('.galary__btn');
+  modal('.galary__item', '.modal', '.overlay', '.modal__close', '.modal__more', '.modal__info', '.galary__btn');
+  tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
 });

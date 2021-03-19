@@ -30,7 +30,7 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
 
     function showTabContent(i = 0) {
       content[i].style.display = display;
-      content[i].classList.add('animated', 'fadeInLeft');
+      content[i].classList.add('animated', 'fadeIn');
       tab[i].classList.add(activeClass);
     }
 

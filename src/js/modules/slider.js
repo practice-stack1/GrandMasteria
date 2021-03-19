@@ -1,0 +1,106 @@
+const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
+  const wrapper = document.querySelector(tab__wrapper),
+        slides = document.querySelectorAll(tab__slides),
+        arrL = document.querySelector(arrows__left),
+        arrR = document.querySelector(arrows__right);
+  let slideIndex = 0;
+  if(document.body.clientWidth < 490){
+    slideIndex = 1;
+  } else {
+    slideIndex = 4;
+  }
+
+  activateTabSlider();
+  window.addEventListener('resize', () => {
+    if(document.body.clientWidth <= 900){
+      activateTabSlider();
+    } else {
+      wrapper.style.cssText = `
+        justify-content: space-between;
+      `;
+      slides.forEach(slide => {
+        slide.style.display = 'block';
+      });
+    }
+  });
+
+
+  arrL.addEventListener('click', () => {
+    if(document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
+      plusSlide(-2);
+    } else {
+      plusSlide(-1);
+    }
+  });
+  arrR.addEventListener('click', () => {
+    if(document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
+      plusSlide(2);
+    } else {
+      plusSlide(1);
+    }
+  });
+
+  function plusSlide(n){
+    showSlides(slideIndex += n);
+  }
+
+  function showSlides(n = 1){
+    if(document.body.clientWidth <= 900 && document.body.clientWidth > 768){
+      // filter(n, -1,)
+      if(n >= slides.length - 1){
+        slideIndex = 1;
+      } else if(n <= 0 || n > 1){
+        slideIndex = slides.length;
+      }
+      slides.forEach(slide => {
+        slide.style.display = 'block';
+      });
+      slides[slideIndex - 1].style.display = 'none';
+    }
+    if(document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
+      if(n > slides.length){
+        slideIndex = 2;
+      } else if(n < 2){
+        slideIndex = slides.length;
+      }
+      slides.forEach(slide => {
+        slide.style.display = 'block';
+      });
+      slides[slideIndex - 1].style.display = 'none';
+      slides[slideIndex - 2].style.display = 'none';
+    }
+    if(document.body.clientWidth <= 490){
+      if(n >= slides.length + 1){
+        slideIndex = 1;
+      } else if(n <= 0){
+        slideIndex = slides.length;
+      }
+      slides.forEach(slide => {
+        slide.style.display = 'none';
+      });
+      slides[slideIndex - 1].style.display = 'block';
+      slides[slideIndex - 1].click();
+    }
+
+
+  }
+
+  function filter(n, rangeSt, rangeFn, slideStart){
+    let sliderLength = slides.length + rangeSt;
+    if(n >= sliderLength){
+      slideIndex = slideStart;
+    } else if(n <= rangeFn){
+      slideIndex = slides.length;
+    }
+  }
+  function activateTabSlider(){
+    if(document.body.clientWidth <= 900){
+      showSlides();
+      wrapper.style.cssText = `
+        justify-content: space-around;
+      `;
+    }
+  }
+};
+
+export default tabSlider;

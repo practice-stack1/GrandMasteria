@@ -11,7 +11,8 @@
     "magnific-popup": "^1.1.0",
     "normalize.css": "^8.0.1",
     "slick-carousel": "^1.8.1",
-    "slick-slider": "^1.8.2"
+    "slick-slider": "^1.8.2",
+    "swiper": "^6.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",

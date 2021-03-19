@@ -15,7 +15,6 @@ const forms = (current_form) => {
   forms.forEach(form => {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-
       sendForm(this);
     });
   });
@@ -23,7 +22,7 @@ const forms = (current_form) => {
   async function sendForm(form) {
     let error = formValidate(form);
     let formData = new FormData(form);
-		const btn = form.querySelector('.footer__submit-section');
+		const btn = form.querySelector('.form__submit-section');
     if (error === 0) {
 			form.classList.add('_sending');
 			makeStatusMsg(btn, message.spinner, message.loading);
@@ -46,9 +45,11 @@ const forms = (current_form) => {
 					}, 5000);
 				});
 		} else {
-			if(!(form.querySelectorAll('.message-err').length>0)){
-				makeErrMsg(form);
-				removeErrMsg('.message-err');
+			if(form.dataset.msg === 'true'){
+				if(!(form.querySelectorAll('.message-err').length>0)){
+					makeErrMsg(form);
+					removeErrMsg('.message-err');
+				}
 			}
 
 		}
@@ -96,7 +97,7 @@ const forms = (current_form) => {
     });
   };
 	function makeStatusMsg(form, status, text_msg){
-		if(document.querySelector('.footer .status')) {	document.querySelector('.footer .status').remove();}
+		if(document.querySelector('.form .status')) {	document.querySelector('.form .status').remove();}
 		let statusMessage = document.createElement('div');
 		let statusImg = document.createElement('img');
 		let textMessage = document.createElement('div');
@@ -106,7 +107,7 @@ const forms = (current_form) => {
 		imgWrapper.appendChild(statusImg);
 		textMessage.textContent = text_msg;
 		textMessage.classList.add('status__text');
-  	statusMessage.classList.add('status');
+		statusMessage.classList.add('status');
 		statusMessage.appendChild(imgWrapper);
 		statusMessage.appendChild(textMessage);
 		form.classList.add('animated', 'fadeOutUp');

@@ -1,49 +1,49 @@
 {
     "single": [
         {
-            "src": "../img/example_galary.jpg",
+            "src": "img/example_galary.jpg",
+            "counter": "100",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/example_galary.jpg",
             "counter": "101",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "../img/example_galary.jpg",
+            "src": "img/example_galary.jpg",
             "counter": "101",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "../img/example_galary.jpg",
+            "src": "img/example_galary.jpg",
             "counter": "101",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "../img/example_galary.jpg",
+            "src": "img/example_galary.jpg",
             "counter": "101",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "../img/example_galary.jpg",
+            "src": "img/example_galary.jpg",
             "counter": "101",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "../img/example_galary.jpg",
+            "src": "img/example_galary.jpg",
             "counter": "101",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "../img/example_galary.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "../img/example_galary.jpg",
+            "src": "img/example_galary.jpg",
             "counter": "101",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"

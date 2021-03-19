@@ -32,7 +32,7 @@ const showMore = (btn__trigger) => {
           <div class="galary__info">${size}</div>
         </div>
       `;
-      item.classList.add('animated', 'fadeInLeft');
+      item.classList.add('animated', 'fadeIn');
 
       wrap.querySelector('.galary__slide-wrapper').appendChild(item);
     });

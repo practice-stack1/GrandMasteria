@@ -4532,6 +4532,11 @@ body.lock {
   margin: 0 auto;
 }
 
+.hide {
+  visibility: hidden;
+  display: none;
+}
+
 .form {
   width: 386px;
   display: -webkit-box;

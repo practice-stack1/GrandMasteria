@@ -1,48 +1,31 @@
-const modal = (modal__tirgger, modal__wrapper, modal__overlay, modal__close, modal__more, modal__info, show__more) => {
-  let triggers = document.querySelectorAll(modal__tirgger);
-  const modals = document.querySelector(modal__wrapper),
-        overlay = document.querySelector(modal__overlay),
+const modal = (galary__wrapper, modal__overlay, modal__close, modal__more, modal__info) => {
+  const overlay = document.querySelector(modal__overlay),
         close = document.querySelector(modal__close),
         more = document.querySelector(modal__more),
         info = document.querySelector(modal__info),
-        show_more = document.querySelectorAll(show__more),
+        triggers = document.querySelectorAll(galary__wrapper);
         scroll = calcScroll();
 
   let clicked = false;
 
 
-  function openModal(e) {
-    e.preventDefault();
-    overlay.classList.remove('animated', 'fadeOut');
-    overlay.classList.add('animated', 'fadeIn');
-    overlay.style.display = 'block';
-    document.body.style.overflow = "hidden";
-    document.body.style.marginRight = `${scroll}px`;
-  }
-
-  // show_more.forEach(item => {
-  //   item.addEventListener('click', (e) => {
-  //     e.preventDefault();
-  //     triggers.forEach(trigger => {
-  //       trigger.removeEventListener('click',  openModal);
-  //     });
-  //     let new_triggers = document.querySelectorAll(modal__tirgger);
-  //     new_triggers.forEach(trigger => {
-  //       console.log(trigger);
-  //       trigger.addEventListener('click',  openModal);
-  //     });
-  //   });
-  // });
-
   triggers.forEach(trigger => {
-    trigger.addEventListener('click', openModal);
+    $(trigger).on('click touchstart', '.galary__img', function(e) {
+      e.preventDefault();
+      openModal();
+    });
+    $(trigger).on('click', '.galary__item', function(e) {
+      e.preventDefault();
+      openModal();
+    });
   });
 
-  close.addEventListener('click', () => {
-    closeModal();
-  });
-  overlay.addEventListener('click', () => {
-    closeModal();
+
+
+  overlay.addEventListener('click', (e) => {
+      if(e.target === overlay || e.target === close){
+        closeModal();
+      };
   });
   more.addEventListener('click', (e) => {
     e.preventDefault();
@@ -60,9 +43,17 @@ const modal = (modal__tirgger, modal__wrapper, modal__overlay, modal__close, mod
     overlay.classList.add('animated', 'fadeOut');
     setTimeout(() => {
       overlay.style.display = 'none';
+      document.body.style.overflow = "";
+      document.body.style.marginRight = `0px`;
     }, 700);
-    document.body.style.overflow = "";
-    document.body.style.marginRight = `0px`;
+
+  }
+  function openModal(){
+    overlay.classList.remove('animated', 'fadeOut');
+    overlay.classList.add('animated', 'fadeIn');
+    overlay.style.display = 'block';
+    document.body.style.overflow = "hidden";
+    document.body.style.marginRight = `${scroll}px`;
   }
   function calcScroll() {
     let div = document.createElement('div');

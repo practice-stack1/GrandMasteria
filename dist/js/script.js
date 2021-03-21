@@ -5185,8 +5185,8 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_9__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
   Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', 'active', 'block');
-  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__btn');
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_13__["default"])('.galary__item', '.modal', '.overlay', '.modal__close', '.modal__more', '.modal__info', '.galary__btn');
+  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_13__["default"])('.galary__slide-wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
+  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__btn', '[data-section]');
   Object(_modules_slider__WEBPACK_IMPORTED_MODULE_14__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
 });
 
@@ -5598,47 +5598,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var modal = function modal(modal__tirgger, modal__wrapper, modal__overlay, modal__close, modal__more, modal__info, show__more) {
-  var triggers = document.querySelectorAll(modal__tirgger);
-  var modals = document.querySelector(modal__wrapper),
-      overlay = document.querySelector(modal__overlay),
+var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal__more, modal__info) {
+  var overlay = document.querySelector(modal__overlay),
       close = document.querySelector(modal__close),
       more = document.querySelector(modal__more),
       info = document.querySelector(modal__info),
-      show_more = document.querySelectorAll(show__more),
-      scroll = calcScroll();
+      triggers = document.querySelectorAll(galary__wrapper);
+  scroll = calcScroll();
   var clicked = false;
-
-  function openModal(e) {
-    e.preventDefault();
-    overlay.classList.remove('animated', 'fadeOut');
-    overlay.classList.add('animated', 'fadeIn');
-    overlay.style.display = 'block';
-    document.body.style.overflow = "hidden";
-    document.body.style.marginRight = "".concat(scroll, "px");
-  } // show_more.forEach(item => {
-  //   item.addEventListener('click', (e) => {
-  //     e.preventDefault();
-  //     triggers.forEach(trigger => {
-  //       trigger.removeEventListener('click',  openModal);
-  //     });
-  //     let new_triggers = document.querySelectorAll(modal__tirgger);
-  //     new_triggers.forEach(trigger => {
-  //       console.log(trigger);
-  //       trigger.addEventListener('click',  openModal);
-  //     });
-  //   });
-  // });
-
-
   triggers.forEach(function (trigger) {
-    trigger.addEventListener('click', openModal);
+    $(trigger).on('click touchstart', '.galary__img', function (e) {
+      e.preventDefault();
+      openModal();
+    });
+    $(trigger).on('click', '.galary__item', function (e) {
+      e.preventDefault();
+      openModal();
+    });
   });
-  close.addEventListener('click', function () {
-    closeModal();
-  });
-  overlay.addEventListener('click', function () {
-    closeModal();
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay || e.target === close) {
+      closeModal();
+    }
+
+    ;
   });
   more.addEventListener('click', function (e) {
     e.preventDefault();
@@ -5658,9 +5641,17 @@ var modal = function modal(modal__tirgger, modal__wrapper, modal__overlay, modal
     overlay.classList.add('animated', 'fadeOut');
     setTimeout(function () {
       overlay.style.display = 'none';
+      document.body.style.overflow = "";
+      document.body.style.marginRight = "0px";
     }, 700);
-    document.body.style.overflow = "";
-    document.body.style.marginRight = "0px";
+  }
+
+  function openModal() {
+    overlay.classList.remove('animated', 'fadeOut');
+    overlay.classList.add('animated', 'fadeIn');
+    overlay.style.display = 'block';
+    document.body.style.overflow = "hidden";
+    document.body.style.marginRight = "".concat(scroll, "px");
   }
 
   function calcScroll() {
@@ -5777,41 +5768,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.promise.js */ "./node_modules/core-js/modules/es.promise.js");
-/* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.promise.finally.js */ "./node_modules/core-js/modules/es.promise.finally.js");
-/* harmony import */ var core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_finally_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _services_requests__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/requests */ "./src/js/services/requests.js");
-/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _services_requests__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/requests */ "./src/js/services/requests.js");
+/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
 
 
 
 
 
 
-
-
-
-var showMore = function showMore(btn__trigger) {
-  var triggers = document.querySelectorAll(btn__trigger);
+var showMore = function showMore(btn__trigger, tab__slides) {
+  var triggers = document.querySelectorAll(btn__trigger),
+      slides = document.querySelectorAll(tab__slides);
+  slides.forEach(function (slide) {
+    var wrap = slide.querySelector('.galary__slide-wrapper');
+    var section = slide.dataset.section;
+    Object(_services_requests__WEBPACK_IMPORTED_MODULE_3__["getResource"])('./db.json').then(function (res) {
+      switchSection(res, wrap, section);
+      Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    })["catch"](function (err) {
+      return console.log(err);
+    });
+  });
   triggers.forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
-      var _this = this;
-
-      var wrap = trigger.parentElement;
-      var section = wrap.dataset.section;
-      Object(_services_requests__WEBPACK_IMPORTED_MODULE_6__["getResource"])('./db.json').then(function (res) {
-        switchSection(res, wrap, section);
-        Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_7__["default"])();
-      })["catch"](function (err) {
-        return console.log(err);
-      })["finally"](function () {
-        return _this.remove();
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      var items = trigger.parentElement.querySelectorAll('.galary__item');
+      items.forEach(function (item) {
+        item.classList.remove('hide');
+        item.classList.add('animated', 'fadeIn');
       });
+      this.remove();
     });
   });
 
@@ -5822,10 +5810,9 @@ var showMore = function showMore(btn__trigger) {
           price = _ref.price,
           size = _ref.size;
       var item = document.createElement('div');
-      item.classList.add('galary__item');
+      item.classList.add('galary__item', 'hide');
       item.innerHTML = "\n        <div class=\"galary__img ibg\">\n          <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n        </div>\n        <div class=\"galary__counter\">").concat(counter, "</div>\n        <div class=\"galary__short-info\">\n          <div class=\"galary__info\">").concat(price, "</div>\n          <div class=\"galary__info\">").concat(size, "</div>\n        </div>\n      ");
-      item.classList.add('animated', 'fadeIn');
-      wrap.querySelector('.galary__slide-wrapper').appendChild(item);
+      wrap.appendChild(item);
     });
   }
 

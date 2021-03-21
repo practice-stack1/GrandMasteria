@@ -1,18 +1,29 @@
 import {getResource} from '../services/requests';
 import ibg from '../basic/ibg';
-const showMore = (btn__trigger) => {
-  const triggers = document.querySelectorAll(btn__trigger);
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', function(){
-        let wrap = trigger.parentElement;
-        let section = wrap.dataset.section;
-        getResource('./db.json')
+
+const showMore = (btn__trigger, tab__slides) => {
+  const triggers = document.querySelectorAll(btn__trigger),
+        slides = document.querySelectorAll(tab__slides);
+
+    slides.forEach(slide => {
+      let wrap = slide.querySelector('.galary__slide-wrapper');
+      let section = slide.dataset.section;
+      getResource('./db.json')
           .then(res => {
             switchSection(res, wrap, section);
             ibg();
           })
-          .catch(err => console.log(err))
-          .finally(() => this.remove());
+          .catch(err => console.log(err));
+    });
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        let items = trigger.parentElement.querySelectorAll('.galary__item');
+        items.forEach(item => {
+          item.classList.remove('hide');
+          item.classList.add('animated', 'fadeIn');
+        });
+        this.remove();
       });
     });
 
@@ -20,7 +31,7 @@ const showMore = (btn__trigger) => {
   function createItem(response, wrap){
     response.forEach(({src, counter, price, size}) => {
       let item = document.createElement('div');
-      item.classList.add('galary__item');
+      item.classList.add('galary__item', 'hide');
 
       item.innerHTML = `
         <div class="galary__img ibg">
@@ -32,9 +43,7 @@ const showMore = (btn__trigger) => {
           <div class="galary__info">${size}</div>
         </div>
       `;
-      item.classList.add('animated', 'fadeIn');
-
-      wrap.querySelector('.galary__slide-wrapper').appendChild(item);
+      wrap.appendChild(item);
     });
   }
 

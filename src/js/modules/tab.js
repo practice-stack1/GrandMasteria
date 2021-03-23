@@ -17,7 +17,7 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
       }
     });
     hideTabContent();
-    showTabContent();
+    showDefaultTabContent();
     function hideTabContent() {
       content.forEach(item => {
         item.style.display = "none";
@@ -27,22 +27,24 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
         item.classList.remove(activeClass);
       });
     }
+    function showDefaultTabContent(){
+      const navigate = localStorage.getItem('galary-tab-section');
 
+      tab.forEach((item, i) => {
+        if(navigate === item.dataset.nav){
+          hideTabContent();
+          showTabContent(i);
+        }
+      });
+      localStorage.setItem('galary-tab-section', 'single');
+    }
     function showTabContent(i = 0) {
       content[i].style.display = display;
       content[i].classList.add('animated', 'fadeIn');
       tab[i].classList.add(activeClass);
     }
 
-  } catch (error) {
-
-  }
-
-
-
-
-
-
+  } catch (error) {}
 };
 
 export default tab;

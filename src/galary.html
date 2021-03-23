@@ -20,10 +20,10 @@
         <section class="galary">
             <div class="tab">
               <div class="tab__wrapper">
-                <div class="tab__item active">Одинарні пам’ятники</div>
-                <div class="tab__item">Подвійні пам’ятники</div>
-                <div class="tab__item">Потрійні пам’ятники</div>
-                <div class="tab__item">Дитячі пам’ятники</div>
+                <div class="tab__item active" data-nav="single">Одинарні пам’ятники</div>
+                <div class="tab__item" data-nav="double">Подвійні пам’ятники</div>
+                <div class="tab__item" data-nav="triple">Потрійні пам’ятники</div>
+                <div class="tab__item" data-nav="child">Дитячі пам’ятники</div>
                 <div class="tab__arrow tab__arrow_left">
                   <img src="icons/arrow_l.svg" alt="стрілка вліво">
                 </div>
@@ -219,7 +219,7 @@
     </main>
     @@include('html/footer.html')
   </div>
-  @@include('html/modal-icon_galary.html')
+  @@include('html/modals.html')
   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script src="js/script.js"></script>
 </body>

@@ -3010,6 +3010,36 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/modules/es.array.filter.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.filter.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $filter = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").filter;
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
+// Edge 14- issue
+var USES_TO_LENGTH = arrayMethodUsesToLength('filter');
+
+// `Array.prototype.filter` method
+// https://tc39.es/ecma262/#sec-array.prototype.filter
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  filter: function filter(callbackfn /* , thisArg */) {
+    return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/es.array.for-each.js":
 /*!***********************************************************!*\
   !*** ./node_modules/core-js/modules/es.array.for-each.js ***!
@@ -3084,61 +3114,30 @@ $({ target: 'Array', proto: true, forced: lastIndexOf !== [].lastIndexOf }, {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.slice.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.slice.js ***!
-  \********************************************************/
+/***/ "./node_modules/core-js/modules/es.array.map.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.map.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var $map = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").map;
 var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
 var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/core-js/internals/array-method-uses-to-length.js");
 
-var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
-var USES_TO_LENGTH = arrayMethodUsesToLength('slice', { ACCESSORS: true, 0: 0, 1: 2 });
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map');
+// FF49- issue
+var USES_TO_LENGTH = arrayMethodUsesToLength('map');
 
-var SPECIES = wellKnownSymbol('species');
-var nativeSlice = [].slice;
-var max = Math.max;
-
-// `Array.prototype.slice` method
-// https://tc39.es/ecma262/#sec-array.prototype.slice
-// fallback for not array-like ES3 strings and DOM objects
+// `Array.prototype.map` method
+// https://tc39.es/ecma262/#sec-array.prototype.map
+// with adding support of @@species
 $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
-  slice: function slice(start, end) {
-    var O = toIndexedObject(this);
-    var length = toLength(O.length);
-    var k = toAbsoluteIndex(start, length);
-    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
-    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
-    var Constructor, result, n;
-    if (isArray(O)) {
-      Constructor = O.constructor;
-      // cross-realm fallback
-      if (typeof Constructor == 'function' && (Constructor === Array || isArray(Constructor.prototype))) {
-        Constructor = undefined;
-      } else if (isObject(Constructor)) {
-        Constructor = Constructor[SPECIES];
-        if (Constructor === null) Constructor = undefined;
-      }
-      if (Constructor === Array || Constructor === undefined) {
-        return nativeSlice.call(O, k, fin);
-      }
-    }
-    result = new (Constructor === undefined ? Array : Constructor)(max(fin - k, 0));
-    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
-    result.length = n;
-    return result;
+  map: function map(callbackfn /* , thisArg */) {
+    return $map(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
@@ -3184,6 +3183,26 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
       ? nativeSort.call(toObject(this))
       : nativeSort.call(toObject(this), aFunction(comparefn));
   }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.object.define-property.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.define-property.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var objectDefinePropertyModile = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+
+// `Object.defineProperty` method
+// https://tc39.es/ecma262/#sec-object.defineproperty
+$({ target: 'Object', stat: true, forced: !DESCRIPTORS, sham: !DESCRIPTORS }, {
+  defineProperty: objectDefinePropertyModile.f
 });
 
 
@@ -4910,18 +4929,28 @@ var isMobile = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "./node_modules/core-js/modules/es.array.index-of.js");
-/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
-/* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.sort.js */ "./node_modules/core-js/modules/es.array.sort.js");
-/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
-/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
-/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+/* harmony import */ var core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.index-of.js */ "./node_modules/core-js/modules/es.array.index-of.js");
+/* harmony import */ var core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.sort.js */ "./node_modules/core-js/modules/es.array.sort.js");
+/* harmony import */ var core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_sort_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.object.define-property.js */ "./node_modules/core-js/modules/es.object.define-property.js");
+/* harmony import */ var core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_define_property_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
+/* harmony import */ var core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
@@ -4931,145 +4960,203 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(function () {
-  var originalPositions = [];
-  var daElements = document.querySelectorAll('[data-da]');
-  var daElementsArray = [];
-  var daMatchMedia = [];
 
-  if (daElements.length > 0) {
-    var number = 0;
 
-    for (var index = 0; index < daElements.length; index++) {
-      var daElement = daElements[index];
-      var daMove = daElement.getAttribute('data-da');
 
-      if (daMove != '') {
-        var daArray = daMove.split(',');
-        var daPlace = daArray[1] ? daArray[1].trim() : 'last';
-        var daBreakpoint = daArray[2] ? daArray[2].trim() : '767';
-        var daType = daArray[3] === 'min' ? daArray[3].trim() : 'max';
-        var daDestination = document.querySelector('.' + daArray[0].trim());
 
-        if (daArray.length > 0 && daDestination) {
-          daElement.setAttribute('data-da-index', number);
-          originalPositions[number] = {
-            "parent": daElement.parentNode,
-            "index": indexInParent(daElement)
-          };
-          daElementsArray[number] = {
-            "element": daElement,
-            "destination": document.querySelector('.' + daArray[0].trim()),
-            "place": daPlace,
-            "breakpoint": daBreakpoint,
-            "type": daType
-          };
-          number++;
-        }
-      }
-    }
 
-    dynamicAdaptSort(daElementsArray);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-    for (var _index = 0; _index < daElementsArray.length; _index++) {
-      var el = daElementsArray[_index];
-      var _daBreakpoint = el.breakpoint;
-      var _daType = el.type;
-      daMatchMedia.push(window.matchMedia("(" + _daType + "-width: " + _daBreakpoint + "px)")); // daMatchMedia[index].addEventListener(dynamicAdapt);
-    }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var DynamicAdapt = /*#__PURE__*/function () {
+  function DynamicAdapt(type) {
+    _classCallCheck(this, DynamicAdapt);
+
+    this.type = type;
   }
 
-  function dynamicAdapt(e) {
-    for (var _index2 = 0; _index2 < daElementsArray.length; _index2++) {
-      var _el = daElementsArray[_index2];
-      var _daElement = _el.element;
-      var _daDestination = _el.destination;
-      var _daPlace = _el.place;
-      var _daBreakpoint2 = _el.breakpoint;
-      var daClassname = "_dynamic_adapt_" + _daBreakpoint2;
+  _createClass(DynamicAdapt, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
 
-      if (daMatchMedia[_index2].matches) {
-        if (!_daElement.classList.contains(daClassname)) {
-          var actualIndex = indexOfElements(_daDestination)[_daPlace];
+      // массив объектов
+      this.оbjects = [];
+      this.daClassname = '_dynamic_adapt_'; // массив DOM-элементов
 
-          if (_daPlace === 'first') {
-            actualIndex = indexOfElements(_daDestination)[0];
-          } else if (_daPlace === 'last') {
-            actualIndex = indexOfElements(_daDestination)[indexOfElements(_daDestination).length];
+      this.nodes = _toConsumableArray(document.querySelectorAll('[data-da]')); // наполнение оbjects объктами
+
+      this.nodes.forEach(function (node) {
+        var data = node.dataset.da.trim();
+        var dataArray = data.split(',');
+        var оbject = {};
+        оbject.element = node;
+        оbject.parent = node.parentNode;
+        оbject.destination = document.querySelector("".concat(dataArray[0].trim()));
+        оbject.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
+        оbject.place = dataArray[2] ? dataArray[2].trim() : 'last';
+        оbject.index = _this.indexInParent(оbject.parent, оbject.element);
+
+        _this.оbjects.push(оbject);
+      });
+      this.arraySort(this.оbjects); // массив уникальных медиа-запросов
+
+      this.mediaQueries = this.оbjects.map(function (_ref) {
+        var breakpoint = _ref.breakpoint;
+        return "(".concat(_this.type, "-width: ").concat(breakpoint, "px),").concat(breakpoint);
+      }).filter(function (item, index, self) {
+        return self.indexOf(item) === index;
+      }); // навешивание слушателя на медиа-запрос
+      // и вызов обработчика при первом запуске
+
+      this.mediaQueries.forEach(function (media) {
+        var mediaSplit = media.split(',');
+        var matchMedia = window.matchMedia(mediaSplit[0]);
+        var mediaBreakpoint = mediaSplit[1]; // массив объектов с подходящим брейкпоинтом
+
+        var оbjectsFilter = _this.оbjects.filter(function (_ref2) {
+          var breakpoint = _ref2.breakpoint;
+          return breakpoint === mediaBreakpoint;
+        });
+
+        matchMedia.addEventListener('change', function () {
+          _this.mediaHandler(matchMedia, оbjectsFilter);
+        });
+
+        _this.mediaHandler(matchMedia, оbjectsFilter);
+      });
+    } // Основная функция
+
+  }, {
+    key: "mediaHandler",
+    value: function mediaHandler(matchMedia, оbjects) {
+      var _this2 = this;
+
+      if (matchMedia.matches) {
+        оbjects.forEach(function (оbject) {
+          оbject.index = _this2.indexInParent(оbject.parent, оbject.element);
+
+          _this2.moveTo(оbject.place, оbject.element, оbject.destination);
+        });
+      } else {
+        оbjects.forEach(function (_ref3) {
+          var parent = _ref3.parent,
+              element = _ref3.element,
+              index = _ref3.index;
+
+          if (element.classList.contains(_this2.daClassname)) {
+            _this2.moveBack(parent, element, index);
+          }
+        });
+      }
+    } // Функция перемещения
+
+  }, {
+    key: "moveTo",
+    value: function moveTo(place, element, destination) {
+      element.classList.add(this.daClassname);
+
+      if (place === 'last' || place >= destination.children.length) {
+        destination.append(element);
+        return;
+      }
+
+      if (place === 'first') {
+        destination.prepend(element);
+        return;
+      }
+
+      destination.children[place].before(element);
+    } // Функция возврата
+
+  }, {
+    key: "moveBack",
+    value: function moveBack(parent, element, index) {
+      element.classList.remove(this.daClassname);
+
+      if (parent.children[index] !== undefined) {
+        parent.children[index].before(element);
+      } else {
+        parent.append(element);
+      }
+    } // Функция получения индекса внутри родителя
+
+  }, {
+    key: "indexInParent",
+    value: function indexInParent(parent, element) {
+      return _toConsumableArray(parent.children).indexOf(element);
+    } // Функция сортировки массива по breakpoint и place
+    // по возрастанию для this.type = min
+    // по убыванию для this.type = max
+
+  }, {
+    key: "arraySort",
+    value: function arraySort(arr) {
+      if (this.type === 'min') {
+        arr.sort(function (a, b) {
+          if (a.breakpoint === b.breakpoint) {
+            if (a.place === b.place) {
+              return 0;
+            }
+
+            if (a.place === 'first' || b.place === 'last') {
+              return -1;
+            }
+
+            if (a.place === 'last' || b.place === 'first') {
+              return 1;
+            }
+
+            return a.place - b.place;
           }
 
-          _daDestination.insertBefore(_daElement, _daDestination.children[actualIndex]);
-
-          _daElement.classList.add(daClassname);
-        }
+          return a.breakpoint - b.breakpoint;
+        });
       } else {
-        if (_daElement.classList.contains(daClassname)) {
-          dynamicAdaptBack(_daElement);
+        arr.sort(function (a, b) {
+          if (a.breakpoint === b.breakpoint) {
+            if (a.place === b.place) {
+              return 0;
+            }
 
-          _daElement.classList.remove(daClassname);
-        }
+            if (a.place === 'first' || b.place === 'last') {
+              return 1;
+            }
+
+            if (a.place === 'last' || b.place === 'first') {
+              return -1;
+            }
+
+            return b.place - a.place;
+          }
+
+          return b.breakpoint - a.breakpoint;
+        });
+        return;
       }
     }
+  }]);
 
-    customAdapt();
-  }
+  return DynamicAdapt;
+}();
 
-  dynamicAdapt();
-
-  function dynamicAdaptBack(el) {
-    var daIndex = el.getAttribute('data-da-index');
-    var originalPlace = originalPositions[daIndex];
-    var parentPlace = originalPlace['parent'];
-    var indexPlace = originalPlace['index'];
-    var actualIndex = indexOfElements(parentPlace, true)[indexPlace];
-    parentPlace.insertBefore(el, parentPlace.children[actualIndex]);
-  }
-
-  function indexInParent(el) {
-    var children = Array.prototype.slice.call(el.parentNode.children);
-    return children.indexOf(el);
-  }
-
-  function indexOfElements(parent, back) {
-    var children = parent.children;
-    var childrenArray = [];
-
-    for (var i = 0; i < children.length; i++) {
-      var childrenElement = children[i];
-
-      if (back) {
-        childrenArray.push(i);
-      } else {
-        if (childrenElement.getAttribute('data-da') == null) {
-          childrenArray.push(i);
-        }
-      }
-    }
-
-    return childrenArray;
-  }
-
-  function dynamicAdaptSort(arr) {
-    arr.sort(function (a, b) {
-      if (a.breakpoint > b.breakpoint) {
-        return -1;
-      } else {
-        return 1;
-      }
-    });
-    arr.sort(function (a, b) {
-      if (a.place > b.place) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-  }
-
-  function customAdapt() {
-    var viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  }
-})();
+var da = new DynamicAdapt("max");
+da.init();
 
 /***/ }),
 
@@ -5604,67 +5691,67 @@ var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal_
       more = document.querySelector(modal__more),
       info = document.querySelector(modal__info),
       triggers = document.querySelectorAll(galary__wrapper);
-  scroll = calcScroll();
   var clicked = false;
-  triggers.forEach(function (trigger) {
-    $(trigger).on('click touchstart', '.galary__img', function (e) {
-      e.preventDefault();
-      openModal();
+
+  try {
+    var closeModal = function closeModal() {
+      // overlay.classList.add('animated', 'fadeOut');
+      setTimeout(function () {
+        overlay.style.display = 'none';
+        document.body.style.overflow = "auto";
+        document.body.style.marginRight = "0px";
+      }, 700);
+    };
+
+    var openModal = function openModal() {
+      // overlay.classList.remove('animated', 'fadeOut');
+      // overlay.classList.add('animated', 'fadeIn');
+      overlay.style.display = 'block';
+      document.body.style.overflow = "hidden";
+      document.body.style.marginRight = "".concat(scroll, "px");
+    };
+
+    var calcScroll = function calcScroll() {
+      var div = document.createElement('div');
+      div.style.width = '50px';
+      div.style.height = '50px';
+      div.style.overflowY = 'scroll';
+      div.style.visibility = 'hidden';
+      document.body.appendChild(div);
+      var scrollWidth = div.offsetWidth - div.clientWidth;
+      div.remove();
+      return scrollWidth;
+    };
+
+    var scroll = calcScroll();
+    triggers.forEach(function (trigger) {
+      $(trigger).on('click', '.galary__img', function (e) {
+        console.log(e.target);
+        e.preventDefault();
+        openModal();
+      });
     });
-    $(trigger).on('click', '.galary__item', function (e) {
-      e.preventDefault();
-      openModal();
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay || e.target === close) {
+        closeModal();
+      }
+
+      ;
     });
-  });
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay || e.target === close) {
-      closeModal();
-    }
+    more.addEventListener('click', function (e) {
+      e.preventDefault();
 
-    ;
-  });
-  more.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    if (!clicked) {
-      more.classList.add('active');
-      info.classList.add('active');
-      clicked = true;
-    } else {
-      more.classList.remove('active');
-      info.classList.remove('active');
-      clicked = false;
-    }
-  });
-
-  function closeModal() {
-    overlay.classList.add('animated', 'fadeOut');
-    setTimeout(function () {
-      overlay.style.display = 'none';
-      document.body.style.overflow = "";
-      document.body.style.marginRight = "0px";
-    }, 700);
-  }
-
-  function openModal() {
-    overlay.classList.remove('animated', 'fadeOut');
-    overlay.classList.add('animated', 'fadeIn');
-    overlay.style.display = 'block';
-    document.body.style.overflow = "hidden";
-    document.body.style.marginRight = "".concat(scroll, "px");
-  }
-
-  function calcScroll() {
-    var div = document.createElement('div');
-    div.style.width = '50px';
-    div.style.height = '50px';
-    div.style.overflowY = 'scroll';
-    div.style.visibility = 'hidden';
-    document.body.appendChild(div);
-    var scrollWidth = div.offsetWidth - div.clientWidth;
-    div.remove();
-    return scrollWidth;
-  }
+      if (!clicked) {
+        more.classList.add('active');
+        info.classList.add('active');
+        clicked = true;
+      } else {
+        more.classList.remove('active');
+        info.classList.remove('active');
+        clicked = false;
+      }
+    });
+  } catch (error) {}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modal);
@@ -5738,6 +5825,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_requests__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/requests */ "./src/js/services/requests.js");
+
 
 
 
@@ -5745,10 +5834,15 @@ var navigation = function navigation(columns) {
   var wrapper = document.querySelectorAll(columns);
   wrapper.forEach(function (item) {
     item.addEventListener('click', function (e) {
-      console.log(e.target);
+      setSection(item);
       item.querySelector('a').click();
     });
   });
+
+  function setSection(item) {
+    var section = item.dataset.nav;
+    localStorage.setItem('galary-tab-section', section);
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (navigation);
@@ -5867,104 +5961,95 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
       arrR = document.querySelector(arrows__right);
   var slideIndex = 0;
 
-  if (document.body.clientWidth < 490) {
-    slideIndex = 1;
-  } else {
-    slideIndex = 4;
-  }
+  try {
+    var plusSlide = function plusSlide(n) {
+      showSlides(slideIndex += n);
+    };
 
-  activateTabSlider();
-  window.addEventListener('resize', function () {
-    if (document.body.clientWidth <= 900) {
-      activateTabSlider();
-    } else {
-      wrapper.style.cssText = "\n        justify-content: space-between;\n      ";
-      slides.forEach(function (slide) {
-        slide.style.display = 'block';
-      });
-    }
-  });
-  arrL.addEventListener('click', function () {
-    if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
-      plusSlide(-2);
-    } else {
-      plusSlide(-1);
-    }
-  });
-  arrR.addEventListener('click', function () {
-    if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
-      plusSlide(2);
-    } else {
-      plusSlide(1);
-    }
-  });
+    var showSlides = function showSlides() {
+      var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
-  function plusSlide(n) {
-    showSlides(slideIndex += n);
-  }
+      if (document.body.clientWidth <= 900 && document.body.clientWidth > 768) {
+        if (n >= slides.length - 1) {
+          slideIndex = 1;
+        } else if (n <= 0 || n > 1) {
+          slideIndex = slides.length;
+        }
 
-  function showSlides() {
-    var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-
-    if (document.body.clientWidth <= 900 && document.body.clientWidth > 768) {
-      // filter(n, -1,)
-      if (n >= slides.length - 1) {
-        slideIndex = 1;
-      } else if (n <= 0 || n > 1) {
-        slideIndex = slides.length;
+        slides.forEach(function (slide) {
+          slide.style.display = 'block';
+        });
+        slides[slideIndex - 1].style.display = 'none';
       }
 
-      slides.forEach(function (slide) {
-        slide.style.display = 'block';
-      });
-      slides[slideIndex - 1].style.display = 'none';
-    }
+      if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
+        if (n > slides.length) {
+          slideIndex = 2;
+        } else if (n < 2) {
+          slideIndex = slides.length;
+        }
 
-    if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
-      if (n > slides.length) {
-        slideIndex = 2;
-      } else if (n < 2) {
-        slideIndex = slides.length;
+        slides.forEach(function (slide) {
+          slide.style.display = 'block';
+        });
+        slides[slideIndex - 1].style.display = 'none';
+        slides[slideIndex - 2].style.display = 'none';
       }
 
-      slides.forEach(function (slide) {
-        slide.style.display = 'block';
-      });
-      slides[slideIndex - 1].style.display = 'none';
-      slides[slideIndex - 2].style.display = 'none';
-    }
+      if (document.body.clientWidth <= 490) {
+        if (n >= slides.length + 1) {
+          slideIndex = 1;
+        } else if (n <= 0) {
+          slideIndex = slides.length;
+        }
 
-    if (document.body.clientWidth <= 490) {
-      if (n >= slides.length + 1) {
-        slideIndex = 1;
-      } else if (n <= 0) {
-        slideIndex = slides.length;
+        slides.forEach(function (slide) {
+          slide.style.display = 'none';
+        });
+        slides[slideIndex - 1].style.display = 'block';
+        slides[slideIndex - 1].click();
       }
+    };
 
-      slides.forEach(function (slide) {
-        slide.style.display = 'none';
-      });
-      slides[slideIndex - 1].style.display = 'block';
-      slides[slideIndex - 1].click();
-    }
-  }
+    var activateTabSlider = function activateTabSlider() {
+      if (document.body.clientWidth <= 900) {
+        if (document.body.clientWidth < 490) {
+          slideIndex = 1;
+        } else {
+          slideIndex = 4;
+        }
 
-  function filter(n, rangeSt, rangeFn, slideStart) {
-    var sliderLength = slides.length + rangeSt;
+        showSlides();
+        wrapper.style.cssText = "\n            justify-content: space-around;\n          ";
+      }
+    };
 
-    if (n >= sliderLength) {
-      slideIndex = slideStart;
-    } else if (n <= rangeFn) {
-      slideIndex = slides.length;
-    }
-  }
-
-  function activateTabSlider() {
-    if (document.body.clientWidth <= 900) {
-      showSlides();
-      wrapper.style.cssText = "\n        justify-content: space-around;\n      ";
-    }
-  }
+    activateTabSlider();
+    window.addEventListener('resize', function () {
+      if (document.body.clientWidth <= 900) {
+        activateTabSlider();
+      } else {
+        wrapper.style.cssText = "\n          justify-content: space-between;\n        ";
+        slides.forEach(function (slide) {
+          slide.style.display = 'block';
+        });
+      }
+    });
+    arrL.addEventListener('click', function () {
+      if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
+        plusSlide(-2);
+      } else {
+        plusSlide(-1);
+      }
+    });
+    arrR.addEventListener('click', function () {
+      if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
+        plusSlide(2);
+      } else {
+        plusSlide(1);
+      }
+    });
+  } catch (error) {}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tabSlider);
@@ -6099,6 +6184,17 @@ var tab = function tab(headerSelector, tabSelector, contentSelector, activeClass
       });
     };
 
+    var showDefaultTabContent = function showDefaultTabContent() {
+      var navigate = localStorage.getItem('galary-tab-section');
+      tab.forEach(function (item, i) {
+        if (navigate === item.dataset.nav) {
+          hideTabContent();
+          showTabContent(i);
+        }
+      });
+      localStorage.setItem('galary-tab-section', 'single');
+    };
+
     var showTabContent = function showTabContent() {
       var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       content[i].style.display = display;
@@ -6119,7 +6215,7 @@ var tab = function tab(headerSelector, tabSelector, contentSelector, activeClass
       }
     });
     hideTabContent();
-    showTabContent();
+    showDefaultTabContent();
   } catch (error) {}
 };
 

@@ -5695,7 +5695,7 @@ var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal_
 
   try {
     var closeModal = function closeModal() {
-      // overlay.classList.add('animated', 'fadeOut');
+      overlay.classList.add('animated', 'fadeOut');
       setTimeout(function () {
         overlay.style.display = 'none';
         document.body.style.overflow = "auto";
@@ -5704,8 +5704,8 @@ var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal_
     };
 
     var openModal = function openModal() {
-      // overlay.classList.remove('animated', 'fadeOut');
-      // overlay.classList.add('animated', 'fadeIn');
+      overlay.classList.remove('animated', 'fadeOut');
+      overlay.classList.add('animated', 'fadeIn');
       overlay.style.display = 'block';
       document.body.style.overflow = "hidden";
       document.body.style.marginRight = "".concat(scroll, "px");
@@ -5726,7 +5726,10 @@ var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal_
     var scroll = calcScroll();
     triggers.forEach(function (trigger) {
       $(trigger).on('click', '.galary__img', function (e) {
-        console.log(e.target);
+        e.preventDefault();
+        openModal();
+      });
+      $(trigger).on('click', '.galary__item', function (e) {
         e.preventDefault();
         openModal();
       });

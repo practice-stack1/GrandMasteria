@@ -6,16 +6,20 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display: none;
-  overflow-y: auto;
-  overflow-x: hidden;
+
+  &__wrapper{
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .modal{
-  position: fixed;
   background-color: $green;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 50px 0;
   padding: 0 21px 0 0;
   max-width: 1103px;
   min-height: 607px;

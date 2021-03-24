@@ -4780,18 +4780,22 @@ body.lock {
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display: none;
+}
+
+.overlay__wrapper {
+  position: absolute;
   overflow-y: auto;
   overflow-x: hidden;
+  height: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .modal {
-  position: fixed;
   background-color: #0f3924;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  margin: 50px 0;
   padding: 0 21px 0 0;
   max-width: 1103px;
   min-height: 607px;
@@ -4902,6 +4906,37 @@ body.lock {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-button {
+  background-color: #666;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #999;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #666;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #999;
+}
+
+::-webkit-resizer {
+  background-color: #666;
 }
 
 @media (min-width: 767px) {

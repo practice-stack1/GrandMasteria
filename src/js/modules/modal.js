@@ -13,7 +13,10 @@ const modal = (galary__wrapper, modal__overlay, modal__close, modal__more, modal
     const scroll = calcScroll();
     triggers.forEach(trigger => {
       $(trigger).on('click', '.galary__img', function(e) {
-        console.log(e.target);
+        e.preventDefault();
+        openModal();
+      });
+      $(trigger).on('click', '.galary__item', function(e) {
         e.preventDefault();
         openModal();
       });

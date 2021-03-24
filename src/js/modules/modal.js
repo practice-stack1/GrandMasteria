@@ -1,9 +1,12 @@
-const modal = (galary__wrapper, modal__overlay, modal__close, modal__more, modal__info) => {
+import isMobile from '../basic/checkMobile';
+import ibg from '../basic/ibg';
+const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, modal__more, modal__info) => {
   const overlay = document.querySelector(modal__overlay),
         close = document.querySelector(modal__close),
         more = document.querySelector(modal__more),
         info = document.querySelector(modal__info),
-        triggers = document.querySelectorAll(galary__wrapper);
+        triggers = document.querySelectorAll(galary__wrapper),
+        modal = document.querySelector(modal__wrapper);
 
 
   let clicked = false;
@@ -12,14 +15,19 @@ const modal = (galary__wrapper, modal__overlay, modal__close, modal__more, modal
   try {
     const scroll = calcScroll();
     triggers.forEach(trigger => {
-      $(trigger).on('click', '.galary__img', function(e) {
-        e.preventDefault();
-        openModal();
-      });
-      $(trigger).on('click', '.galary__item', function(e) {
-        e.preventDefault();
-        openModal();
-      });
+      if(isMobile.any()){
+        $(trigger).on('click', '.galary__img', function(e) {
+          e.preventDefault();
+          openModal(e.target, modal);
+        });
+      } else {
+        $(trigger).on('click', '.galary__item', function(e) {
+          e.preventDefault();
+          openModal(e.target, modal);
+        });
+      }
+
+
     });
     overlay.addEventListener('click', (e) => {
       if(e.target === overlay || e.target === close){
@@ -47,7 +55,46 @@ const modal = (galary__wrapper, modal__overlay, modal__close, modal__more, modal
       }, 700);
 
     }
-    function openModal(){
+
+    function openModal(target, modal){
+      containModal(target, modal);
+      activateModal();
+    }
+    function containModal(target, modal){
+      if(!target.classList.contains('galary__item')){
+        target = target.parentNode;
+      }
+      const itemData = getItemData(target);
+      inputModalData(itemData, modal);
+    }
+    function inputModalData({src, count, section, info}, modal){
+      modal.querySelector('.modal__img img').setAttribute('src', `${src}`);
+      ibg();
+      modal.querySelector('.modal__section').textContent = section;
+      modal.querySelector('.modal__count').textContent = count;
+      const sizes = modal.querySelectorAll('.modal__sizes-item');
+      sizes.forEach((size, i)=> {
+        size.textContent = info[i];
+      });
+    }
+    function getItemData(item){
+      const img = item.querySelector('.galary__img img').getAttribute('src'),
+            count = item.querySelector('.galary__counter').textContent,
+            section = item.parentNode.previousElementSibling.textContent,
+            short_info = item.querySelector('.galary__short-info'),
+            info = [],
+            data = {};
+      short_info.children.forEach(child => {
+        info.push(child.textContent);
+      });
+      data.src = img;
+      data.count = count;
+      data.section = section;
+      data.info = info;
+
+      return data;
+    }
+    function activateModal(){
       overlay.classList.remove('animated', 'fadeOut');
       overlay.classList.add('animated', 'fadeIn');
       overlay.style.display = 'block';

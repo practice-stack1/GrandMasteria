@@ -5272,7 +5272,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_9__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
   Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', 'active', 'block');
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_13__["default"])('.galary__slide-wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
+  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_13__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__btn', '[data-section]');
   Object(_modules_slider__WEBPACK_IMPORTED_MODULE_14__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
 });
@@ -5681,16 +5681,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
 /* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../basic/checkMobile */ "./src/js/basic/checkMobile.js");
+/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
 
 
 
 
-var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal__more, modal__info) {
+
+
+var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, modal__close, modal__more, modal__info) {
   var overlay = document.querySelector(modal__overlay),
       close = document.querySelector(modal__close),
       more = document.querySelector(modal__more),
       info = document.querySelector(modal__info),
-      triggers = document.querySelectorAll(galary__wrapper);
+      triggers = document.querySelectorAll(galary__wrapper),
+      modal = document.querySelector(modal__wrapper);
   var clicked = false;
 
   try {
@@ -5703,7 +5708,53 @@ var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal_
       }, 700);
     };
 
-    var openModal = function openModal() {
+    var openModal = function openModal(target, modal) {
+      containModal(target, modal);
+      activateModal();
+    };
+
+    var containModal = function containModal(target, modal) {
+      if (!target.classList.contains('galary__item')) {
+        target = target.parentNode;
+      }
+
+      var itemData = getItemData(target);
+      inputModalData(itemData, modal);
+    };
+
+    var inputModalData = function inputModalData(_ref, modal) {
+      var src = _ref.src,
+          count = _ref.count,
+          section = _ref.section,
+          info = _ref.info;
+      modal.querySelector('.modal__img img').setAttribute('src', "".concat(src));
+      Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_4__["default"])();
+      modal.querySelector('.modal__section').textContent = section;
+      modal.querySelector('.modal__count').textContent = count;
+      var sizes = modal.querySelectorAll('.modal__sizes-item');
+      sizes.forEach(function (size, i) {
+        size.textContent = info[i];
+      });
+    };
+
+    var getItemData = function getItemData(item) {
+      var img = item.querySelector('.galary__img img').getAttribute('src'),
+          count = item.querySelector('.galary__counter').textContent,
+          section = item.parentNode.previousElementSibling.textContent,
+          short_info = item.querySelector('.galary__short-info'),
+          info = [],
+          data = {};
+      short_info.children.forEach(function (child) {
+        info.push(child.textContent);
+      });
+      data.src = img;
+      data.count = count;
+      data.section = section;
+      data.info = info;
+      return data;
+    };
+
+    var activateModal = function activateModal() {
       overlay.classList.remove('animated', 'fadeOut');
       overlay.classList.add('animated', 'fadeIn');
       overlay.style.display = 'block';
@@ -5725,14 +5776,17 @@ var modal = function modal(galary__wrapper, modal__overlay, modal__close, modal_
 
     var scroll = calcScroll();
     triggers.forEach(function (trigger) {
-      $(trigger).on('click', '.galary__img', function (e) {
-        e.preventDefault();
-        openModal();
-      });
-      $(trigger).on('click', '.galary__item', function (e) {
-        e.preventDefault();
-        openModal();
-      });
+      if (_basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__["default"].any()) {
+        $(trigger).on('click', '.galary__img', function (e) {
+          e.preventDefault();
+          openModal(e.target, modal);
+        });
+      } else {
+        $(trigger).on('click', '.galary__item', function (e) {
+          e.preventDefault();
+          openModal(e.target, modal);
+        });
+      }
     });
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay || e.target === close) {

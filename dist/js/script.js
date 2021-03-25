@@ -5273,6 +5273,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_9__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
   Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', 'active', 'block');
+  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '[data-tab]', 'active', 'flex');
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_13__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__btn', '[data-section]');
   Object(_modules_slider__WEBPACK_IMPORTED_MODULE_14__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
@@ -5883,8 +5884,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _services_requests__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/requests */ "./src/js/services/requests.js");
-
 
 
 
@@ -5899,7 +5898,14 @@ var navigation = function navigation(columns) {
 
   function setSection(item) {
     var section = item.dataset.nav;
-    localStorage.setItem('galary-tab-section', section);
+    var page = item.dataset.page;
+    localStorage.setItem('page', page);
+
+    if (page === 'galary') {
+      localStorage.setItem('galary-tab-section', section);
+    } else {
+      localStorage.setItem('accessories-tab-section', section);
+    }
   }
 };
 
@@ -6258,18 +6264,31 @@ var tab = function tab(headerSelector, tabSelector, contentSelector, activeClass
     };
 
     var showDefaultTabContent = function showDefaultTabContent() {
-      var navigate = localStorage.getItem('galary-tab-section');
+      var page = localStorage.getItem('page');
+
+      if (page === 'galary') {
+        setItem('galary-tab-section');
+      } else {
+        setItem('accessories-tab-section');
+      }
+
+      localStorage.setItem('galary-tab-section', 'single');
+      localStorage.setItem('accessories-tab-section', 'art');
+    };
+
+    var setItem = function setItem(key) {
+      var navigate = localStorage.getItem(key);
       tab.forEach(function (item, i) {
         if (navigate === item.dataset.nav) {
           hideTabContent();
           showTabContent(i);
         }
       });
-      localStorage.setItem('galary-tab-section', 'single');
     };
 
     var showTabContent = function showTabContent() {
       var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      console.log(i);
       content[i].style.display = display;
       content[i].classList.add('animated', 'fadeIn');
       tab[i].classList.add(activeClass);

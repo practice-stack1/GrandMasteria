@@ -4939,6 +4939,10 @@ body.lock {
   background-color: #666;
 }
 
+.mb-15 {
+  margin-bottom: 15px;
+}
+
 @media (min-width: 767px) {
   .about__image {
     -webkit-box-flex: 0;

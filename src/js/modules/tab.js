@@ -28,17 +28,27 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
       });
     }
     function showDefaultTabContent(){
-      const navigate = localStorage.getItem('galary-tab-section');
+      const page = localStorage.getItem('page');
+      if(page === 'galary'){
+        setItem('galary-tab-section');
+      } else {
+        setItem('accessories-tab-section');
+      }
 
+      localStorage.setItem('galary-tab-section', 'single');
+      localStorage.setItem('accessories-tab-section', 'art');
+    }
+    function setItem(key){
+      const navigate = localStorage.getItem(key);
       tab.forEach((item, i) => {
         if(navigate === item.dataset.nav){
           hideTabContent();
           showTabContent(i);
         }
       });
-      localStorage.setItem('galary-tab-section', 'single');
     }
     function showTabContent(i = 0) {
+      console.log(i);
       content[i].style.display = display;
       content[i].classList.add('animated', 'fadeIn');
       tab[i].classList.add(activeClass);

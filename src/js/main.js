@@ -29,6 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
   checkTextInputs('._no-num');
   mask('[name="phone"]');
   tab('.tab', '.tab__item', '.galary__slide', 'active', 'block');
+  tab('.tab', '.tab__item', '[data-tab]', 'active', 'flex');
   modal('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   showMore('.galary__btn', '[data-section]');
   tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');

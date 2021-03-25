@@ -1,4 +1,4 @@
-import {postData} from '../../services/requests';
+
 const navigation = (columns) => {
   const wrapper = document.querySelectorAll(columns);
 
@@ -11,7 +11,15 @@ const navigation = (columns) => {
 
   function setSection(item){
     let section = item.dataset.nav;
-    localStorage.setItem('galary-tab-section', section);
+    let page = item.dataset.page;
+    localStorage.setItem('page', page);
+    if(page === 'galary'){
+      localStorage.setItem('galary-tab-section', section);
+    } else {
+      localStorage.setItem('accessories-tab-section', section);
+    }
+
+
   }
 };
 

@@ -1,12 +1,12 @@
 const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
-  const wrapper = document.querySelector(tab__wrapper),
+
+  try {
+    const wrapper = document.querySelector(tab__wrapper),
         slides = document.querySelectorAll(tab__slides),
         arrL = document.querySelector(arrows__left),
         arrR = document.querySelector(arrows__right);
-  let slideIndex = 0;
+    let slideIndex = 0;
 
-
-  try {
     activateTabSlider();
     window.addEventListener('resize', () => {
       if(document.body.clientWidth <= 900){
@@ -95,7 +95,7 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
           `;
         }
     }
-  } catch (error) {}
+  } catch (error) { console.log(error); }
 };
 
 export default tabSlider;

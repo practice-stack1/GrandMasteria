@@ -1,21 +1,25 @@
 const spoiler = (body, text_container) => {
-  const container = document.querySelector(text_container);
-  const wrapper = document.querySelector(body);
+  const containers = document.querySelectorAll(text_container);
+  const wrappers = document.querySelectorAll(body);
 
   window.addEventListener('orientationchange', () => {
     window.addEventListener('resize', () => {
       try {
-        if(wrapper.dataset.changed === 'true'){
-          clearStyle(wrapper);
-        }
-          styleChange(container, wrapper);
-      } catch (error) {
-
-      }
+        wrappers.forEach((wrapper, i) => {
+          if(wrapper.dataset.changed === 'true'){
+            clearStyle(wrapper, containers[i]);
+          }
+            styleChange(containers[i], wrapper);
+        });
+        arrowClick();
+      } catch (error) {}
     });
-
   });
-  styleChange(container, wrapper);
+  wrappers.forEach((wrapper, i) => {
+    styleChange(containers[i], wrapper);
+  });
+  arrowClick();
+
 
 
 
@@ -23,38 +27,44 @@ const spoiler = (body, text_container) => {
     try {
       if(document.body.clientWidth <= 500){
         wrapper.dataset.changed = 'true';
-        container.children.forEach(p => {
-          if(p.dataset.hide === 'true'){
-            p.classList.add('no-display');
-          }
-        });
-        createArrow(wrapper);
-        const arrows = document.querySelectorAll('.arrow-wrapper');
-        arrows.forEach(arrow => {
-          arrow.addEventListener('click', () => {
-            try {
-              const img = document.querySelector('.arrow-img');
-              if(img.classList.contains('rotate')){
-                img.classList.remove('rotate');
-                document.querySelector('[data-hide]').classList.add('no-display');
-              } else {
-                img.classList.add('rotate');
-                document.querySelector('[data-hide]').classList.remove('no-display');
-              }
-            } catch (error) {
-
+          container.children.forEach(p => {
+            if(p.dataset.hide === 'true'){
+              p.classList.add('no-display');
             }
           });
-        });
+        createArrow(wrapper);
       }
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 
-  function clearStyle(wrapper){
-    document.querySelector('.arrow-wrapper').remove();
-    document.querySelector('[data-hide]').classList.remove('no-display');
+  function arrowClick(){
+    const arrows = document.querySelectorAll('.arrow-wrapper');
+    const img = document.querySelectorAll('.arrow-img');
+    arrows.forEach((arrow, i) => {
+
+      arrow.addEventListener('click', () => {
+        try {
+          if(img[i].classList.contains('rotate')){
+            img[i].classList.remove('rotate');
+            containers[i].querySelectorAll('[data-hide]').forEach(p => {
+              p.classList.add('no-display');
+            });
+          } else {
+            img[i].classList.add('rotate');
+            containers[i].querySelectorAll('[data-hide]').forEach(p => {
+              p.classList.remove('no-display');
+            });
+          }
+        } catch (error) {}
+      });
+    });
+  }
+
+  function clearStyle(wrapper, container){
+    wrapper.querySelector('.arrow-wrapper').remove();
+    container.querySelectorAll('[data-hide]').forEach(p => {
+      p.classList.remove('no-display');
+    });
     wrapper.dataset.changed = 'false';
   }
 

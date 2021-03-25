@@ -22,13 +22,14 @@ window.addEventListener('DOMContentLoaded', () => {
   conection('.header__contacts a');
   conection('.footer__phone_tel a');
   spoiler('.about__body', '.about__body .about__text');
+  spoiler('.info__content', '.info__content .info__text');
   navigation('.short-nav__column');
   forms('.form');
   checkNumInput('._no-symbol');
   checkTextInputs('._no-num');
   mask('[name="phone"]');
   tab('.tab', '.tab__item', '.galary__slide', 'active', 'block');
-  modal('.galary__slide-wrapper','.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
+  modal('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   showMore('.galary__btn', '[data-section]');
   tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
 });

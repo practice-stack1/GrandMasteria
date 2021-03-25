@@ -43,7 +43,6 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
       content[i].classList.add('animated', 'fadeIn');
       tab[i].classList.add(activeClass);
     }
-
   } catch (error) {}
 };
 

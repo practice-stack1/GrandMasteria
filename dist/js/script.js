@@ -5242,6 +5242,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_showMore__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/showMore */ "./src/js/modules/showMore.js");
 /* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
 /* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+/* harmony import */ var _modules_setPage__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./modules/setPage */ "./src/js/modules/setPage.js");
+
 
 
 
@@ -5266,17 +5268,19 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_conections__WEBPACK_IMPORTED_MODULE_7__["default"])('.header__contacts a');
   Object(_modules_conections__WEBPACK_IMPORTED_MODULE_7__["default"])('.footer__phone_tel a');
   Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_4__["default"])('.about__body', '.about__body .about__text');
-  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_4__["default"])('.info__content', '.info__content .info__text');
   Object(_modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_5__["default"])('.short-nav__column');
+  Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_15__["default"])('.header__item a');
+  Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_15__["default"])('.short-nav__btn a');
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_6__["default"])('.form');
   Object(_modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_8__["default"])('._no-symbol');
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_9__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
   Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', 'active', 'block');
-  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '[data-tab]', 'active', 'flex');
+  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', '[data-tab]', 'active', 'block', 'flex');
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_13__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__btn', '[data-section]');
   Object(_modules_slider__WEBPACK_IMPORTED_MODULE_14__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
+  Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
 
 /***/ }),
@@ -5913,6 +5917,36 @@ var navigation = function navigation(columns) {
 
 /***/ }),
 
+/***/ "./src/js/modules/setPage.js":
+/*!***********************************!*\
+  !*** ./src/js/modules/setPage.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var setpage = function setpage(trig) {
+  var triggers = document.querySelectorAll(trig);
+  triggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var page = trigger.dataset.page;
+      localStorage.setItem('page', page);
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (setpage);
+
+/***/ }),
+
 /***/ "./src/js/modules/showMore.js":
 /*!************************************!*\
   !*** ./src/js/modules/showMore.js ***!
@@ -6247,17 +6281,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var tab = function tab(headerSelector, tabSelector, contentSelector, activeClass) {
-  var display = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'block';
+var tab = function tab(headerSelector, tabSelector, contentSelector) {
+  var secondSelector = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  var activeClass = arguments.length > 4 ? arguments[4] : undefined;
+  var display = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'block';
+  var secondDisplay = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 'block';
   var header = document.querySelector(headerSelector),
       tab = document.querySelectorAll(tabSelector),
-      content = document.querySelectorAll(contentSelector);
+      content = document.querySelectorAll(contentSelector),
+      secondConent = document.querySelectorAll(secondSelector);
 
   try {
     var hideTabContent = function hideTabContent() {
       content.forEach(function (item) {
         item.style.display = "none";
+        item.classList.remove('animated', 'fadeIn');
       });
+
+      if (secondConent) {
+        secondConent.forEach(function (secCont) {
+          secCont.style.display = 'none';
+          secCont.classList.remove('animated', 'fadeIn');
+        });
+      }
+
       tab.forEach(function (item) {
         item.classList.remove(activeClass);
       });
@@ -6266,10 +6313,14 @@ var tab = function tab(headerSelector, tabSelector, contentSelector, activeClass
     var showDefaultTabContent = function showDefaultTabContent() {
       var page = localStorage.getItem('page');
 
-      if (page === 'galary') {
-        setItem('galary-tab-section');
-      } else {
-        setItem('accessories-tab-section');
+      switch (page) {
+        case 'galary':
+          setItem('galary-tab-section');
+          break;
+
+        case 'accessories':
+          setItem('accessories-tab-section');
+          break;
       }
 
       localStorage.setItem('galary-tab-section', 'single');
@@ -6288,10 +6339,14 @@ var tab = function tab(headerSelector, tabSelector, contentSelector, activeClass
 
     var showTabContent = function showTabContent() {
       var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      console.log(i);
       content[i].style.display = display;
       content[i].classList.add('animated', 'fadeIn');
       tab[i].classList.add(activeClass);
+
+      if (secondConent[i]) {
+        secondConent[i].style.display = secondDisplay;
+        secondConent[i].classList.add('animated', 'fadeIn');
+      }
     };
 
     header.addEventListener('click', function (e) {

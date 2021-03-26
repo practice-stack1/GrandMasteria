@@ -1,7 +1,8 @@
-const tab = (headerSelector, tabSelector, contentSelector, activeClass, display = 'block') => {
+const tab = (headerSelector, tabSelector, contentSelector, secondSelector = null, activeClass, display = 'block', secondDisplay = 'block') => {
   const header = document.querySelector(headerSelector),
         tab = document.querySelectorAll(tabSelector),
-        content = document.querySelectorAll(contentSelector);
+        content = document.querySelectorAll(contentSelector),
+        secondConent = document.querySelectorAll(secondSelector);
 
   try {
     header.addEventListener('click', (e) => {
@@ -21,7 +22,14 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
     function hideTabContent() {
       content.forEach(item => {
         item.style.display = "none";
+        item.classList.remove('animated', 'fadeIn');
       });
+      if(secondConent){
+        secondConent.forEach(secCont => {
+          secCont.style.display = 'none';
+          secCont.classList.remove('animated', 'fadeIn');
+        });
+      }
 
       tab.forEach(item => {
         item.classList.remove(activeClass);
@@ -29,10 +37,14 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
     }
     function showDefaultTabContent(){
       const page = localStorage.getItem('page');
-      if(page === 'galary'){
-        setItem('galary-tab-section');
-      } else {
-        setItem('accessories-tab-section');
+
+      switch (page) {
+        case 'galary':
+          setItem('galary-tab-section');
+          break;
+        case 'accessories':
+          setItem('accessories-tab-section');
+          break;
       }
 
       localStorage.setItem('galary-tab-section', 'single');
@@ -48,10 +60,13 @@ const tab = (headerSelector, tabSelector, contentSelector, activeClass, display 
       });
     }
     function showTabContent(i = 0) {
-      console.log(i);
       content[i].style.display = display;
       content[i].classList.add('animated', 'fadeIn');
       tab[i].classList.add(activeClass);
+      if(secondConent[i]){
+        secondConent[i].style.display = secondDisplay;
+        secondConent[i].classList.add('animated', 'fadeIn');
+      }
     }
   } catch (error) {}
 };

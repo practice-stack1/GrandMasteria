@@ -1,7 +1,7 @@
 
 const navigation = (columns) => {
   const wrapper = document.querySelectorAll(columns);
-
+  
   wrapper.forEach(item => {
     item.addEventListener('click', (e) => {
       setSection(item);
@@ -18,8 +18,6 @@ const navigation = (columns) => {
     } else {
       localStorage.setItem('accessories-tab-section', section);
     }
-
-
   }
 };
 

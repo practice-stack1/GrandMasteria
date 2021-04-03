@@ -22,7 +22,8 @@ window.addEventListener('DOMContentLoaded', () => {
   header('.header__burger', '.header__menu', '.header__item a');
   conection('.header__contacts a');
   conection('.footer__phone_tel a');
-  spoiler('.about__body', '.about__body .about__text');
+  spoiler('.about__body', '.about__body .about__text', 500);
+  spoiler('.answears__body', '.answears__body .answears__text', 767);
   navigation('.short-nav__column');
   setpage('.header__item a');
   setpage('.short-nav__btn a');
@@ -30,10 +31,11 @@ window.addEventListener('DOMContentLoaded', () => {
   checkNumInput('._no-symbol');
   checkTextInputs('._no-num');
   mask('[name="phone"]');
-  tab('.tab', '.tab__item', '.galary__slide', 'active', 'block');
-  tab('.tab', '.tab__item','.galary__slide' ,'[data-tab]', 'active', 'block', 'flex');
+  tab('.tab', '.tab__item','.accessories__slide' , '[data-tab]', 'active', 'block', 'flex');
+  tab('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
   modal('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
-  showMore('.galary__btn', '[data-section]');
+  showMore('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
+  showMore('.accessories__slide', '[data-section]','.accessories__slide-wrapper', '.accessories__item', 9, 'Завантажити більше');
   tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   ibg();
 });

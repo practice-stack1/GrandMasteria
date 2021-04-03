@@ -95,7 +95,7 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
           `;
         }
     }
-  } catch (error) { console.log(error); }
+  } catch (error) {}
 };
 
 export default tabSlider;

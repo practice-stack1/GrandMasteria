@@ -160,6 +160,9 @@
   }
   &__item{
     padding: 0 36px 0 0;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
     @media(max-width: 567px){
       padding: 0;
     }
@@ -171,6 +174,7 @@
       display: block;
       line-height: 22.07px;
       transition: all 0.5s ease;
+      min-height: 100%;
       &:after{
         content: '';
         height: 1px;

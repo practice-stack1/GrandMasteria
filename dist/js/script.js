@@ -5267,7 +5267,8 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_sections_header__WEBPACK_IMPORTED_MODULE_3__["default"])('.header__burger', '.header__menu', '.header__item a');
   Object(_modules_conections__WEBPACK_IMPORTED_MODULE_7__["default"])('.header__contacts a');
   Object(_modules_conections__WEBPACK_IMPORTED_MODULE_7__["default"])('.footer__phone_tel a');
-  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_4__["default"])('.about__body', '.about__body .about__text');
+  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_4__["default"])('.about__body', '.about__body .about__text', 500);
+  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_4__["default"])('.answears__body', '.answears__body .answears__text', 767);
   Object(_modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_5__["default"])('.short-nav__column');
   Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_15__["default"])('.header__item a');
   Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_15__["default"])('.short-nav__btn a');
@@ -5275,10 +5276,11 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_8__["default"])('._no-symbol');
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_9__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
-  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', 'active', 'block');
-  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', '[data-tab]', 'active', 'block', 'flex');
+  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.accessories__slide', '[data-tab]', 'active', 'block', 'flex');
+  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_11__["default"])('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_13__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
-  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__btn', '[data-section]');
+  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
+  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_12__["default"])('.accessories__slide', '[data-section]', '.accessories__slide-wrapper', '.accessories__item', 9, 'Завантажити більше');
   Object(_modules_slider__WEBPACK_IMPORTED_MODULE_14__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
@@ -5936,7 +5938,7 @@ __webpack_require__.r(__webpack_exports__);
 var setpage = function setpage(trig) {
   var triggers = document.querySelectorAll(trig);
   triggers.forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
+    trigger.addEventListener('click', function (e) {
       var page = trigger.dataset.page;
       localStorage.setItem('page', page);
     });
@@ -5970,65 +5972,153 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var showMore = function showMore(btn__trigger, tab__slides) {
+var showMore = function showMore() {
+  var btn__trigger = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var tab__slides = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var container = arguments.length > 2 ? arguments[2] : undefined;
+  var item = arguments.length > 3 ? arguments[3] : undefined;
+  var range = arguments.length > 4 ? arguments[4] : undefined;
+  var msg = arguments.length > 5 ? arguments[5] : undefined;
   var triggers = document.querySelectorAll(btn__trigger),
       slides = document.querySelectorAll(tab__slides);
-  slides.forEach(function (slide) {
-    var wrap = slide.querySelector('.galary__slide-wrapper');
-    var section = slide.dataset.section;
-    Object(_services_requests__WEBPACK_IMPORTED_MODULE_3__["getResource"])('./db.json').then(function (res) {
-      switchSection(res, wrap, section);
-      Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_4__["default"])();
-    })["catch"](function (err) {
-      return console.log(err);
-    });
-  });
-  triggers.forEach(function (trigger) {
-    trigger.addEventListener('click', function (e) {
-      e.preventDefault();
-      var items = trigger.parentElement.querySelectorAll('.galary__item');
-      items.forEach(function (item) {
-        item.classList.remove('hide');
-        item.classList.add('animated', 'fadeIn');
+
+  if (triggers.length !== 0) {
+    var createItem = function createItem(response, wrap, visible_count) {
+      response.forEach(function (_ref, i) {
+        var src = _ref.src,
+            counter = _ref.counter,
+            price = _ref.price,
+            size = _ref.size;
+        var item = document.createElement('div');
+        item.classList.add('galary__item');
+
+        if (i > visible_count) {
+          item.classList.add('hide');
+        }
+
+        item.innerHTML = "\n            <div class=\"galary__img ibg\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n            <div class=\"galary__short-info\">\n              <div class=\"galary__info\">").concat(price, "</div>\n              <div class=\"galary__info\">").concat(size, "</div>\n            </div>\n          ");
+        wrap.appendChild(item);
       });
-      this.remove();
+    };
+
+    var createAccessoriesItem = function createAccessoriesItem(response, wrap, visible_count) {
+      response.forEach(function (_ref2, i) {
+        var src = _ref2.src,
+            counter = _ref2.counter;
+        var item = document.createElement('div');
+        item.classList.add('accessories__item', 'accessories__item-art');
+
+        if (i > visible_count) {
+          item.classList.add('hide');
+        }
+
+        if (wrap.classList.contains('accessories__slide-wrapper-art')) {
+          item.innerHTML = "\n            <div class=\"accessories__img accessories__img-art ibg\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
+        } else {
+          item.innerHTML = "\n            <div class=\"accessories__img ibg\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
+        }
+
+        wrap.appendChild(item);
+      });
+    };
+
+    var switchSection = function switchSection(res, wrap, section, range) {
+      switch (section) {
+        case 'single':
+          createItem(res.single, wrap, range);
+          createMoreBtn(msg, range, wrap, res.single.length);
+          break;
+
+        case 'double':
+          createItem(res["double"], wrap, range);
+          createMoreBtn(msg, range, wrap, res["double"].length);
+          break;
+
+        case 'triple':
+          createItem(res.triple, wrap, range);
+          createMoreBtn(msg, range, wrap, res.triple.length);
+          break;
+
+        case 'child':
+          createItem(res.child, wrap, range);
+          createMoreBtn(msg, range, wrap, res.child.length);
+          break;
+
+        case 'art':
+          createAccessoriesItem(res.art, wrap, range);
+          createMoreBtn(msg, range, wrap, res.art.length);
+          break;
+
+        case 'vase':
+          createAccessoriesItem(res.vase, wrap, range);
+          createMoreBtn(msg, range, wrap, res.vase.length);
+          break;
+
+        case 'bronse':
+          createAccessoriesItem(res.bronse, wrap, range);
+          createMoreBtn(msg, range, wrap, res.bronse.length);
+          break;
+
+        case 'inscriptions':
+          createAccessoriesItem(res.inscriptions, wrap, range);
+          createMoreBtn(msg, range, wrap, res.inscriptions.length);
+          break;
+
+        case 'granit':
+          createAccessoriesItem(res.granit, wrap, range);
+          createMoreBtn(msg, range, wrap, res.granit.length);
+          break;
+
+        default:
+          break;
+      }
+    };
+
+    var createMoreBtn = function createMoreBtn(msg, range, wrap, length) {
+      if (length >= range) {
+        var btn = document.createElement('div'),
+            span = document.createElement('span');
+        span.textContent = msg;
+        btn.classList.add('button', 'galary__btn');
+        btn.appendChild(span);
+        wrap.parentNode.appendChild(btn);
+      }
+    };
+
+    slides.forEach(function (slide) {
+      var wrap = slide.querySelector(container);
+      var section = slide.dataset.section;
+      Object(_services_requests__WEBPACK_IMPORTED_MODULE_3__["getResource"])('./db.json').then(function (res) {
+        switchSection(res, wrap, section, range);
+        Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_4__["default"])();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     });
-  });
+    triggers.forEach(function (trigger) {
+      $(trigger).on('click', '.galary__btn', function (e) {
+        e.preventDefault();
 
-  function createItem(response, wrap) {
-    response.forEach(function (_ref) {
-      var src = _ref.src,
-          counter = _ref.counter,
-          price = _ref.price,
-          size = _ref.size;
-      var item = document.createElement('div');
-      item.classList.add('galary__item', 'hide');
-      item.innerHTML = "\n        <div class=\"galary__img ibg\">\n          <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n        </div>\n        <div class=\"galary__counter\">").concat(counter, "</div>\n        <div class=\"galary__short-info\">\n          <div class=\"galary__info\">").concat(price, "</div>\n          <div class=\"galary__info\">").concat(size, "</div>\n        </div>\n      ");
-      wrap.appendChild(item);
+        if (e.target.classList.contains('galary__btn') || e.target.parentNode.classList.contains('galary__btn')) {
+          var clicked;
+
+          if (!e.target.classList.contains('galary__btn')) {
+            clicked = e.target.parentNode;
+          } else {
+            clicked = e.target;
+          }
+
+          var wrapper = clicked.previousElementSibling;
+          var items = wrapper.querySelectorAll(item);
+          console.log(wrapper, items);
+          items.forEach(function (item) {
+            item.classList.remove('hide');
+            item.classList.add('animated', 'fadeIn');
+          });
+          this.remove();
+        }
+      });
     });
-  }
-
-  function switchSection(res, wrap, section) {
-    switch (section) {
-      case 'single':
-        createItem(res.single, wrap);
-        break;
-
-      case 'double':
-        createItem(res["double"], wrap);
-        break;
-
-      case 'triple':
-        createItem(res.triple, wrap);
-        break;
-
-      case 'child':
-        createItem(res.child, wrap);
-        break;
-
-      default:
-        break;
-    }
   }
 };
 
@@ -6146,9 +6236,7 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
         plusSlide(1);
       }
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tabSlider);
@@ -6168,90 +6256,109 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-var spoiler = function spoiler(body, text_container) {
+
+var spoiler = function spoiler(body, text_container, range) {
   var containers = document.querySelectorAll(text_container);
   var wrappers = document.querySelectorAll(body);
-  window.addEventListener('orientationchange', function () {
-    window.addEventListener('resize', function () {
+
+  if (body[0]) {
+    var styleChange = function styleChange(container, wrapper) {
       try {
-        wrappers.forEach(function (wrapper, i) {
-          if (wrapper.dataset.changed === 'true') {
-            clearStyle(wrapper, containers[i]);
-          }
-
-          styleChange(containers[i], wrapper);
-        });
-        arrowClick();
+        if (document.body.clientWidth <= range) {
+          wrapper.dataset.changed = 'true';
+          container.children.forEach(function (p) {
+            if (p.dataset.hide === 'true') {
+              p.classList.add('no-display', 'animated');
+            }
+          });
+          createArrow(wrapper);
+        }
       } catch (error) {}
-    });
-  });
-  wrappers.forEach(function (wrapper, i) {
-    styleChange(containers[i], wrapper);
-  });
-  arrowClick();
+    };
 
-  function styleChange(container, wrapper) {
-    try {
-      if (document.body.clientWidth <= 500) {
-        wrapper.dataset.changed = 'true';
-        container.children.forEach(function (p) {
-          if (p.dataset.hide === 'true') {
-            p.classList.add('no-display');
-          }
+    var arrowClick = function arrowClick() {
+      var arrows = document.querySelectorAll('.arrow-wrapper');
+      var img = document.querySelectorAll('.arrow-img');
+      arrows.forEach(function (arrow, i) {
+        arrow.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          try {
+            if (img[i].classList.contains('rotate')) {
+              img[i].classList.remove('rotate');
+              containers[i].querySelectorAll('[data-hide]').forEach(function (p) {
+                p.classList.remove('fadeIn');
+                p.classList.add('fadeOut');
+                setTimeout(function () {
+                  p.classList.add('no-display');
+                }, 600);
+              });
+            } else {
+              img[i].classList.add('rotate');
+              containers[i].querySelectorAll('[data-hide]').forEach(function (p) {
+                p.classList.remove('fadeOut', 'no-display');
+                p.classList.add('fadeIn');
+              });
+            }
+          } catch (error) {}
         });
-        createArrow(wrapper);
-      }
-    } catch (error) {}
-  }
+      });
+    };
 
-  function arrowClick() {
-    var arrows = document.querySelectorAll('.arrow-wrapper');
-    var img = document.querySelectorAll('.arrow-img');
-    arrows.forEach(function (arrow, i) {
-      arrow.addEventListener('click', function () {
+    var clearStyle = function clearStyle(wrapper, container) {
+      wrapper.querySelector('.arrow-wrapper').remove();
+      container.querySelectorAll('[data-hide]').forEach(function (p) {
+        p.classList.remove('no-display', 'animated', 'fadeIn', 'fadeOut');
+      });
+      wrapper.dataset.changed = 'false';
+    };
+
+    var createArrow = function createArrow(wrapper) {
+      var div = document.createElement('div');
+      div.classList.add('arrow-wrapper');
+      var img = document.createElement('img');
+      img.classList.add('arrow-img');
+      makeStyle(div, img);
+      img.setAttribute('src', 'icons/arrow_b.svg');
+      img.setAttribute('alt', 'arrow-bottom');
+      div.appendChild(img);
+      wrapper.appendChild(div);
+    };
+
+    var makeStyle = function makeStyle(div, img) {
+      div.style.cssText = "\n        width: 22px;\n        height: 9px;\n        margin: 12px auto 8px auto;\n      ";
+      img.style.cssText = "\n        width: 100%;\n        transition: 0.5s transform ease;\n      ";
+    };
+
+    window.addEventListener('orientationchange', function () {
+      window.addEventListener('resize', function () {
         try {
-          if (img[i].classList.contains('rotate')) {
-            img[i].classList.remove('rotate');
-            containers[i].querySelectorAll('[data-hide]').forEach(function (p) {
-              p.classList.add('no-display');
-            });
-          } else {
-            img[i].classList.add('rotate');
-            containers[i].querySelectorAll('[data-hide]').forEach(function (p) {
-              p.classList.remove('no-display');
-            });
-          }
+          wrappers.forEach(function (wrapper, i) {
+            if (wrapper.dataset.changed === 'true') {
+              clearStyle(wrapper, containers[i]);
+            }
+
+            styleChange(containers[i], wrapper);
+
+            if (wrappers.length - 1 === i) {
+              arrowClick();
+            }
+          });
         } catch (error) {}
       });
     });
-  }
+    wrappers.forEach(function (wrapper, i) {
+      styleChange(containers[i], wrapper);
 
-  function clearStyle(wrapper, container) {
-    wrapper.querySelector('.arrow-wrapper').remove();
-    container.querySelectorAll('[data-hide]').forEach(function (p) {
-      p.classList.remove('no-display');
+      if (wrappers.length - 1 === i) {
+        arrowClick();
+      }
     });
-    wrapper.dataset.changed = 'false';
-  }
-
-  function createArrow(wrapper) {
-    var div = document.createElement('div');
-    div.classList.add('arrow-wrapper');
-    var img = document.createElement('img');
-    img.classList.add('arrow-img');
-    makeStyle(div, img);
-    img.setAttribute('src', 'icons/arrow_b.svg');
-    img.setAttribute('alt', 'arrow-bottom');
-    div.appendChild(img);
-    wrapper.appendChild(div);
-  }
-
-  function makeStyle(div, img) {
-    div.style.cssText = "\n      width: 22px;\n      height: 9px;\n      margin: 12px auto 8px auto;\n    ";
-    img.style.cssText = "\n      width: 100%;\n      transition: 0.5s transform ease;\n    ";
   }
 };
 
@@ -6281,88 +6388,102 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var tab = function tab(headerSelector, tabSelector, contentSelector) {
+var tab = function tab(headerSelector, tabSelector) {
+  var contentSelector = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   var secondSelector = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   var activeClass = arguments.length > 4 ? arguments[4] : undefined;
   var display = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 'block';
   var secondDisplay = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 'block';
-  var header = document.querySelector(headerSelector),
-      tab = document.querySelectorAll(tabSelector),
-      content = document.querySelectorAll(contentSelector),
-      secondConent = document.querySelectorAll(secondSelector);
 
   try {
-    var hideTabContent = function hideTabContent() {
-      content.forEach(function (item) {
-        item.style.display = "none";
-        item.classList.remove('animated', 'fadeIn');
-      });
+    var header = document.querySelector(headerSelector),
+        _tab = document.querySelectorAll(tabSelector),
+        content = document.querySelectorAll(contentSelector),
+        secondConent = document.querySelectorAll(secondSelector);
 
-      if (secondConent) {
-        secondConent.forEach(function (secCont) {
-          secCont.style.display = 'none';
-          secCont.classList.remove('animated', 'fadeIn');
+    if (content[0]) {
+      var hideTabContent = function hideTabContent() {
+        content.forEach(function (item) {
+          item.style.display = "none";
+          item.classList.remove('animated', 'fadeIn');
         });
-      }
 
-      tab.forEach(function (item) {
-        item.classList.remove(activeClass);
-      });
-    };
-
-    var showDefaultTabContent = function showDefaultTabContent() {
-      var page = localStorage.getItem('page');
-
-      switch (page) {
-        case 'galary':
-          setItem('galary-tab-section');
-          break;
-
-        case 'accessories':
-          setItem('accessories-tab-section');
-          break;
-      }
-
-      localStorage.setItem('galary-tab-section', 'single');
-      localStorage.setItem('accessories-tab-section', 'art');
-    };
-
-    var setItem = function setItem(key) {
-      var navigate = localStorage.getItem(key);
-      tab.forEach(function (item, i) {
-        if (navigate === item.dataset.nav) {
-          hideTabContent();
-          showTabContent(i);
+        if (secondConent) {
+          secondConent.forEach(function (secCont) {
+            secCont.style.display = 'none';
+            secCont.classList.remove('animated', 'fadeIn');
+          });
         }
-      });
-    };
 
-    var showTabContent = function showTabContent() {
-      var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      content[i].style.display = display;
-      content[i].classList.add('animated', 'fadeIn');
-      tab[i].classList.add(activeClass);
+        if (_tab) {
+          _tab.forEach(function (item) {
+            item.classList.remove(activeClass);
+          });
+        }
+      };
 
-      if (secondConent[i]) {
-        secondConent[i].style.display = secondDisplay;
-        secondConent[i].classList.add('animated', 'fadeIn');
-      }
-    };
+      var showDefaultTabContent = function showDefaultTabContent() {
+        var page = localStorage.getItem('page');
 
-    header.addEventListener('click', function (e) {
-      var target = e.target;
+        switch (page) {
+          case 'galary':
+            setItem('galary-tab-section');
+            break;
 
-      if (target && (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))) {
-        tab.forEach(function (item, i) {
-          if (target == item || target.parentNode == item) {
+          case 'accessories':
+            setItem('accessories-tab-section');
+            break;
+
+          case 'default':
+            localStorage.setItem('galary-tab-section', 'single');
+            localStorage.setItem('accessories-tab-section', 'art');
+            setItem('galary-tab-section');
+            setItem('accessories-tab-section');
+        }
+
+        localStorage.setItem('galary-tab-section', 'single');
+        localStorage.setItem('accessories-tab-section', 'art');
+      };
+
+      var setItem = function setItem(key) {
+        var navigate = localStorage.getItem(key);
+
+        _tab.forEach(function (item, i) {
+          if (navigate === item.dataset.nav) {
             hideTabContent();
             showTabContent(i);
           }
         });
-      }
-    });
-    hideTabContent();
-    showDefaultTabContent();
+      };
+
+      var showTabContent = function showTabContent() {
+        var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        content[i].style.display = display;
+        content[i].classList.add('animated', 'fadeIn');
+
+        _tab[i].classList.add(activeClass);
+
+        if (secondConent[i]) {
+          secondConent[i].style.display = secondDisplay;
+          secondConent[i].classList.add('animated', 'fadeIn');
+        }
+      };
+
+      header.addEventListener('click', function (e) {
+        var target = e.target;
+
+        if (target && (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))) {
+          _tab.forEach(function (item, i) {
+            if (target == item || target.parentNode == item) {
+              hideTabContent();
+              showTabContent(i);
+            }
+          });
+        }
+      });
+      hideTabContent();
+      showDefaultTabContent();
+    }
   } catch (error) {}
 };
 

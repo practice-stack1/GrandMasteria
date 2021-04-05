@@ -87,6 +87,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 0 30px 0;
 }
 .services__item{
   background-color: rgba(0, 0, 0, 0.7);
@@ -102,6 +103,7 @@
   justify-content: flex-start;
   padding: 12px 34px 12px 100px;
   line-height: 27px;
+  transition: 0.5s all ease;
   @media(max-width: 1370px){
     white-space: nowrap;
   }
@@ -113,17 +115,21 @@
     line-height: 17px;
     margin: 0 0 8px 0;
   }
+
   &:last-child{
     margin: 0;
   }
 
   &:before{
     content: '';
-    width: 20px;
     height: 15px;
+    flex: 0 0 20px;
     background: url(../icons/list.svg) no-repeat 50% 50%;
     fill: $yellow;
     margin: 0 16.5px 0 0;
+  }
+  &:hover{
+    transform: translateX(-10px);
   }
 }
 

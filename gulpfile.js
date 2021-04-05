@@ -12,8 +12,6 @@ let path = {
         img: project_folder + '/img/',
         icon: project_folder + '/icons/',
         fonts: project_folder + '/fonts/',
-        php: project_folder + '/',
-        phpbasic: project_folder + '/phpmailer/',
         db: project_folder + '/',
     },
     src: {
@@ -23,8 +21,6 @@ let path = {
         img: source_folder + '/img/**/*.{png,jpg,svg,gif,ico,webp}',
         icon: source_folder + '/icons/**/*.{png,jpg,svg,gif,ico,webp}',
         fonts: source_folder + '/fonts/*.{ttf,woff,woff2}',
-        php: source_folder + '/sendmail.php',
-        phpbasic: source_folder + '/phpmailer/**',
         db: source_folder + '/*.json',
     },
 
@@ -290,21 +286,14 @@ function clean(params) {
 }
 
 
-function php_mailer(){
-    gulp.src(path.src.php)
-     .pipe(dest(path.build.php));
-    return gulp.src(path.src.phpbasic)
-     .pipe(dest(path.build.phpbasic));
-}
-
 function db(){
     return gulp.src(path.src.db)
             .pipe(dest(path.build.db));
 }
 
 
-let dev = gulp.series(clean, gulp.parallel(html, css, images, fonts, icons, iconsFonts, php_mailer, db), js, fontsStyle);
-let project = gulp.series(clean, gulp.parallel(html_project, css_project, images, fonts, icons, iconsFonts, php_mailer, db), js_project, fontsStyle);
+let dev = gulp.series(clean, gulp.parallel(html, css, images, fonts, icons, iconsFonts, db), js, fontsStyle);
+let project = gulp.series(clean, gulp.parallel(html_project, css_project, images, fonts, icons, iconsFonts, db), js_project, fontsStyle);
 
 gulp.task('default', gulp.parallel(dev, watchFile, browserSync));
 gulp.task('prod', gulp.parallel(project, browserSync));
@@ -321,5 +310,4 @@ exports.images = images;
 exports.js = js;
 exports.css = css;
 exports.html = html;
-exports.php_mailer = php_mailer;
 exports.db = db;

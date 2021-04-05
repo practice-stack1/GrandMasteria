@@ -97,7 +97,8 @@
     position: absolute;
     top: 8px;
     left: 8px;
-    width: 42px;
+    padding: 5px;
+    min-width: 42px;
     height: 42px;
     background: rgba(253, 195, 36, 0.7);
     display: flex;

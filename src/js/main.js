@@ -4,7 +4,6 @@ import './basic/dynamic_adaptive';
 import header from './modules/sections/header';
 import spoiler from './modules/spoiler';
 import navigation from './modules/sections/short_nav';
-import forms from './modules/forms';
 import conection from './modules/conections';
 import checkNumInput from './modules/checkNumInputs';
 import checkTextInputs from './modules/checkTextInputs';
@@ -25,9 +24,9 @@ window.addEventListener('DOMContentLoaded', () => {
   spoiler('.about__body', '.about__body .about__text', 500);
   spoiler('.answears__body', '.answears__body .answears__text', 767);
   navigation('.short-nav__column');
+  navigation('.info__text a');
   setpage('.header__item a');
   setpage('.short-nav__btn a');
-  forms('.form');
   checkNumInput('._no-symbol');
   checkTextInputs('._no-num');
   mask('[name="phone"]');

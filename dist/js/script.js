@@ -6110,7 +6110,6 @@ var showMore = function showMore() {
 
           var wrapper = clicked.previousElementSibling;
           var items = wrapper.querySelectorAll(item);
-          console.log(wrapper, items);
           items.forEach(function (item) {
             item.classList.remove('hide');
             item.classList.add('animated', 'fadeIn');

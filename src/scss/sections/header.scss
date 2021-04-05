@@ -44,6 +44,12 @@
       color: $yellow;
     }
   }
+  &__contact {
+    transition: all 0.3s ease;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
   &__contacts{
     @media(max-width: 567px){
       display: flex;

@@ -11,9 +11,9 @@
 	$mail->IsHTML(true);
 
 	//От кого письмо
-	$mail->setFrom('vadim3d2011@gmail.com', 'from Grand Masteria');
+	$mail->setFrom('improvemylife25@gmail.com', 'Grand Masteria');
 	//Кому отправить
-	$mail->addAddress('improvemylife25@gmail.com');
+	$mail->addAddress('vadim3d2011@gmail.com');
 	//Тема письма
 	$mail->Subject = 'Доброго дня! Відзвонить на номер вказаний в листі';
 

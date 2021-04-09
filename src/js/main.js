@@ -14,6 +14,8 @@ import ibg from './basic/ibg';
 import modal from './modules/modal';
 import tabSlider from './modules/slider';
 import setpage from './modules/setPage';
+import './modules/up';
+
 
 window.addEventListener('DOMContentLoaded', () => {
   "use strict"

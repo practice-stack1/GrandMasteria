@@ -1,6 +1,6 @@
 import {getResource} from '../services/requests';
 import ibg from '../basic/ibg';
-
+import '../../lib/fslightbox';
 const showMore = (btn__trigger = null, tab__slides = null, container, item, range, msg) => {
   const triggers = document.querySelectorAll(btn__trigger),
         slides = document.querySelectorAll(tab__slides);
@@ -55,7 +55,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
           wrap.appendChild(item);
         });
       }
-      function createAccessoriesItem(response, wrap, visible_count){
+      function createAccessoriesItem(response, wrap, visible_count, key){
         response.forEach(({src, counter}, i) => {
           let item = document.createElement('div');
           item.classList.add('accessories__item', 'accessories__item-art');
@@ -77,10 +77,18 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
             <div class="accessories__counter">${counter}</div>
           `;
           }
-          wrap.appendChild(item);
+          wrap.appendChild(addLightBox(key, item));
+          refreshFsLightbox();
         });
       }
-
+      function addLightBox(key, item){
+        const href = item.querySelector('img').getAttribute('src');
+        const a = document.createElement('a');
+        a.setAttribute('data-fslightbox', `${key}`);
+        a.setAttribute('href', `${href}`);
+        a.appendChild(item);
+        return a;
+      }
       function switchSection(res, wrap, section, range) {
         switch (section) {
           case 'single':
@@ -100,23 +108,23 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
             createMoreBtn(msg, range, wrap, res.child.length);
             break;
           case 'art':
-            createAccessoriesItem(res.art, wrap, range);
+            createAccessoriesItem(res.art, wrap, range, 'art');
             createMoreBtn(msg, range, wrap, res.art.length);
             break;
           case 'vase':
-            createAccessoriesItem(res.vase, wrap, range);
+            createAccessoriesItem(res.vase, wrap, range, 'vase');
             createMoreBtn(msg, range, wrap, res.vase.length);
             break;
           case 'bronse':
-            createAccessoriesItem(res.bronse, wrap, range);
+            createAccessoriesItem(res.bronse, wrap, range, 'bronse');
             createMoreBtn(msg, range, wrap, res.bronse.length);
             break;
           case 'inscriptions':
-            createAccessoriesItem(res.inscriptions, wrap, range);
+            createAccessoriesItem(res.inscriptions, wrap, range, 'inscription');
             createMoreBtn(msg, range, wrap, res.inscriptions.length);
             break;
           case 'granit':
-            createAccessoriesItem(res.granit, wrap, range);
+            createAccessoriesItem(res.granit, wrap, range, 'granit');
             createMoreBtn(msg, range, wrap, res.granit.length);
             break;
           default:

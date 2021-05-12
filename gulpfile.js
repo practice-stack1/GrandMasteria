@@ -1,6 +1,6 @@
 let source_folder = 'src';
-let project_folder = 'E:/OpenServer/domains/localhost/test';
-// let project_folder = 'dist';
+// let project_folder = 'E:/OpenServer/domains/localhost/test';
+let project_folder = 'dist';
 
 let fs = require('fs');
 
@@ -13,6 +13,7 @@ let path = {
         icon: project_folder + '/icons/',
         fonts: project_folder + '/fonts/',
         db: project_folder + '/',
+        lib: project_folder + '/lib/'
     },
     src: {
         html: source_folder + '/*.html',
@@ -22,6 +23,7 @@ let path = {
         icon: source_folder + '/icons/**/*.{png,jpg,svg,gif,ico,webp}',
         fonts: source_folder + '/fonts/*.{ttf,woff,woff2}',
         db: source_folder + '/*.json',
+        lib: source_folder + '/lib/*.js'
     },
 
     watch: {
@@ -170,7 +172,7 @@ function js_project() {
                 .pipe(webpack({
                     mode: 'production',
                     output: {
-                        filename: 'script.js'
+                        filename: 'script.min.js'
                     },
                     module: {
                         rules: [
@@ -193,6 +195,11 @@ function js_project() {
                 .pipe(gulp.dest(path.build.js));
 }
 
+function lib(){
+    return gulp.src(path.src.lib)
+            .pipe(dest(path.build.lib));
+
+}
 
 function images() {
     return src(path.src.img)
@@ -292,8 +299,8 @@ function db(){
 }
 
 
-let dev = gulp.series(clean, gulp.parallel(html, css, images, fonts, icons, iconsFonts, db), js, fontsStyle);
-let project = gulp.series(clean, gulp.parallel(html_project, css_project, images, fonts, icons, iconsFonts, db), js_project, fontsStyle);
+let dev = gulp.series(clean, gulp.parallel(html, css, images, fonts, icons, iconsFonts, db, lib), js, fontsStyle);
+let project = gulp.series(clean, gulp.parallel(html_project, css_project, images, fonts, icons, iconsFonts, db, lib), js_project, fontsStyle);
 
 gulp.task('default', gulp.parallel(dev, watchFile, browserSync));
 gulp.task('prod', gulp.parallel(project, browserSync));
@@ -311,3 +318,4 @@ exports.js = js;
 exports.css = css;
 exports.html = html;
 exports.db = db;
+exports.lib = lib;

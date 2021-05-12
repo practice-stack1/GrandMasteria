@@ -20,6 +20,7 @@
     "browser-sync": "^2.26.7",
     "cwebp": "^2.0.5",
     "del": "^5.1.0",
+    "fslightbox": "^3.2.3",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-cache": "^1.1.3",

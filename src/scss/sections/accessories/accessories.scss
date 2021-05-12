@@ -84,9 +84,6 @@
     }
     &-art{
       transition: all 0.5s ease;
-      &:hover{
-        transform: scale(1.1, 1.1);
-      }
       &:after{
         background: none;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
@@ -100,6 +97,7 @@
     padding: 5px;
     min-width: 42px;
     height: 42px;
+    color: #000; 
     background: rgba(253, 195, 36, 0.7);
     display: flex;
     justify-content: center;

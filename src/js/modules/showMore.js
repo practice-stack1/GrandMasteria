@@ -36,7 +36,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
       });
 
       function createItem(response, wrap, visible_count){
-        response.forEach(({src, counter, price, size}, i) => {
+        response.forEach(({src, counter, price, size}, i) => {//!
           let item = document.createElement('div');
           item.classList.add('galary__item');
           if(i > visible_count){
@@ -47,9 +47,9 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
               <img src="${src}" alt="Фото продукції">
             </div>
             <div class="galary__counter">${counter}</div>
-            <div class="galary__short-info">
-              <div class="galary__info">${price}</div>
-              <div class="galary__info">${size}</div>
+            <div class="galary__short-info">//!
+              <div class="galary__info">${price}</div>//!
+              <div class="galary__info">${size}</div>//!
             </div>
           `;
           wrap.appendChild(item);

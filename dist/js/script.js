@@ -7095,8 +7095,8 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
   var overlay = document.querySelector(modal__overlay),
       close = document.querySelector(modal__close),
       more = document.querySelector(modal__more),
-      info = document.querySelector(modal__info),
-      triggers = document.querySelectorAll(galary__wrapper),
+      // info = document.querySelector(modal__info),//!
+  triggers = document.querySelectorAll(galary__wrapper),
       modal = document.querySelector(modal__wrapper);
   var clicked = false;
 
@@ -7127,32 +7127,30 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
     var inputModalData = function inputModalData(_ref, modal) {
       var src = _ref.src,
           count = _ref.count,
-          section = _ref.section,
-          info = _ref.info;
+          section = _ref.section;
       modal.querySelector('.modal__img img').setAttribute('src', "".concat(src));
       Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_4__["default"])();
       modal.querySelector('.modal__section').textContent = section;
-      modal.querySelector('.modal__count').textContent = count;
-      var sizes = modal.querySelectorAll('.modal__sizes-item');
-      sizes.forEach(function (size, i) {
-        size.textContent = info[i];
-      });
+      modal.querySelector('.modal__count').textContent = count; // const sizes = modal.querySelectorAll('.modal__sizes-item');//!
+      // sizes.forEach((size, i)=> {//!
+      //   size.textContent = info[i];//!
+      // });//!
     };
 
     var getItemData = function getItemData(item) {
       var img = item.querySelector('.galary__img img').getAttribute('src'),
           count = item.querySelector('.galary__counter').textContent,
           section = item.parentNode.previousElementSibling.textContent,
-          short_info = item.querySelector('.galary__short-info'),
-          info = [],
-          data = {};
-      short_info.children.forEach(function (child) {
-        info.push(child.textContent);
-      });
+          // short_info = item.querySelector('.galary__short-info'), //!
+      // info = [],//!
+      data = {}; // short_info.children.forEach(child => {//!
+      //   info.push(child.textContent);//!
+      // });//!
+
       data.src = img;
       data.count = count;
-      data.section = section;
-      data.info = info;
+      data.section = section; // data.info = info;//!
+
       return data;
     };
 
@@ -7382,9 +7380,7 @@ var showMore = function showMore() {
     var createItem = function createItem(response, wrap, visible_count) {
       response.forEach(function (_ref, i) {
         var src = _ref.src,
-            counter = _ref.counter,
-            price = _ref.price,
-            size = _ref.size;
+            counter = _ref.counter;
         var item = document.createElement('div');
         item.classList.add('galary__item');
 
@@ -7392,7 +7388,7 @@ var showMore = function showMore() {
           item.classList.add('hide');
         }
 
-        item.innerHTML = "\n            <div class=\"galary__img ibg\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n            <div class=\"galary__short-info\">\n              <div class=\"galary__info\">").concat(price, "</div>\n              <div class=\"galary__info\">").concat(size, "</div>\n            </div>\n          ");
+        item.innerHTML = "\n            <div class=\"galary__img ibg\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n          ");
         wrap.appendChild(item);
       });
     };

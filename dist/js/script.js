@@ -7095,8 +7095,7 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
   var overlay = document.querySelector(modal__overlay),
       close = document.querySelector(modal__close),
       more = document.querySelector(modal__more),
-      // info = document.querySelector(modal__info),//!
-  triggers = document.querySelectorAll(galary__wrapper),
+      triggers = document.querySelectorAll(galary__wrapper),
       modal = document.querySelector(modal__wrapper);
   var clicked = false;
 
@@ -7131,26 +7130,17 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
       modal.querySelector('.modal__img img').setAttribute('src', "".concat(src));
       Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_4__["default"])();
       modal.querySelector('.modal__section').textContent = section;
-      modal.querySelector('.modal__count').textContent = count; // const sizes = modal.querySelectorAll('.modal__sizes-item');//!
-      // sizes.forEach((size, i)=> {//!
-      //   size.textContent = info[i];//!
-      // });//!
+      modal.querySelector('.modal__count').textContent = count;
     };
 
     var getItemData = function getItemData(item) {
       var img = item.querySelector('.galary__img img').getAttribute('src'),
           count = item.querySelector('.galary__counter').textContent,
           section = item.parentNode.previousElementSibling.textContent,
-          // short_info = item.querySelector('.galary__short-info'), //!
-      // info = [],//!
-      data = {}; // short_info.children.forEach(child => {//!
-      //   info.push(child.textContent);//!
-      // });//!
-
+          data = {};
       data.src = img;
       data.count = count;
-      data.section = section; // data.info = info;//!
-
+      data.section = section;
       return data;
     };
 

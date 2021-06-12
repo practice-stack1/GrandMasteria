@@ -4,7 +4,6 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
   const overlay = document.querySelector(modal__overlay),
         close = document.querySelector(modal__close),
         more = document.querySelector(modal__more),
-        // info = document.querySelector(modal__info),//!
         triggers = document.querySelectorAll(galary__wrapper),
         modal = document.querySelector(modal__wrapper);
 
@@ -72,25 +71,15 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
       ibg();
       modal.querySelector('.modal__section').textContent = section;
       modal.querySelector('.modal__count').textContent = count;
-      // const sizes = modal.querySelectorAll('.modal__sizes-item');//!
-      // sizes.forEach((size, i)=> {//!
-      //   size.textContent = info[i];//!
-      // });//!
     }
     function getItemData(item){
       const img = item.querySelector('.galary__img img').getAttribute('src'),
             count = item.querySelector('.galary__counter').textContent,
             section = item.parentNode.previousElementSibling.textContent,
-            // short_info = item.querySelector('.galary__short-info'), //!
-            // info = [],//!
             data = {};
-      // short_info.children.forEach(child => {//!
-      //   info.push(child.textContent);//!
-      // });//!
       data.src = img;
       data.count = count;
       data.section = section;
-      // data.info = info;//!
 
       return data;
     }

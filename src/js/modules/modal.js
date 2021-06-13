@@ -4,9 +4,15 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
   const overlay = document.querySelector(modal__overlay),
         close = document.querySelector(modal__close),
         more = document.querySelector(modal__more),
-        triggers = document.querySelectorAll(galary__wrapper),
-        modal = document.querySelector(modal__wrapper);
+        info = document.querySelector(modal__info),
+        triggers = document.querySelectorAll(galary__wrapper),//? - 4 контейрена для елементів
+        modal = document.querySelector(modal__wrapper);//? - обготка модального вікна для передчі данних
 
+  let wrapperId = null;
+  let itemIndex = null;
+  let length = null;
+  const leftArrow = document.querySelector('.modal__arrow-left'),
+        rightArrow = document.querySelector('.modal__arrow-right');
 
   let clicked = false;
 
@@ -17,12 +23,12 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
       if(isMobile.any()){
         $(trigger).on('click', '.galary__img', function(e) {
           e.preventDefault();
-          openModal(e.target, modal);
+          openModal(e.target);
         });
       } else {
         $(trigger).on('click', '.galary__item', function(e) {
           e.preventDefault();
-          openModal(e.target, modal);
+          openModal(e.target);
         });
       }
 
@@ -45,6 +51,17 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
         clicked = false;
       }
     });
+
+    leftArrow.addEventListener('click', () => {
+      itemIndex--;
+      changeItem(wrapperId, itemIndex);
+    });
+
+    rightArrow.addEventListener('click', () => {
+      itemIndex++;
+      changeItem(wrapperId, itemIndex);
+    });
+
     function closeModal(){
       overlay.classList.add('animated', 'fadeOut');
       setTimeout(() => {
@@ -55,17 +72,30 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
 
     }
 
-    function openModal(target, modal){
-      containModal(target, modal);
+    function openModal(target){
+      if(!target.classList.contains('galary__item')){
+        containModalMobile(target);
+      } else {
+        containModalDesk(target);
+      }
       activateModal();
     }
-    function containModal(target, modal){
-      if(!target.classList.contains('galary__item')){
-        target = target.parentNode;
-      }
-      const itemData = getItemData(target);
-      inputModalData(itemData, modal);
+    function containModalMobile(target){
+      console.log(target);
+      target = target.parentNode;
+      wrapperId = target.parentNode.getAttribute('id');
+      console.log(target, wrapperId);
+      itemIndex = Number(target.getAttribute('data-count'));
+      changeItem(wrapperId, itemIndex);
     }
+    function containModalDesk(target){
+      console.log(target);
+      wrapperId = target.parentNode.getAttribute('id');
+      console.log(target, wrapperId);
+      itemIndex = Number(target.getAttribute('data-count'));
+      changeItem(wrapperId, itemIndex);
+    }
+
     function inputModalData({src, count, section}, modal){
       modal.querySelector('.modal__img img').setAttribute('src', `${src}`);
       ibg();
@@ -102,6 +132,25 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
       div.remove();
 
       return scrollWidth;
+    }
+
+    function changeItem(id, index){
+      length = $(`#${id} .galary__item`).length - 1;
+      // console.log(itemIndex, index);
+      if(index > length){
+        itemIndex = 0;
+      } else if(index < 0) {
+        itemIndex = length;
+      }
+      index = itemIndex;
+      // console.log(itemIndex, index);
+      $(`#${id} .galary__item`).each(function(i, item) {
+        if(i === index){
+          console.log(id, item, index);
+          const itemData = getItemData(item);
+          inputModalData(itemData, modal);
+        }
+      });
     }
   } catch (error) {}
 

@@ -188,4 +188,29 @@
     }
 
   }
+  &__arrow-left, &__arrow-right{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    width: 50px;
+    height: 100%;
+    cursor: pointer;
+    span{
+      position: relative;
+      top: 50%;
+      left: 30%;
+    }
+    transition: all 0.3s ease;
+    color: #fff;
+    font-size: 40px;
+
+    &:hover{
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+  &__arrow-left{
+    left: 0;
+  }
+  &__arrow-right{
+    right: 0;
+  }
 }

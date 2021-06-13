@@ -39,6 +39,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
         response.forEach(({src, counter}, i) => {
           let item = document.createElement('div');
           item.classList.add('galary__item');
+          item.setAttribute('data-count', i);
           if(i > visible_count){
             item.classList.add('hide');
           }

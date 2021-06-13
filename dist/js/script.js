@@ -1666,6 +1666,34 @@ module.exports = fails(function () {
 
 /***/ }),
 
+/***/ "./node_modules/core-js/internals/inherit-if-required.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/internals/inherit-if-required.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
+
+// makes subclassing work correct for wrapped built-ins
+module.exports = function ($this, dummy, Wrapper) {
+  var NewTarget, NewTargetPrototype;
+  if (
+    // it can work only with native `setPrototypeOf`
+    setPrototypeOf &&
+    // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
+    typeof (NewTarget = dummy.constructor) == 'function' &&
+    NewTarget !== Wrapper &&
+    isObject(NewTargetPrototype = NewTarget.prototype) &&
+    NewTargetPrototype !== Wrapper.prototype
+  ) setPrototypeOf($this, NewTargetPrototype);
+  return $this;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/internals/inspect-source.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/internals/inspect-source.js ***!
@@ -4102,6 +4130,98 @@ var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "
 // Math[@@toStringTag] property
 // https://tc39.es/ecma262/#sec-math-@@tostringtag
 setToStringTag(Math, 'Math', true);
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.number.constructor.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.number.constructor.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/core-js/internals/inherit-if-required.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var getOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f;
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var trim = __webpack_require__(/*! ../internals/string-trim */ "./node_modules/core-js/internals/string-trim.js").trim;
+
+var NUMBER = 'Number';
+var NativeNumber = global[NUMBER];
+var NumberPrototype = NativeNumber.prototype;
+
+// Opera ~12 has broken Object#toString
+var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
+
+// `ToNumber` abstract operation
+// https://tc39.es/ecma262/#sec-tonumber
+var toNumber = function (argument) {
+  var it = toPrimitive(argument, false);
+  var first, third, radix, maxCode, digits, length, index, code;
+  if (typeof it == 'string' && it.length > 2) {
+    it = trim(it);
+    first = it.charCodeAt(0);
+    if (first === 43 || first === 45) {
+      third = it.charCodeAt(2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal of /^0b[01]+$/i
+        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal of /^0o[0-7]+$/i
+        default: return +it;
+      }
+      digits = it.slice(2);
+      length = digits.length;
+      for (index = 0; index < length; index++) {
+        code = digits.charCodeAt(index);
+        // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+        if (code < 48 || code > maxCode) return NaN;
+      } return parseInt(digits, radix);
+    }
+  } return +it;
+};
+
+// `Number` constructor
+// https://tc39.es/ecma262/#sec-number-constructor
+if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
+  var NumberWrapper = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var dummy = this;
+    return dummy instanceof NumberWrapper
+      // check on 1..constructor(foo) case
+      && (BROKEN_CLASSOF ? fails(function () { NumberPrototype.valueOf.call(dummy); }) : classof(dummy) != NUMBER)
+        ? inheritIfRequired(new NativeNumber(toNumber(it)), dummy, NumberWrapper) : toNumber(it);
+  };
+  for (var keys = DESCRIPTORS ? getOwnPropertyNames(NativeNumber) : (
+    // ES3:
+    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
+    // ES2015 (in case, if modules with ES2015 Number statics required before):
+    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger,' +
+    // ESNext
+    'fromString,range'
+  ).split(','), j = 0, key; keys.length > j; j++) {
+    if (has(NativeNumber, key = keys[j]) && !has(NumberWrapper, key)) {
+      defineProperty(NumberWrapper, key, getOwnPropertyDescriptor(NativeNumber, key));
+    }
+  }
+  NumberWrapper.prototype = NumberPrototype;
+  NumberPrototype.constructor = NumberWrapper;
+  redefine(global, NUMBER, NumberWrapper);
+}
 
 
 /***/ }),
@@ -7079,12 +7199,15 @@ var mask = function mask(selector) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
 /* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../basic/checkMobile */ "./src/js/basic/checkMobile.js");
-/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "./node_modules/core-js/modules/es.number.constructor.js");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../basic/checkMobile */ "./src/js/basic/checkMobile.js");
+/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
+
 
 
 
@@ -7095,8 +7218,16 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
   var overlay = document.querySelector(modal__overlay),
       close = document.querySelector(modal__close),
       more = document.querySelector(modal__more),
+      info = document.querySelector(modal__info),
       triggers = document.querySelectorAll(galary__wrapper),
-      modal = document.querySelector(modal__wrapper);
+      //? - 4 контейрена для елементів
+  modal = document.querySelector(modal__wrapper); //? - обготка модального вікна для передчі данних
+
+  var wrapperId = null;
+  var itemIndex = null;
+  var length = null;
+  var leftArrow = document.querySelector('.modal__arrow-left'),
+      rightArrow = document.querySelector('.modal__arrow-right');
   var clicked = false;
 
   try {
@@ -7109,18 +7240,31 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
       }, 700);
     };
 
-    var openModal = function openModal(target, modal) {
-      containModal(target, modal);
+    var openModal = function openModal(target) {
+      if (!target.classList.contains('galary__item')) {
+        containModalMobile(target);
+      } else {
+        containModalDesk(target);
+      }
+
       activateModal();
     };
 
-    var containModal = function containModal(target, modal) {
-      if (!target.classList.contains('galary__item')) {
-        target = target.parentNode;
-      }
+    var containModalMobile = function containModalMobile(target) {
+      console.log(target);
+      target = target.parentNode;
+      wrapperId = target.parentNode.getAttribute('id');
+      console.log(target, wrapperId);
+      itemIndex = Number(target.getAttribute('data-count'));
+      changeItem(wrapperId, itemIndex);
+    };
 
-      var itemData = getItemData(target);
-      inputModalData(itemData, modal);
+    var containModalDesk = function containModalDesk(target) {
+      console.log(target);
+      wrapperId = target.parentNode.getAttribute('id');
+      console.log(target, wrapperId);
+      itemIndex = Number(target.getAttribute('data-count'));
+      changeItem(wrapperId, itemIndex);
     };
 
     var inputModalData = function inputModalData(_ref, modal) {
@@ -7128,7 +7272,7 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
           count = _ref.count,
           section = _ref.section;
       modal.querySelector('.modal__img img').setAttribute('src', "".concat(src));
-      Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_4__["default"])();
+      Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_5__["default"])();
       modal.querySelector('.modal__section').textContent = section;
       modal.querySelector('.modal__count').textContent = count;
     };
@@ -7164,17 +7308,37 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
       return scrollWidth;
     };
 
+    var changeItem = function changeItem(id, index) {
+      length = $("#".concat(id, " .galary__item")).length - 1; // console.log(itemIndex, index);
+
+      if (index > length) {
+        itemIndex = 0;
+      } else if (index < 0) {
+        itemIndex = length;
+      }
+
+      index = itemIndex; // console.log(itemIndex, index);
+
+      $("#".concat(id, " .galary__item")).each(function (i, item) {
+        if (i === index) {
+          console.log(id, item, index);
+          var itemData = getItemData(item);
+          inputModalData(itemData, modal);
+        }
+      });
+    };
+
     var scroll = calcScroll();
     triggers.forEach(function (trigger) {
-      if (_basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__["default"].any()) {
+      if (_basic_checkMobile__WEBPACK_IMPORTED_MODULE_4__["default"].any()) {
         $(trigger).on('click', '.galary__img', function (e) {
           e.preventDefault();
-          openModal(e.target, modal);
+          openModal(e.target);
         });
       } else {
         $(trigger).on('click', '.galary__item', function (e) {
           e.preventDefault();
-          openModal(e.target, modal);
+          openModal(e.target);
         });
       }
     });
@@ -7197,6 +7361,14 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
         info.classList.remove('active');
         clicked = false;
       }
+    });
+    leftArrow.addEventListener('click', function () {
+      itemIndex--;
+      changeItem(wrapperId, itemIndex);
+    });
+    rightArrow.addEventListener('click', function () {
+      itemIndex++;
+      changeItem(wrapperId, itemIndex);
     });
   } catch (error) {}
 };
@@ -7373,6 +7545,7 @@ var showMore = function showMore() {
             counter = _ref.counter;
         var item = document.createElement('div');
         item.classList.add('galary__item');
+        item.setAttribute('data-count', i);
 
         if (i > visible_count) {
           item.classList.add('hide');

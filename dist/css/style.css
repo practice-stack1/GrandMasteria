@@ -4755,6 +4755,40 @@ body.lock {
           transform: rotate(180deg);
 }
 
+.modal__arrow-left,
+.modal__arrow-right {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.1);
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: #fff;
+  font-size: 40px;
+}
+
+.modal__arrow-left span,
+.modal__arrow-right span {
+  position: relative;
+  top: 50%;
+  left: 30%;
+}
+
+.modal__arrow-left:hover,
+.modal__arrow-right:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal__arrow-left {
+  left: 0;
+}
+
+.modal__arrow-right {
+  right: 0;
+}
+
 ::-webkit-scrollbar {
   width: 3px;
   height: 3px;

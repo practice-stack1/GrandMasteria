@@ -27,9 +27,9 @@
     padding: 0;
     min-height: 500px;
   }
-  @media(max-width: 576px){
-    padding: 47px 0 32px 0;
-    min-height: 460px;
+  @media (max-width: 576px){
+    padding: 43px 0 0px 0;
+    min-height: 380px;
   }
 
   &__wrapper{
@@ -86,7 +86,7 @@
       width: 260px;
     }
     @media(max-width: 576px){
-      margin: 0 16px 0 12px;
+      margin: 0 16px 15px 12px;
       align-items: flex-start;
       height: 44px;
     }
@@ -198,6 +198,7 @@
       position: relative;
       top: 50%;
       left: 30%;
+      user-select: none;
     }
     transition: all 0.3s ease;
     color: #fff;
@@ -205,6 +206,9 @@
 
     &:hover{
       background: rgba(0, 0, 0, 0.3);
+    }
+    &:active{
+      background: rgba(0, 0, 0, 0.5);
     }
   }
   &__arrow-left{

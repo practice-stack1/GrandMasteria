@@ -4774,11 +4774,20 @@ body.lock {
   position: relative;
   top: 50%;
   left: 30%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .modal__arrow-left:hover,
 .modal__arrow-right:hover {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.modal__arrow-left:active,
+.modal__arrow-right:active {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal__arrow-left {
@@ -5810,11 +5819,12 @@ body.lock {
 @media (max-width: 576px) {
   .footer__phone-modal {
     min-height: 0;
+    margin: 0 0 20px 0;
   }
 
   .modal {
-    padding: 47px 0 32px 0;
-    min-height: 460px;
+    padding: 43px 0 0px 0;
+    min-height: 380px;
   }
 
   .modal__wrapper {
@@ -5835,7 +5845,7 @@ body.lock {
   }
 
   .modal__title {
-    margin: 0 16px 0 12px;
+    margin: 0 16px 15px 12px;
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;

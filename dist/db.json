@@ -1,198 +1,523 @@
 {
     "single": [
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/single/1-min.jpg",
+            "srcset": "img/galary/single/1-min.webp",
             "counter": "1",
             "price": "Ціна: 5 000 грн",
             "size": "Розмір: 111*11*11"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/single/2-min.jpg",
+            "srcset": "img/galary/single/2-min.webp",
             "counter": "2",
             "price": "Ціна: 5 000 грн",
             "size": "Розмір: 111*11*11"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/single/3-min.jpg",
+            "srcset": "img/galary/single/3-min.webp",
             "counter": "3",
             "price": "Ціна: 5 000 грн",
             "size": "Розмір: 111*11*11"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/single/4-min.jpg",
+            "srcset": "img/galary/single/4-min.webp",
             "counter": "4",
             "price": "Ціна: 5 000 грн",
             "size": "Розмір: 111*11*11"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/single/5-min.jpg",
+            "srcset": "img/galary/single/5-min.webp",
             "counter": "5",
             "price": "Ціна: 5 000 грн",
             "size": "Розмір: 111*11*11"
         },
         {
-            "src": "img/main/about.jpg",
-            "counter": "7",
+            "src": "img/galary/single/6-min.jpg",
+            "srcset": "img/galary/single/6-min.webp",
+            "counter": "6",
             "price": "Ціна: 4 850 грн",
             "size": "Розмір: 333*3*2"
         },
         {
-            "src": "img/main/about.jpg",
+            "src": "img/galary/single/7-min.jpg",
+            "srcset": "img/galary/single/7-min.webp",
+            "counter": "7",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/single/8-min.jpg",
+            "srcset": "img/galary/single/8-min.webp",
             "counter": "8",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "img/main/about.jpg",
+            "src": "img/galary/single/9-min.jpg",
+            "srcset": "img/galary/single/9-min.webp",
             "counter": "9",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "img/main/about.jpg",
+            "src": "img/galary/single/10-min.jpg",
+            "srcset": "img/galary/single/10-min.webp",
             "counter": "10",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "img/main/about.jpg",
+            "src": "img/galary/single/11-min.jpg",
+            "srcset": "img/galary/single/11-min.webp",
             "counter": "11",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "img/main/about.jpg",
+            "src": "img/galary/single/12-min.jpg",
+            "srcset": "img/galary/single/12-min.webp",
             "counter": "12",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "img/main/about.jpg",
+            "src": "img/galary/single/13-min.jpg",
+            "srcset": "img/galary/single/13-min.webp",
             "counter": "13",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/single/14-min.jpg",
+            "srcset": "img/galary/single/14-min.webp",
+            "counter": "14",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/single/15-min.jpg",
+            "srcset": "img/galary/single/15-min.webp",
+            "counter": "15",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/single/16-min.jpg",
+            "srcset": "img/galary/single/16-min.webp",
+            "counter": "16",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/single/17-min.jpg",
+            "srcset": "img/galary/single/17-min.webp",
+            "counter": "17",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/single/18-min.jpg",
+            "srcset": "img/galary/single/18-min.webp",
+            "counter": "18",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/single/19-min.jpg",
+            "srcset": "img/galary/single/19-min.webp",
+            "counter": "19",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         }
     ],
     "double": [
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/1-min.jpg",
+            "srcset": "img/galary/double/1-min.webp",
             "counter": "1",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/2-min.jpg",
+            "srcset": "img/galary/double/2-min.webp",
             "counter": "2",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/3-min.jpg",
+            "srcset": "img/galary/double/3-min.webp",
             "counter": "3",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/4-min.jpg",
+            "srcset": "img/galary/double/4-min.webp",
             "counter": "4",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/5-min.jpg",
+            "srcset": "img/galary/double/5-min.webp",
             "counter": "5",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/6-min.jpg",
+            "srcset": "img/galary/double/6-min.webp",
             "counter": "6",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/7-min.jpg",
+            "srcset": "img/galary/double/7-min.webp",
             "counter": "7",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/8-min.jpg",
+            "srcset": "img/galary/double/8-min.webp",
             "counter": "8",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/9-min.jpg",
+            "srcset": "img/galary/double/9-min.webp",
             "counter": "9",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/10-min.jpg",
+            "srcset": "img/galary/double/10-min.webp",
             "counter": "10",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/11-min.jpg",
+            "srcset": "img/galary/double/11-min.webp",
             "counter": "11",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/12-min.jpg",
+            "srcset": "img/galary/double/12-min.webp",
             "counter": "12",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/13-min.jpg",
+            "srcset": "img/galary/double/13-min.webp",
+            "counter": "13",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/14-min.jpg",
+            "srcset": "img/galary/double/14-min.webp",
+            "counter": "14",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/15-min.jpg",
+            "srcset": "img/galary/double/15-min.webp",
+            "counter": "15",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/16-min.jpg",
+            "srcset": "img/galary/double/16-min.webp",
+            "counter": "16",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/17-min.jpg",
+            "srcset": "img/galary/double/17-min.webp",
+            "counter": "17",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/18-min.jpg",
+            "srcset": "img/galary/double/18-min.webp",
+            "counter": "18",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/19-min.jpg",
+            "srcset": "img/galary/double/19-min.webp",
+            "counter": "19",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/20-min.jpg",
+            "srcset": "img/galary/double/20-min.webp",
+            "counter": "20",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/21-min.jpg",
+            "srcset": "img/galary/double/21-min.webp",
+            "counter": "21",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/22-min.jpg",
+            "srcset": "img/galary/double/22-min.webp",
+            "counter": "22",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/23-min.jpg",
+            "srcset": "img/galary/double/23-min.webp",
+            "counter": "23",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/24-min.jpg",
+            "srcset": "img/galary/double/24-min.webp",
+            "counter": "24",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/25-min.jpg",
+            "srcset": "img/galary/double/25-min.webp",
+            "counter": "25",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/26-min.jpg",
+            "srcset": "img/galary/double/26-min.webp",
+            "counter": "26",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/27-min.jpg",
+            "srcset": "img/galary/double/27-min.webp",
+            "counter": "27",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/28-min.jpg",
+            "srcset": "img/galary/double/28-min.webp",
+            "counter": "28",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/29-min.jpg",
+            "srcset": "img/galary/double/29-min.webp",
+            "counter": "29",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/30-min.jpg",
+            "srcset": "img/galary/double/30-min.webp",
+            "counter": "30",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/31-min.jpg",
+            "srcset": "img/galary/double/31-min.webp",
+            "counter": "31",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/32-min.jpg",
+            "srcset": "img/galary/double/32-min.webp",
+            "counter": "32",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/33-min.jpg",
+            "srcset": "img/galary/double/33-min.webp",
+            "counter": "33",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+
+        {
+            "src": "img/galary/double/34-min.jpg",
+            "srcset": "img/galary/double/34-min.webp",
+            "counter": "34",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },{
+            "src": "img/galary/double/35-min.jpg",
+            "srcset": "img/galary/double/35-min.webp",
+            "counter": "35",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },{
+            "src": "img/galary/double/36-min.jpg",
+            "srcset": "img/galary/double/36-min.webp",
+            "counter": "36",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/37-min.jpg",
+            "srcset": "img/galary/double/37-min.webp",
+            "counter": "37",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/38-min.jpg",
+            "srcset": "img/galary/double/38-min.webp",
+            "counter": "38",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/39-min.jpg",
+            "srcset": "img/galary/double/39-min.webp",
+            "counter": "39",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/40-min.jpg",
+            "srcset": "img/galary/double/40-min.webp",
+            "counter": "40",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/41-min.jpg",
+            "srcset": "img/galary/double/41-min.webp",
+            "counter": "41",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/42-min.jpg",
+            "srcset": "img/galary/double/42-min.webp",
+            "counter": "42",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/43-min.jpg",
+            "srcset": "img/galary/double/43-min.webp",
+            "counter": "43",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         }
     ],
     "triple": [
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/1-min.jpg",
+            "srcset": "img/galary/double/1-min.webp",
             "counter": "1",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/2-min.jpg",
+            "srcset": "img/galary/double/2-min.webp",
             "counter": "2",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/3-min.jpg",
+            "srcset": "img/galary/double/3-min.webp",
             "counter": "3",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/4-min.jpg",
+            "srcset": "img/galary/double/4-min.webp",
             "counter": "4",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/5-min.jpg",
+            "srcset": "img/galary/double/5-min.webp",
             "counter": "5",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/6-min.jpg",
+            "srcset": "img/galary/double/6-min.webp",
             "counter": "6",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/7-min.jpg",
+            "srcset": "img/galary/double/7-min.webp",
             "counter": "7",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         },
         {
-            "src": "https://s1.1zoom.ru/big0/52/Love_Sunrises_and_sunsets_Fingers_Hands_Heart_Sun_532758_1280x897.jpg",
+            "src": "img/galary/double/8-min.jpg",
+            "srcset": "img/galary/double/8-min.webp",
             "counter": "8",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/9-min.jpg",
+            "srcset": "img/galary/double/9-min.webp",
+            "counter": "9",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/10-min.jpg",
+            "srcset": "img/galary/double/10-min.webp",
+            "counter": "10",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/11-min.jpg",
+            "srcset": "img/galary/double/11-min.webp",
+            "counter": "11",
+            "price": "Ціна: 5 678 грн",
+            "size": "Розмір: 234*167*68"
+        },
+        {
+            "src": "img/galary/double/12-min.jpg",
+            "srcset": "img/galary/double/12-min.webp",
+            "counter": "12",
             "price": "Ціна: 5 678 грн",
             "size": "Розмір: 234*167*68"
         }

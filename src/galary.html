@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  @@include('html/head.html')
+<body>
+  <div class="wrapper">
+    @@include('html/header.html')
+    <main>
+      <div class="container">
+        <section class="info">
+          <div class="info__content">
+            <h2 class="title info__title">ПРО МОГИЛИ</h2>
+            <div class="info__text">
+              У цьому розділі ви можете обрати основні елементи об’єкта – пам’ятник і могилу. Нижче можна оглянути приклади наших робіт і вибрати готовий варіант або сформувати своє бачення і проконсультуватись у нас. <a href="accessories.html" data-nav='granit' data-page="accessories">Вид граніту</a> також можна підібрати за власним бажанням.
+            </div>
+          </div>
+          <div class="info__img ibg">
+            <img src="img/info/galary.jpg" alt="Інформативна картинка">
+          </div>
+        </section>
+        <section class="galary">
+            <div class="tab">
+              <div class="tab__wrapper">
+                <div class="tab__item active" data-nav="single">Одинарні пам’ятники</div>
+                <div class="tab__item" data-nav="double">Подвійні пам’ятники</div>
+                <div class="tab__item" data-nav="triple">Потрійні пам’ятники</div>
+                <div class="tab__item" data-nav="child">Дитячі пам’ятники</div>
+                <div class="tab__arrow tab__arrow_left">
+                  <img src="icons/arrow_l.svg" alt="стрілка вліво">
+                </div>
+                <div class="tab__arrow tab__arrow_right">
+                  <img src="icons/arrow_r.svg" alt="стрілка в право">
+                </div>
+              </div>
+            </div>
+          <div class="galary__content">
+            <div class="galary__slide" data-section="single" data-single>
+              <h2 class="title galary__title">ОДИНАНІ МОГИЛИ</h2>
+              <div class="galary__slide-wrapper" id='single'>
+              </div>
+            </div>
+            <div class="galary__slide"  data-section="double" data-double>
+              <h2 class="title galary__title">ПОДВІЙНІ МОГИЛИ</h2>
+              <div class="galary__slide-wrapper" id='double'>
+              </div>
+            </div>
+            <div class="galary__slide"  data-section="triple" data-triple>
+              <h2 class="title galary__title">ПОТРІЙНІ МОГИЛИ</h2>
+              <div class="galary__slide-wrapper" id='triple'></div>
+            </div>
+            <div class="galary__slide"  data-section="child" data-child>
+              <h2 class="title galary__title">ДИТЯЧІ МОГИЛИ</h2>
+              <div class="galary__slide-wrapper" id='child'></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    @@include('html/footer.html')
+    @@include('html/up.html')
+  </div>
+  @@include('html/modals.html')
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

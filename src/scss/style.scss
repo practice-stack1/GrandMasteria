@@ -1,0 +1,39 @@
+
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face {
+  font-family: $font_name;
+  font-display: swap;
+  src: local('#{$file_name}'),
+      url("../fonts/#{$file_name}.woff") format("woff"),
+      url("../fonts/#{$file_name}.woff2") format("woff2");
+  font-weight: #{$weight};
+  font-style: #{$style};
+  }
+}
+@import 'basic/fonts.scss';
+@import 'basic/ibg.scss';
+@import 'basic/null.scss';
+@import 'basic/variables.scss';
+@import 'basic/mixins.scss';
+@import 'basic/adaptive_properties.scss';
+@import 'basic/adaptive_font.scss';
+@import 'basic/icons.scss';
+@import 'basic/container.scss';
+@import 'basic/basic.scss';
+@import 'basic/button.scss';
+@import 'basic/animate.scss';
+@import 'basic/pageup.scss';
+@import 'sections/header.scss';
+@import 'sections/main/about.scss';
+@import 'sections/main/services.scss';
+@import 'sections/main/short-nav.scss';
+@import 'sections/footer.scss';
+@import 'sections/info.scss';
+@import 'sections/tab.scss';
+@import 'sections/galary/galary.scss';
+@import 'sections/modal.scss';
+@import 'sections/scroll.scss';
+@import 'sections/accessories/accessories.scss';
+@import 'sections/answears/answears.scss';
+
+

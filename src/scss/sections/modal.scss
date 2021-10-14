@@ -182,6 +182,17 @@
     }
   }
   &__img{
+    position: relative;
+    background: #abdefd;
+    img{
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
     @media(max-width: 576px){
       height: 200px;
       margin: 0 0 28px 0;

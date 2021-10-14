@@ -7197,16 +7197,22 @@ var mask = function mask(selector) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "./node_modules/core-js/modules/es.number.constructor.js");
-/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
-/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../basic/checkMobile */ "./src/js/basic/checkMobile.js");
-/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_array_last_index_of_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.last-index-of.js */ "./node_modules/core-js/modules/es.array.last-index-of.js");
+/* harmony import */ var core_js_modules_es_array_last_index_of_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_last_index_of_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "./node_modules/core-js/modules/es.number.constructor.js");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/web.timers.js */ "./node_modules/core-js/modules/web.timers.js");
+/* harmony import */ var core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../basic/checkMobile */ "./src/js/basic/checkMobile.js");
+/* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
+
+
 
 
 
@@ -7251,41 +7257,51 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
     };
 
     var containModalMobile = function containModalMobile(target) {
-      console.log(target);
-      target = target.parentNode;
-      wrapperId = target.parentNode.getAttribute('id');
-      console.log(target, wrapperId);
+      target = target.closest('.galary__slide-wrapper');
+      wrapperId = target.getAttribute('id');
       itemIndex = Number(target.getAttribute('data-count'));
       changeItem(wrapperId, itemIndex);
     };
 
     var containModalDesk = function containModalDesk(target) {
-      console.log(target);
       wrapperId = target.parentNode.getAttribute('id');
-      console.log(target, wrapperId);
       itemIndex = Number(target.getAttribute('data-count'));
       changeItem(wrapperId, itemIndex);
     };
 
     var inputModalData = function inputModalData(_ref, modal) {
       var src = _ref.src,
+          source = _ref.source,
           count = _ref.count,
           section = _ref.section;
+      modal.querySelector('.modal__img source').setAttribute('srcset', "".concat(source));
       modal.querySelector('.modal__img img').setAttribute('src', "".concat(src));
-      Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_5__["default"])();
+      Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_7__["default"])();
       modal.querySelector('.modal__section').textContent = section;
       modal.querySelector('.modal__count').textContent = count;
     };
 
     var getItemData = function getItemData(item) {
       var img = item.querySelector('.galary__img img').getAttribute('src'),
+          source = item.querySelector('.galary__img source').getAttribute('srcset'),
           count = item.querySelector('.galary__counter').textContent,
           section = item.parentNode.previousElementSibling.textContent,
           data = {};
-      data.src = img;
+      var newPath = makeNewPath(img, source, '.jpg', '.webp');
+      data.src = newPath.img;
+      data.source = newPath.source;
       data.count = count;
       data.section = section;
       return data;
+    };
+
+    var makeNewPath = function makeNewPath(img, source, typeImg, typeSource) {
+      var newSrc = "".concat(img.substr(0, +img.lastIndexOf('-min'))).concat(typeImg);
+      var newSource = "".concat(source.substr(0, +source.lastIndexOf('-min'))).concat(typeSource);
+      return {
+        img: newSrc,
+        source: newSource
+      };
     };
 
     var activateModal = function activateModal() {
@@ -7309,7 +7325,7 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
     };
 
     var changeItem = function changeItem(id, index) {
-      length = $("#".concat(id, " .galary__item")).length - 1; // console.log(itemIndex, index);
+      length = $("#".concat(id, " .galary__item")).length - 1;
 
       if (index > length) {
         itemIndex = 0;
@@ -7317,11 +7333,9 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
         itemIndex = length;
       }
 
-      index = itemIndex; // console.log(itemIndex, index);
-
+      index = itemIndex;
       $("#".concat(id, " .galary__item")).each(function (i, item) {
         if (i === index) {
-          console.log(id, item, index);
           var itemData = getItemData(item);
           inputModalData(itemData, modal);
         }
@@ -7330,7 +7344,7 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
 
     var scroll = calcScroll();
     triggers.forEach(function (trigger) {
-      if (_basic_checkMobile__WEBPACK_IMPORTED_MODULE_4__["default"].any()) {
+      if (_basic_checkMobile__WEBPACK_IMPORTED_MODULE_6__["default"].any()) {
         $(trigger).on('click', '.galary__img', function (e) {
           e.preventDefault();
           openModal(e.target);

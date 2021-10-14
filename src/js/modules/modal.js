@@ -81,22 +81,19 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
       activateModal();
     }
     function containModalMobile(target){
-      console.log(target);
-      target = target.parentNode;
-      wrapperId = target.parentNode.getAttribute('id');
-      console.log(target, wrapperId);
+      target = target.closest('.galary__slide-wrapper');
+      wrapperId = target.getAttribute('id');
       itemIndex = Number(target.getAttribute('data-count'));
       changeItem(wrapperId, itemIndex);
     }
     function containModalDesk(target){
-      console.log(target);
       wrapperId = target.parentNode.getAttribute('id');
-      console.log(target, wrapperId);
       itemIndex = Number(target.getAttribute('data-count'));
       changeItem(wrapperId, itemIndex);
     }
 
-    function inputModalData({src, count, section}, modal){
+    function inputModalData({src, source, count, section}, modal){
+      modal.querySelector('.modal__img source').setAttribute('srcset', `${source}`);
       modal.querySelector('.modal__img img').setAttribute('src', `${src}`);
       ibg();
       modal.querySelector('.modal__section').textContent = section;
@@ -104,14 +101,26 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
     }
     function getItemData(item){
       const img = item.querySelector('.galary__img img').getAttribute('src'),
+            source = item.querySelector('.galary__img source').getAttribute('srcset'),
             count = item.querySelector('.galary__counter').textContent,
             section = item.parentNode.previousElementSibling.textContent,
             data = {};
-      data.src = img;
+
+      const newPath = makeNewPath(img, source, '.jpg', '.webp');
+      data.src = newPath.img;
+      data.source = newPath.source;
       data.count = count;
       data.section = section;
 
       return data;
+    }
+    function makeNewPath(img, source, typeImg, typeSource){
+      let newSrc = `${img.substr(0, +img.lastIndexOf('-min'))}${typeImg}`;
+      let newSource = `${source.substr(0, +source.lastIndexOf('-min'))}${typeSource}`;
+      return {
+        img: newSrc,
+        source: newSource
+      }
     }
     function activateModal(){
       overlay.classList.remove('animated', 'fadeOut');
@@ -136,17 +145,14 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
 
     function changeItem(id, index){
       length = $(`#${id} .galary__item`).length - 1;
-      // console.log(itemIndex, index);
       if(index > length){
         itemIndex = 0;
       } else if(index < 0) {
         itemIndex = length;
       }
       index = itemIndex;
-      // console.log(itemIndex, index);
       $(`#${id} .galary__item`).each(function(i, item) {
         if(i === index){
-          console.log(id, item, index);
           const itemData = getItemData(item);
           inputModalData(itemData, modal);
         }

@@ -1,831 +1,1049 @@
 {
-    "single": [
-        {
-            "src": "img/galary/single/1-min.jpg",
-            "srcset": "img/galary/single/1-min.webp",
-            "counter": "1",
-            "price": "Ціна: 5 000 грн",
-            "size": "Розмір: 111*11*11"
-        },
-        {
-            "src": "img/galary/single/2-min.jpg",
-            "srcset": "img/galary/single/2-min.webp",
-            "counter": "2",
-            "price": "Ціна: 5 000 грн",
-            "size": "Розмір: 111*11*11"
-        },
-        {
-            "src": "img/galary/single/3-min.jpg",
-            "srcset": "img/galary/single/3-min.webp",
-            "counter": "3",
-            "price": "Ціна: 5 000 грн",
-            "size": "Розмір: 111*11*11"
-        },
-        {
-            "src": "img/galary/single/4-min.jpg",
-            "srcset": "img/galary/single/4-min.webp",
-            "counter": "4",
-            "price": "Ціна: 5 000 грн",
-            "size": "Розмір: 111*11*11"
-        },
-        {
-            "src": "img/galary/single/5-min.jpg",
-            "srcset": "img/galary/single/5-min.webp",
-            "counter": "5",
-            "price": "Ціна: 5 000 грн",
-            "size": "Розмір: 111*11*11"
-        },
-        {
-            "src": "img/galary/single/6-min.jpg",
-            "srcset": "img/galary/single/6-min.webp",
-            "counter": "6",
-            "price": "Ціна: 4 850 грн",
-            "size": "Розмір: 333*3*2"
-        },
-        {
-            "src": "img/galary/single/7-min.jpg",
-            "srcset": "img/galary/single/7-min.webp",
-            "counter": "7",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/8-min.jpg",
-            "srcset": "img/galary/single/8-min.webp",
-            "counter": "8",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/9-min.jpg",
-            "srcset": "img/galary/single/9-min.webp",
-            "counter": "9",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/10-min.jpg",
-            "srcset": "img/galary/single/10-min.webp",
-            "counter": "10",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/11-min.jpg",
-            "srcset": "img/galary/single/11-min.webp",
-            "counter": "11",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/12-min.jpg",
-            "srcset": "img/galary/single/12-min.webp",
-            "counter": "12",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/13-min.jpg",
-            "srcset": "img/galary/single/13-min.webp",
-            "counter": "13",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/14-min.jpg",
-            "srcset": "img/galary/single/14-min.webp",
-            "counter": "14",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/15-min.jpg",
-            "srcset": "img/galary/single/15-min.webp",
-            "counter": "15",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/16-min.jpg",
-            "srcset": "img/galary/single/16-min.webp",
-            "counter": "16",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/17-min.jpg",
-            "srcset": "img/galary/single/17-min.webp",
-            "counter": "17",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/18-min.jpg",
-            "srcset": "img/galary/single/18-min.webp",
-            "counter": "18",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/single/19-min.jpg",
-            "srcset": "img/galary/single/19-min.webp",
-            "counter": "19",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "double": [
-        {
-            "src": "img/galary/double/1-min.jpg",
-            "srcset": "img/galary/double/1-min.webp",
-            "counter": "1",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/2-min.jpg",
-            "srcset": "img/galary/double/2-min.webp",
-            "counter": "2",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/3-min.jpg",
-            "srcset": "img/galary/double/3-min.webp",
-            "counter": "3",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/4-min.jpg",
-            "srcset": "img/galary/double/4-min.webp",
-            "counter": "4",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/5-min.jpg",
-            "srcset": "img/galary/double/5-min.webp",
-            "counter": "5",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/6-min.jpg",
-            "srcset": "img/galary/double/6-min.webp",
-            "counter": "6",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/7-min.jpg",
-            "srcset": "img/galary/double/7-min.webp",
-            "counter": "7",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/8-min.jpg",
-            "srcset": "img/galary/double/8-min.webp",
-            "counter": "8",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/9-min.jpg",
-            "srcset": "img/galary/double/9-min.webp",
-            "counter": "9",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/10-min.jpg",
-            "srcset": "img/galary/double/10-min.webp",
-            "counter": "10",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/11-min.jpg",
-            "srcset": "img/galary/double/11-min.webp",
-            "counter": "11",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/12-min.jpg",
-            "srcset": "img/galary/double/12-min.webp",
-            "counter": "12",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/13-min.jpg",
-            "srcset": "img/galary/double/13-min.webp",
-            "counter": "13",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/14-min.jpg",
-            "srcset": "img/galary/double/14-min.webp",
-            "counter": "14",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/15-min.jpg",
-            "srcset": "img/galary/double/15-min.webp",
-            "counter": "15",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/16-min.jpg",
-            "srcset": "img/galary/double/16-min.webp",
-            "counter": "16",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/17-min.jpg",
-            "srcset": "img/galary/double/17-min.webp",
-            "counter": "17",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/18-min.jpg",
-            "srcset": "img/galary/double/18-min.webp",
-            "counter": "18",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/19-min.jpg",
-            "srcset": "img/galary/double/19-min.webp",
-            "counter": "19",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/20-min.jpg",
-            "srcset": "img/galary/double/20-min.webp",
-            "counter": "20",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/21-min.jpg",
-            "srcset": "img/galary/double/21-min.webp",
-            "counter": "21",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/22-min.jpg",
-            "srcset": "img/galary/double/22-min.webp",
-            "counter": "22",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/23-min.jpg",
-            "srcset": "img/galary/double/23-min.webp",
-            "counter": "23",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/24-min.jpg",
-            "srcset": "img/galary/double/24-min.webp",
-            "counter": "24",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/25-min.jpg",
-            "srcset": "img/galary/double/25-min.webp",
-            "counter": "25",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/26-min.jpg",
-            "srcset": "img/galary/double/26-min.webp",
-            "counter": "26",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/27-min.jpg",
-            "srcset": "img/galary/double/27-min.webp",
-            "counter": "27",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/28-min.jpg",
-            "srcset": "img/galary/double/28-min.webp",
-            "counter": "28",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/29-min.jpg",
-            "srcset": "img/galary/double/29-min.webp",
-            "counter": "29",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/30-min.jpg",
-            "srcset": "img/galary/double/30-min.webp",
-            "counter": "30",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/31-min.jpg",
-            "srcset": "img/galary/double/31-min.webp",
-            "counter": "31",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/32-min.jpg",
-            "srcset": "img/galary/double/32-min.webp",
-            "counter": "32",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/33-min.jpg",
-            "srcset": "img/galary/double/33-min.webp",
-            "counter": "33",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
+  "single": [
+    {
+      "src": "img/galary/single/1-min.jpg",
+      "srcset": "img/galary/single/1-min.webp",
+      "counter": "1",
+      "price": "Ціна: 5 000 грн",
+      "size": "Розмір: 111*11*11"
+    },
+    {
+      "src": "img/galary/single/2-min.jpg",
+      "srcset": "img/galary/single/2-min.webp",
+      "counter": "2",
+      "price": "Ціна: 5 000 грн",
+      "size": "Розмір: 111*11*11"
+    },
+    {
+      "src": "img/galary/single/3-min.jpg",
+      "srcset": "img/galary/single/3-min.webp",
+      "counter": "3",
+      "price": "Ціна: 5 000 грн",
+      "size": "Розмір: 111*11*11"
+    },
+    {
+      "src": "img/galary/single/4-min.jpg",
+      "srcset": "img/galary/single/4-min.webp",
+      "counter": "4",
+      "price": "Ціна: 5 000 грн",
+      "size": "Розмір: 111*11*11"
+    },
+    {
+      "src": "img/galary/single/5-min.jpg",
+      "srcset": "img/galary/single/5-min.webp",
+      "counter": "5",
+      "price": "Ціна: 5 000 грн",
+      "size": "Розмір: 111*11*11"
+    },
+    {
+      "src": "img/galary/single/6-min.jpg",
+      "srcset": "img/galary/single/6-min.webp",
+      "counter": "6",
+      "price": "Ціна: 4 850 грн",
+      "size": "Розмір: 333*3*2"
+    },
+    {
+      "src": "img/galary/single/7-min.jpg",
+      "srcset": "img/galary/single/7-min.webp",
+      "counter": "7",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/8-min.jpg",
+      "srcset": "img/galary/single/8-min.webp",
+      "counter": "8",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/9-min.jpg",
+      "srcset": "img/galary/single/9-min.webp",
+      "counter": "9",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/10-min.jpg",
+      "srcset": "img/galary/single/10-min.webp",
+      "counter": "10",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/11-min.jpg",
+      "srcset": "img/galary/single/11-min.webp",
+      "counter": "11",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/12-min.jpg",
+      "srcset": "img/galary/single/12-min.webp",
+      "counter": "12",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/13-min.jpg",
+      "srcset": "img/galary/single/13-min.webp",
+      "counter": "13",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/14-min.jpg",
+      "srcset": "img/galary/single/14-min.webp",
+      "counter": "14",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/15-min.jpg",
+      "srcset": "img/galary/single/15-min.webp",
+      "counter": "15",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/16-min.jpg",
+      "srcset": "img/galary/single/16-min.webp",
+      "counter": "16",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/17-min.jpg",
+      "srcset": "img/galary/single/17-min.webp",
+      "counter": "17",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/18-min.jpg",
+      "srcset": "img/galary/single/18-min.webp",
+      "counter": "18",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/19-min.jpg",
+      "srcset": "img/galary/single/19-min.webp",
+      "counter": "19",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "double": [
+    {
+      "src": "img/galary/double/1-min.jpg",
+      "srcset": "img/galary/double/1-min.webp",
+      "counter": "1",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/2-min.jpg",
+      "srcset": "img/galary/double/2-min.webp",
+      "counter": "2",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/3-min.jpg",
+      "srcset": "img/galary/double/3-min.webp",
+      "counter": "3",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/4-min.jpg",
+      "srcset": "img/galary/double/4-min.webp",
+      "counter": "4",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/5-min.jpg",
+      "srcset": "img/galary/double/5-min.webp",
+      "counter": "5",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/6-min.jpg",
+      "srcset": "img/galary/double/6-min.webp",
+      "counter": "6",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/7-min.jpg",
+      "srcset": "img/galary/double/7-min.webp",
+      "counter": "7",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/8-min.jpg",
+      "srcset": "img/galary/double/8-min.webp",
+      "counter": "8",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/9-min.jpg",
+      "srcset": "img/galary/double/9-min.webp",
+      "counter": "9",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/10-min.jpg",
+      "srcset": "img/galary/double/10-min.webp",
+      "counter": "10",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/11-min.jpg",
+      "srcset": "img/galary/double/11-min.webp",
+      "counter": "11",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/12-min.jpg",
+      "srcset": "img/galary/double/12-min.webp",
+      "counter": "12",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/13-min.jpg",
+      "srcset": "img/galary/double/13-min.webp",
+      "counter": "13",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/14-min.jpg",
+      "srcset": "img/galary/double/14-min.webp",
+      "counter": "14",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/15-min.jpg",
+      "srcset": "img/galary/double/15-min.webp",
+      "counter": "15",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/16-min.jpg",
+      "srcset": "img/galary/double/16-min.webp",
+      "counter": "16",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/17-min.jpg",
+      "srcset": "img/galary/double/17-min.webp",
+      "counter": "17",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/18-min.jpg",
+      "srcset": "img/galary/double/18-min.webp",
+      "counter": "18",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/19-min.jpg",
+      "srcset": "img/galary/double/19-min.webp",
+      "counter": "19",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/20-min.jpg",
+      "srcset": "img/galary/double/20-min.webp",
+      "counter": "20",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/21-min.jpg",
+      "srcset": "img/galary/double/21-min.webp",
+      "counter": "21",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/22-min.jpg",
+      "srcset": "img/galary/double/22-min.webp",
+      "counter": "22",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/23-min.jpg",
+      "srcset": "img/galary/double/23-min.webp",
+      "counter": "23",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/24-min.jpg",
+      "srcset": "img/galary/double/24-min.webp",
+      "counter": "24",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/25-min.jpg",
+      "srcset": "img/galary/double/25-min.webp",
+      "counter": "25",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/26-min.jpg",
+      "srcset": "img/galary/double/26-min.webp",
+      "counter": "26",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/27-min.jpg",
+      "srcset": "img/galary/double/27-min.webp",
+      "counter": "27",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/28-min.jpg",
+      "srcset": "img/galary/double/28-min.webp",
+      "counter": "28",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/29-min.jpg",
+      "srcset": "img/galary/double/29-min.webp",
+      "counter": "29",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/30-min.jpg",
+      "srcset": "img/galary/double/30-min.webp",
+      "counter": "30",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/31-min.jpg",
+      "srcset": "img/galary/double/31-min.webp",
+      "counter": "31",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/32-min.jpg",
+      "srcset": "img/galary/double/32-min.webp",
+      "counter": "32",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/33-min.jpg",
+      "srcset": "img/galary/double/33-min.webp",
+      "counter": "33",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
 
-        {
-            "src": "img/galary/double/34-min.jpg",
-            "srcset": "img/galary/double/34-min.webp",
-            "counter": "34",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },{
-            "src": "img/galary/double/35-min.jpg",
-            "srcset": "img/galary/double/35-min.webp",
-            "counter": "35",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },{
-            "src": "img/galary/double/36-min.jpg",
-            "srcset": "img/galary/double/36-min.webp",
-            "counter": "36",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/37-min.jpg",
-            "srcset": "img/galary/double/37-min.webp",
-            "counter": "37",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/38-min.jpg",
-            "srcset": "img/galary/double/38-min.webp",
-            "counter": "38",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/39-min.jpg",
-            "srcset": "img/galary/double/39-min.webp",
-            "counter": "39",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/40-min.jpg",
-            "srcset": "img/galary/double/40-min.webp",
-            "counter": "40",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/41-min.jpg",
-            "srcset": "img/galary/double/41-min.webp",
-            "counter": "41",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/42-min.jpg",
-            "srcset": "img/galary/double/42-min.webp",
-            "counter": "42",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/43-min.jpg",
-            "srcset": "img/galary/double/43-min.webp",
-            "counter": "43",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "triple": [
-        {
-            "src": "img/galary/double/1-min.jpg",
-            "srcset": "img/galary/double/1-min.webp",
-            "counter": "1",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/2-min.jpg",
-            "srcset": "img/galary/double/2-min.webp",
-            "counter": "2",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/3-min.jpg",
-            "srcset": "img/galary/double/3-min.webp",
-            "counter": "3",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/4-min.jpg",
-            "srcset": "img/galary/double/4-min.webp",
-            "counter": "4",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/5-min.jpg",
-            "srcset": "img/galary/double/5-min.webp",
-            "counter": "5",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/6-min.jpg",
-            "srcset": "img/galary/double/6-min.webp",
-            "counter": "6",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/7-min.jpg",
-            "srcset": "img/galary/double/7-min.webp",
-            "counter": "7",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/8-min.jpg",
-            "srcset": "img/galary/double/8-min.webp",
-            "counter": "8",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/9-min.jpg",
-            "srcset": "img/galary/double/9-min.webp",
-            "counter": "9",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/10-min.jpg",
-            "srcset": "img/galary/double/10-min.webp",
-            "counter": "10",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/11-min.jpg",
-            "srcset": "img/galary/double/11-min.webp",
-            "counter": "11",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/double/12-min.jpg",
-            "srcset": "img/galary/double/12-min.webp",
-            "counter": "12",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "child": [
-        {
-            "src": "img/galary/children/1-min.jpg",
-            "srcset": "img/galary/children/1-min.webp",
-            "counter": "1",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/children/2-min.jpg",
-            "srcset": "img/galary/children/2-min.webp",
-            "counter": "2",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/children/3-min.jpg",
-            "srcset": "img/galary/children/3-min.webp",
-            "counter": "3",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/children/4-min.jpg",
-            "srcset": "img/galary/children/4-min.webp",
-            "counter": "4",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/children/5-min.jpg",
-            "srcset": "img/galary/children/5-min.webp",
-            "counter": "5",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/galary/children/6-min.jpg",
-            "srcset": "img/galary/children/6-min.webp",
-            "counter": "6",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "art": [
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "inscriptions": [
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "granit": [
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "bronse": [
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ],
-    "vase": [
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        },
-        {
-            "src": "img/main/about.jpg",
-            "counter": "101",
-            "price": "Ціна: 5 678 грн",
-            "size": "Розмір: 234*167*68"
-        }
-    ]
+    {
+      "src": "img/galary/double/34-min.jpg",
+      "srcset": "img/galary/double/34-min.webp",
+      "counter": "34",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/35-min.jpg",
+      "srcset": "img/galary/double/35-min.webp",
+      "counter": "35",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/36-min.jpg",
+      "srcset": "img/galary/double/36-min.webp",
+      "counter": "36",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/37-min.jpg",
+      "srcset": "img/galary/double/37-min.webp",
+      "counter": "37",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/38-min.jpg",
+      "srcset": "img/galary/double/38-min.webp",
+      "counter": "38",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/39-min.jpg",
+      "srcset": "img/galary/double/39-min.webp",
+      "counter": "39",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/40-min.jpg",
+      "srcset": "img/galary/double/40-min.webp",
+      "counter": "40",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/41-min.jpg",
+      "srcset": "img/galary/double/41-min.webp",
+      "counter": "41",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/42-min.jpg",
+      "srcset": "img/galary/double/42-min.webp",
+      "counter": "42",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/43-min.jpg",
+      "srcset": "img/galary/double/43-min.webp",
+      "counter": "43",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "triple": [
+    {
+      "src": "img/galary/triple/1-min.jpg",
+      "srcset": "img/galary/triple/1-min.webp",
+      "counter": "1",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/2-min.jpg",
+      "srcset": "img/galary/triple/2-min.webp",
+      "counter": "2",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/3-min.jpg",
+      "srcset": "img/galary/triple/3-min.webp",
+      "counter": "3",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/4-min.jpg",
+      "srcset": "img/galary/triple/4-min.webp",
+      "counter": "4",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/5-min.jpg",
+      "srcset": "img/galary/triple/5-min.webp",
+      "counter": "5",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/6-min.jpg",
+      "srcset": "img/galary/triple/6-min.webp",
+      "counter": "6",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/7-min.jpg",
+      "srcset": "img/galary/triple/7-min.webp",
+      "counter": "7",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/8-min.jpg",
+      "srcset": "img/galary/triple/8-min.webp",
+      "counter": "8",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/9-min.jpg",
+      "srcset": "img/galary/triple/9-min.webp",
+      "counter": "9",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/10-min.jpg",
+      "srcset": "img/galary/triple/10-min.webp",
+      "counter": "10",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/11-min.jpg",
+      "srcset": "img/galary/double/11-min.webp",
+      "counter": "11",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/12-min.jpg",
+      "srcset": "img/galary/triple/12-min.webp",
+      "counter": "12",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "child": [
+    {
+      "src": "img/galary/children/1-min.jpg",
+      "srcset": "img/galary/children/1-min.webp",
+      "counter": "1",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/children/2-min.jpg",
+      "srcset": "img/galary/children/2-min.webp",
+      "counter": "2",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/children/3-min.jpg",
+      "srcset": "img/galary/children/3-min.webp",
+      "counter": "3",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/children/4-min.jpg",
+      "srcset": "img/galary/children/4-min.webp",
+      "counter": "4",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/children/5-min.jpg",
+      "srcset": "img/galary/children/5-min.webp",
+      "counter": "5",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/children/6-min.jpg",
+      "srcset": "img/galary/children/6-min.webp",
+      "counter": "6",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "art": [
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "inscriptions": [
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "granit": [
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/main/about.jpg",
+      "counter": "101",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "bronse": [
+    {
+      "src": "img/acessories/bronse/1-min.jpg",
+      "srcset": "img/acessories/bronse/1-min.webp",
+      "data": "img/acessories/bronse/1.webp",
+      "counter": "1",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/2-min.jpg",
+      "srcset": "img/acessories/bronse/2-min.webp",
+      "data": "img/acessories/bronse/2.webp",
+      "counter": "2",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/3-min.jpg",
+      "srcset": "img/acessories/bronse/3-min.webp",
+      "data": "img/acessories/bronse/3.webp",
+      "counter": "3",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/12-min.jpg",
+      "srcset": "img/acessories/bronse/12-min.webp",
+      "data": "img/acessories/bronse/12.webp",
+      "counter": "12",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/13-min.jpg",
+      "srcset": "img/acessories/bronse/13-min.webp",
+      "data": "img/acessories/bronse/13.webp",
+      "counter": "13",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/14-min.jpg",
+      "srcset": "img/acessories/bronse/14-min.webp",
+      "data": "img/acessories/bronse/14.webp",
+      "counter": "14",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/15-min.jpg",
+      "srcset": "img/acessories/bronse/15-min.webp",
+      "data": "img/acessories/bronse/15.webp",
+      "counter": "15",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/16-min.jpg",
+      "srcset": "img/acessories/bronse/16-min.webp",
+      "data": "img/acessories/bronse/16.webp",
+      "counter": "16",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/17-min.jpg",
+      "srcset": "img/acessories/bronse/17-min.webp",
+      "data": "img/acessories/bronse/17.webp",
+      "counter": "17",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/18-min.jpg",
+      "srcset": "img/acessories/bronse/18-min.webp",
+      "data": "img/acessories/bronse/18.webp",
+      "counter": "18",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/19-min.jpg",
+      "srcset": "img/acessories/bronse/19-min.webp",
+      "data": "img/acessories/bronse/19.webp",
+      "counter": "19",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/20-min.jpg",
+      "srcset": "img/acessories/bronse/20-min.webp",
+      "data": "img/acessories/bronse/20.webp",
+      "counter": "20",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/21-min.jpg",
+      "srcset": "img/acessories/bronse/21-min.webp",
+      "data": "img/acessories/bronse/21.webp",
+      "counter": "21",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/22-min.jpg",
+      "srcset": "img/acessories/bronse/22-min.webp",
+      "data": "img/acessories/bronse/22.webp",
+      "counter": "22",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/23-min.jpg",
+      "srcset": "img/acessories/bronse/23-min.webp",
+      "data": "img/acessories/bronse/23.webp",
+      "counter": "23",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/24-min.jpg",
+      "srcset": "img/acessories/bronse/24-min.webp",
+      "data": "img/acessories/bronse/24.webp",
+      "counter": "24",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/25-min.jpg",
+      "srcset": "img/acessories/bronse/25-min.webp",
+      "data": "img/acessories/bronse/25.webp",
+      "counter": "25",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/26-min.jpg",
+      "srcset": "img/acessories/bronse/26-min.webp",
+      "data": "img/acessories/bronse/26.webp",
+      "counter": "26",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/27-min.jpg",
+      "srcset": "img/acessories/bronse/27-min.webp",
+      "data": "img/acessories/bronse/27.webp",
+      "counter": "27",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/28-min.jpg",
+      "srcset": "img/acessories/bronse/28-min.webp",
+      "data": "img/acessories/bronse/28.webp",
+      "counter": "28",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/29-min.jpg",
+      "srcset": "img/acessories/bronse/29-min.webp",
+      "data": "img/acessories/bronse/29.webp",
+      "counter": "29",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/30-min.jpg",
+      "srcset": "img/acessories/bronse/30-min.webp",
+      "data": "img/acessories/bronse/30.webp",
+      "counter": "30",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/31-min.jpg",
+      "srcset": "img/acessories/bronse/31-min.webp",
+      "data": "img/acessories/bronse/31.webp",
+      "counter": "31",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/32-min.jpg",
+      "srcset": "img/acessories/bronse/32-min.webp",
+      "data": "img/acessories/bronse/32.webp",
+      "counter": "32",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/33-min.jpg",
+      "srcset": "img/acessories/bronse/33-min.webp",
+      "data": "img/acessories/bronse/33.webp",
+      "counter": "33",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/34-min.jpg",
+      "srcset": "img/acessories/bronse/34-min.webp",
+      "data": "img/acessories/bronse/34.webp",
+      "counter": "34",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/35-min.jpg",
+      "srcset": "img/acessories/bronse/35-min.webp",
+      "data": "img/acessories/bronse/35.webp",
+      "counter": "35",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/36-min.jpg",
+      "srcset": "img/acessories/bronse/36-min.webp",
+      "data": "img/acessories/bronse/36.webp",
+      "counter": "36",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/37-min.jpg",
+      "srcset": "img/acessories/bronse/37-min.webp",
+      "data": "img/acessories/bronse/37.webp",
+      "counter": "37",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/38-min.jpg",
+      "srcset": "img/acessories/bronse/38-min.webp",
+      "data": "img/acessories/bronse/38.webp",
+      "counter": "38",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/39-min.jpg",
+      "srcset": "img/acessories/bronse/39-min.webp",
+      "data": "img/acessories/bronse/39.webp",
+      "counter": "39",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/40-min.jpg",
+      "srcset": "img/acessories/bronse/40-min.webp",
+      "data": "img/acessories/bronse/40.webp",
+      "counter": "40",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/41-min.jpg",
+      "srcset": "img/acessories/bronse/41-min.webp",
+      "data": "img/acessories/bronse/41.webp",
+      "counter": "41",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/42-min.jpg",
+      "srcset": "img/acessories/bronse/42-min.webp",
+      "data": "img/acessories/bronse/42.webp",
+      "counter": "42",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ],
+  "vase": [
+    {
+      "src": "img/acessories/vases/1-min.jpg",
+      "srcset": "img/acessories/vases/1-min.webp",
+      "data": "img/acessories/vases/1.webp",
+      "counter": "1",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/2-min.jpg",
+      "srcset": "img/acessories/vases/2-min.webp",
+      "data": "img/acessories/vases/2.webp",
+      "counter": "2",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/3-min.jpg",
+      "srcset": "img/acessories/vases/3-min.webp",
+      "data": "img/acessories/vases/3.webp",
+      "counter": "3",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/4-min.jpg",
+      "srcset": "img/acessories/vases/4-min.webp",
+      "data": "img/acessories/vases/4.webp",
+      "counter": "4",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/5-min.jpg",
+      "srcset": "img/acessories/vases/5-min.webp",
+      "data": "img/acessories/vases/5.webp",
+      "counter": "5",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/6-min.jpg",
+      "srcset": "img/acessories/vases/6-min.webp",
+      "data": "img/acessories/vases/6.webp",
+      "counter": "6",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/7-min.jpg",
+      "srcset": "img/acessories/vases/7-min.webp",
+      "data": "img/acessories/vases/7.webp",
+      "counter": "7",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/8-min.jpg",
+      "srcset": "img/acessories/vases/8-min.webp",
+      "data": "img/acessories/vases/8.webp",
+      "counter": "8",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/9-min.jpg",
+      "srcset": "img/acessories/vases/9-min.webp",
+      "data": "img/acessories/vases/9.webp",
+      "counter": "9",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/10-min.jpg",
+      "srcset": "img/acessories/vases/10-min.webp",
+      "data": "img/acessories/vases/10.webp",
+      "counter": "10",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/vases/11-min.jpg",
+      "srcset": "img/acessories/vases/11-min.webp",
+      "data": "img/acessories/vases/11.webp",
+      "counter": "11",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    }
+  ]
 }

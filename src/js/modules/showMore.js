@@ -56,34 +56,41 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
         });
       }
       function createAccessoriesItem(response, wrap, visible_count, key){
-        response.forEach(({src, counter}, i) => {
+        response.forEach(({src, srcset, data, counter}, i) => {
           let item = document.createElement('div');
           item.classList.add('accessories__item', 'accessories__item-art');
-          if(i > visible_count){
-            item.classList.add('hide');
-          }
+
           if(wrap.classList.contains('accessories__slide-wrapper-art')){
             item.innerHTML = `
-            <div class="accessories__img accessories__img-art ibg">
-              <img src="${src}" alt="Фото продукції">
+            <div class="accessories__img accessories__img-art">
+              <picture>
+                <source srcset="${srcset}">
+                <img src="${src}" alt="Фото продукції" data-fancy="${data}">
+              </picture>
             </div>
             <div class="accessories__counter">${counter}</div>
           `;
           } else {
             item.innerHTML = `
-            <div class="accessories__img ibg">
-              <img src="${src}" alt="Фото продукції">
+            <div class="accessories__img">
+              <picture>
+                <source srcset="${srcset}">
+                <img src="${src}" alt="Фото продукції" data-fancy="${data}">
+              </picture>
             </div>
             <div class="accessories__counter">${counter}</div>
           `;
           }
-          wrap.appendChild(addLightBox(key, item));
+          wrap.appendChild(addLightBox(key, item, i, visible_count));
           refreshFsLightbox();
         });
       }
-      function addLightBox(key, item){
-        const href = item.querySelector('img').getAttribute('src');
+      function addLightBox(key, item, i, visible){
+        const href = item.querySelector('img').getAttribute('data-fancy');
         const a = document.createElement('a');
+        if(i > visible) {
+          a.classList.add('hide');
+        }
         a.setAttribute('data-fslightbox', `${key}`);
         a.setAttribute('href', `${href}`);
         a.appendChild(item);

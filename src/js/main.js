@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
   tab('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
   modal('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   showMore('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
-  showMore('.accessories__slide', '[data-section]','.accessories__slide-wrapper', '.accessories__item', 9, 'Завантажити більше');
+  showMore('.accessories__slide', '[data-section]','.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');
   tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   ibg();
 });

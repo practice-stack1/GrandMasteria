@@ -6985,7 +6985,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_tab__WEBPACK_IMPORTED_MODULE_10__["default"])('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_11__["default"])('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
-  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_11__["default"])('.accessories__slide', '[data-section]', '.accessories__slide-wrapper', '.accessories__item', 9, 'Завантажити більше');
+  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_11__["default"])('.accessories__slide', '[data-section]', '.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');
   Object(_modules_slider__WEBPACK_IMPORTED_MODULE_13__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
@@ -7574,28 +7574,31 @@ var showMore = function showMore() {
     var createAccessoriesItem = function createAccessoriesItem(response, wrap, visible_count, key) {
       response.forEach(function (_ref2, i) {
         var src = _ref2.src,
+            srcset = _ref2.srcset,
+            data = _ref2.data,
             counter = _ref2.counter;
         var item = document.createElement('div');
         item.classList.add('accessories__item', 'accessories__item-art');
 
-        if (i > visible_count) {
-          item.classList.add('hide');
-        }
-
         if (wrap.classList.contains('accessories__slide-wrapper-art')) {
-          item.innerHTML = "\n            <div class=\"accessories__img accessories__img-art ibg\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
+          item.innerHTML = "\n            <div class=\"accessories__img accessories__img-art\">\n              <picture>\n                <source srcset=\"".concat(srcset, "\">\n                <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n              </picture>\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
         } else {
-          item.innerHTML = "\n            <div class=\"accessories__img ibg\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
+          item.innerHTML = "\n            <div class=\"accessories__img\">\n              <picture>\n                <source srcset=\"".concat(srcset, "\">\n                <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n              </picture>\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
         }
 
-        wrap.appendChild(addLightBox(key, item));
+        wrap.appendChild(addLightBox(key, item, i, visible_count));
         refreshFsLightbox();
       });
     };
 
-    var addLightBox = function addLightBox(key, item) {
-      var href = item.querySelector('img').getAttribute('src');
+    var addLightBox = function addLightBox(key, item, i, visible) {
+      var href = item.querySelector('img').getAttribute('data-fancy');
       var a = document.createElement('a');
+
+      if (i > visible) {
+        a.classList.add('hide');
+      }
+
       a.setAttribute('data-fslightbox', "".concat(key));
       a.setAttribute('href', "".concat(href));
       a.appendChild(item);

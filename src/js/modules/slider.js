@@ -8,18 +8,22 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
     let slideIndex = 0;
 
     activateTabSlider();
-    window.addEventListener('resize', () => {
-      if(document.body.clientWidth <= 900){
-        activateTabSlider();
-      } else {
-        wrapper.style.cssText = `
-          justify-content: space-between;
-        `;
-        slides.forEach(slide => {
-          slide.style.display = 'block';
-        });
-      }
-    });
+    try {
+      window.addEventListener('resize', () => {
+        if(document.body.clientWidth <= 900){
+          activateTabSlider();
+        } else {
+          wrapper.style.cssText = `
+            justify-content: space-between;
+          `;
+          slides.forEach(slide => {
+            slide.style.display = 'block';
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
 
 
     arrL.addEventListener('click', () => {
@@ -95,7 +99,9 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
           `;
         }
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default tabSlider;

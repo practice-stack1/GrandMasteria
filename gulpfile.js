@@ -74,7 +74,6 @@ function browserSync(params) {
 function html_project() {
    return src(path.src.html)
     .pipe(fileinclude())
-    .pipe(webphtml())
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(dest(path.build.html))
     .pipe(browsersync.reload({stream: true}));
@@ -82,7 +81,6 @@ function html_project() {
 function html() {
     return src(path.src.html)
         .pipe(fileinclude())
-        .pipe(webphtml())
         .pipe(dest(path.build.html))
         .pipe(browsersync.reload({stream: true}));
 }
@@ -103,7 +101,6 @@ function css_project() {
             overrideBrowserslist: ['last 5 versions', '>1%', 'ie 8', 'ie 7'],
             cascade: true
         }))
-    .pipe(webpcss())
     .pipe(clean_css())
     .pipe(
         rename({
@@ -130,7 +127,6 @@ function css() {
                 overrideBrowserslist: ['last 5 versions', '>1%', 'ie 8', 'ie 7'],
                 cascade: true
             }))
-        .pipe(webpcss())
         .pipe(dest(path.build.css))
         .pipe(browsersync.reload({stream: true}));
 }
@@ -155,8 +151,10 @@ function js() {
                                 presets: [['@babel/preset-env', {
                                     debug: true,
                                     corejs: 3,
-                                    // useBuiltIns: "usage"
-                                }]]
+                                }]],
+                                plugins: [
+                                    ["@babel/plugin-transform-runtime"]
+                                ]
                               }
                             }
                           }
@@ -167,33 +165,33 @@ function js() {
                 .on("end", browsersync.reload);
 }
 
-function js_project() {
-    return gulp.src(path.src.js)
-                .pipe(webpack({
-                    mode: 'production',
-                    output: {
-                        filename: 'script.min.js'
-                    },
-                    module: {
-                        rules: [
-                          {
-                            test: /\.m?js$/,
-                            exclude: /(node_modules|bower_components)/,
-                            use: {
-                              loader: 'babel-loader',
-                              options: {
-                                presets: [['@babel/preset-env', {
-                                    corejs: 3,
-                                    useBuiltIns: "usage"
-                                }]]
-                              }
-                            }
-                          }
-                        ]
-                      }
-                }))
-                .pipe(gulp.dest(path.build.js));
-}
+// function js_project() {
+//     return gulp.src(path.src.js)
+//                 .pipe(webpack({
+//                     mode: 'production',
+//                     output: {
+//                         filename: 'script.min.js'
+//                     },
+//                     module: {
+//                         rules: [
+//                           {
+//                             test: /\.m?js$/,
+//                             exclude: /(node_modules|bower_components)/,
+//                             use: {
+//                               loader: 'babel-loader',
+//                               options: {
+//                                 presets: [['@babel/preset-env', {
+//                                     corejs: 3,
+//                                     useBuiltIns: "usage"
+//                                 }]]
+//                               }
+//                             }
+//                           }
+//                         ]
+//                       }
+//                 }))
+//                 .pipe(gulp.dest(path.build.js));
+// }
 
 function lib(){
     return gulp.src(path.src.lib)
@@ -203,24 +201,6 @@ function lib(){
 
 function images() {
     return src(path.src.img)
-        .pipe(
-            webp({
-                quality: 70,
-                method: 3,
-                autoFilter: true,
-                lossless: true
-            })
-        )
-        .pipe(dest(path.build.img))
-        .pipe(src(path.src.img))
-        .pipe(cache(imagemin({
-                progressive: true,
-                svgoPlugins: [{
-                    removeViewBox: false
-                }],
-                interlaced: true,
-                optimizationLevel: 3
-            })))
         .pipe(dest(path.build.img))
         .pipe(browsersync.reload({stream: true}))
 }
@@ -300,7 +280,7 @@ function db(){
 
 
 let dev = gulp.series(clean, gulp.parallel(html, css, images, fonts, icons, iconsFonts, db, lib), js, fontsStyle);
-let project = gulp.series(clean, gulp.parallel(html_project, css_project, images, fonts, icons, iconsFonts, db, lib), js_project, fontsStyle);
+let project = gulp.series(clean, gulp.parallel(html_project, css_project, images, fonts, icons, iconsFonts, db, lib), js, fontsStyle);
 
 gulp.task('default', gulp.parallel(dev, watchFile, browserSync));
 gulp.task('prod', gulp.parallel(project, browserSync));
@@ -309,7 +289,7 @@ gulp.task('prod', gulp.parallel(project, browserSync));
 exports.html_project = html_project;
 exports.iconsFonts = iconsFonts;
 exports.css_project = css_project;
-exports.js_project = js_project;
+// exports.js_project = js_project;
 exports.icons = icons;
 exports.fontsStyle = fontsStyle;
 exports.fonts = fonts;

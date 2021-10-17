@@ -15,10 +15,12 @@ import modal from './modules/modal';
 import tabSlider from './modules/slider';
 import setpage from './modules/setPage';
 import './modules/up';
+import checkerMobile from './modules/checkMobile';
 
 
 window.addEventListener('DOMContentLoaded', () => {
   "use strict"
+  checkerMobile();
   ibg();
   header('.header__burger', '.header__menu', '.header__item a');
   conection('.header__contacts a');
@@ -39,4 +41,5 @@ window.addEventListener('DOMContentLoaded', () => {
   showMore('.accessories__slide', '[data-section]','.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');
   tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   ibg();
+
 });

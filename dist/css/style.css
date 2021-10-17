@@ -4401,6 +4401,10 @@ body.lock {
           flex: 0 1 50%;
 }
 
+.info__img img {
+  width: 100%;
+}
+
 .tab {
   max-width: 100%;
   min-height: 52px;

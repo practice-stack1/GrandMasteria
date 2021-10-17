@@ -331,10 +331,22 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/node_modules/regenerator-runtime/runtime.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/node_modules/regenerator-runtime/runtime.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1096,18 +1108,6 @@ try {
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/regenerator/index.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/@babel/runtime/node_modules/regenerator-runtime/runtime.js");
-
-
-/***/ }),
-
 /***/ "./node_modules/webpack/buildin/amd-options.js":
 /*!****************************************!*\
   !*** (webpack)/buildin/amd-options.js ***!
@@ -1730,9 +1730,10 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
     };
 
     var containModalMobile = function containModalMobile(target) {
-      target = target.closest('.galary__slide-wrapper');
-      wrapperId = target.getAttribute('id');
-      itemIndex = Number(target.getAttribute('data-count'));
+      var targetWrapper = target.closest('.galary__slide-wrapper');
+      var targetItem = target.closest('.galary__item');
+      wrapperId = targetWrapper.getAttribute('id');
+      itemIndex = Number(targetItem.getAttribute('data-count'));
       changeItem(wrapperId, itemIndex);
     };
 
@@ -2227,16 +2228,22 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
         arrR = document.querySelector(arrows__right);
     var slideIndex = 0;
     activateTabSlider();
-    window.addEventListener('resize', function () {
-      if (document.body.clientWidth <= 900) {
-        activateTabSlider();
-      } else {
-        wrapper.style.cssText = "\n          justify-content: space-between;\n        ";
-        slides.forEach(function (slide) {
-          slide.style.display = 'block';
-        });
-      }
-    });
+
+    try {
+      window.addEventListener('resize', function () {
+        if (document.body.clientWidth <= 900) {
+          activateTabSlider();
+        } else {
+          wrapper.style.cssText = "\n            justify-content: space-between;\n          ";
+          slides.forEach(function (slide) {
+            slide.style.display = 'block';
+          });
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
     arrL.addEventListener('click', function () {
       if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
         plusSlide(-2);

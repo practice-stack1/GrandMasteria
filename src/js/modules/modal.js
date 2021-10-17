@@ -81,9 +81,10 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
       activateModal();
     }
     function containModalMobile(target){
-      target = target.closest('.galary__slide-wrapper');
-      wrapperId = target.getAttribute('id');
-      itemIndex = Number(target.getAttribute('data-count'));
+      const targetWrapper = target.closest('.galary__slide-wrapper');
+      const targetItem = target.closest('.galary__item');
+      wrapperId = targetWrapper.getAttribute('id');
+      itemIndex = Number(targetItem.getAttribute('data-count'));
       changeItem(wrapperId, itemIndex);
     }
     function containModalDesk(target){

@@ -1,7 +1,7 @@
 const spoiler = (body, text_container, range) => {
   const containers = document.querySelectorAll(text_container);
   const wrappers = document.querySelectorAll(body);
- if(body[0]){
+ if(wrappers[0]){
     window.addEventListener('orientationchange', () => {
       window.addEventListener('resize', () => {
         try {

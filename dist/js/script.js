@@ -2258,7 +2258,9 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
         plusSlide(1);
       }
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tabSlider);
@@ -2278,7 +2280,7 @@ var spoiler = function spoiler(body, text_container, range) {
   var containers = document.querySelectorAll(text_container);
   var wrappers = document.querySelectorAll(body);
 
-  if (body[0]) {
+  if (wrappers[0]) {
     var styleChange = function styleChange(container, wrapper) {
       try {
         if (document.body.clientWidth <= range) {

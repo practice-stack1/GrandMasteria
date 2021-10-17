@@ -1,12 +1,11 @@
 {
   "name": "training_gulp_configuration",
   "version": "1.0.0",
-  "description": "",
   "main": "gulpfile.js",
   "dependencies": {
+    "@babel/runtime": "^7.15.4",
     "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.2.2",
+    "core-js": "^2.5.7",
     "jquery": "^3.5.1",
     "magnific-popup": "^1.1.0",
     "normalize.css": "^8.0.1",
@@ -16,7 +15,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.12.13",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "browser-sync": "^2.26.7",
     "cwebp": "^2.0.5",
     "del": "^5.1.0",
@@ -55,5 +61,14 @@
     "test": "mocha"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/practice-stack1/GrandMasteria.git"
+  },
+  "bugs": {
+    "url": "https://github.com/practice-stack1/GrandMasteria/issues"
+  },
+  "homepage": "https://github.com/practice-stack1/GrandMasteria#readme",
+  "description": ""
 }

@@ -708,6 +708,71 @@
       "size": "Розмір: 234*167*68"
     },
     {
+      "src": "img/acessories/bronse/4-min.jpg",
+      "srcset": "img/acessories/bronse/4-min.webp",
+      "data": "img/acessories/bronse/4.webp",
+      "counter": "4",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/5-min.jpg",
+      "srcset": "img/acessories/bronse/5-min.webp",
+      "data": "img/acessories/bronse/5.webp",
+      "counter": "5",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/6-min.jpg",
+      "srcset": "img/acessories/bronse/6-min.webp",
+      "data": "img/acessories/bronse/6.webp",
+      "counter": "6",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/7-min.jpg",
+      "srcset": "img/acessories/bronse/7-min.webp",
+      "data": "img/acessories/bronse/7.webp",
+      "counter": "7",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/8-min.jpg",
+      "srcset": "img/acessories/bronse/8-min.webp",
+      "data": "img/acessories/bronse/8.webp",
+      "counter": "8",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+
+    {
+      "src": "img/acessories/bronse/9-min.jpg",
+      "srcset": "img/acessories/bronse/9-min.webp",
+      "data": "img/acessories/bronse/9.webp",
+      "counter": "9",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/10-min.jpg",
+      "srcset": "img/acessories/bronse/10-min.webp",
+      "data": "img/acessories/bronse/10.webp",
+      "counter": "10",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/acessories/bronse/11-min.jpg",
+      "srcset": "img/acessories/bronse/11-min.webp",
+      "data": "img/acessories/bronse/11.webp",
+      "counter": "11",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
       "src": "img/acessories/bronse/12-min.jpg",
       "srcset": "img/acessories/bronse/12-min.webp",
       "data": "img/acessories/bronse/12.webp",

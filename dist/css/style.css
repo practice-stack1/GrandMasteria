@@ -4538,6 +4538,10 @@ body.lock {
   transition: all 0.5s ease;
 }
 
+._mobile .galary__item:after {
+  display: none;
+}
+
 .galary__item:hover:after {
   opacity: 1;
   visibility: visible;
@@ -4920,6 +4924,10 @@ body.lock {
   -webkit-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+._mobile .accessories__item:after {
+  display: none;
 }
 
 .accessories__item:hover:after {

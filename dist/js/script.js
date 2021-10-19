@@ -2230,7 +2230,7 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
     activateTabSlider();
 
     try {
-      window.addEventListener('resize', function () {
+      window.addEventListener('orientationchange', function () {
         if (document.body.clientWidth <= 900) {
           activateTabSlider();
         } else {

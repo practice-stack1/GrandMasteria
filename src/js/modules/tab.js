@@ -1,4 +1,5 @@
 const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector = null, activeClass, display = 'block', secondDisplay = 'block') => {
+
   try {
     const header = document.querySelector(headerSelector),
         tab = document.querySelectorAll(tabSelector),

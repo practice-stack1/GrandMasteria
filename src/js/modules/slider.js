@@ -9,7 +9,7 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
 
     activateTabSlider();
     try {
-      window.addEventListener('resize', () => {
+      window.addEventListener('orientationchange', () => {
         if(document.body.clientWidth <= 900){
           activateTabSlider();
         } else {
@@ -81,8 +81,6 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
         slides[slideIndex - 1].style.display = 'block';
         slides[slideIndex - 1].click();
       }
-
-
     }
 
 

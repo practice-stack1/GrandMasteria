@@ -2442,8 +2442,12 @@ var tab = function tab(headerSelector, tabSelector) {
             setItem('accessories-tab-section');
         }
 
-        localStorage.setItem('galary-tab-section', 'single');
-        localStorage.setItem('accessories-tab-section', 'art');
+        if (!page) {
+          localStorage.setItem('galary-tab-section', 'single');
+          localStorage.setItem('accessories-tab-section', 'art');
+          setItem('galary-tab-section');
+          setItem('accessories-tab-section');
+        }
       };
 
       var setItem = function setItem(key) {

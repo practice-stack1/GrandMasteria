@@ -56,8 +56,12 @@ const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector
             setItem('accessories-tab-section');
         }
 
-        localStorage.setItem('galary-tab-section', 'single');
-        localStorage.setItem('accessories-tab-section', 'art');
+        if(!page){
+          localStorage.setItem('galary-tab-section', 'single');
+          localStorage.setItem('accessories-tab-section', 'art');
+          setItem('galary-tab-section');
+          setItem('accessories-tab-section');
+        }
       }
       function setItem(key){
         const navigate = localStorage.getItem(key);

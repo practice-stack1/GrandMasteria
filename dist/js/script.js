@@ -2276,6 +2276,10 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+
+
 var spoiler = function spoiler(body, text_container, range) {
   var containers = document.querySelectorAll(text_container);
   var wrappers = document.querySelectorAll(body);
@@ -2285,7 +2289,10 @@ var spoiler = function spoiler(body, text_container, range) {
       try {
         if (document.body.clientWidth <= range) {
           wrapper.dataset.changed = 'true';
-          container.children.forEach(function (p) {
+
+          var nodes = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(container.children);
+
+          nodes.forEach(function (p) {
             if (p.dataset.hide === 'true') {
               p.classList.add('no-display', 'animated');
             }

@@ -1,7 +1,7 @@
 const spoiler = (body, text_container, range) => {
   const containers = document.querySelectorAll(text_container);
   const wrappers = document.querySelectorAll(body);
- if(wrappers[0]){
+ if(wrappers[0]) {
     window.addEventListener('orientationchange', () => {
       window.addEventListener('resize', () => {
         try {
@@ -18,6 +18,9 @@ const spoiler = (body, text_container, range) => {
         } catch (error) {}
       });
     });
+
+
+
     wrappers.forEach((wrapper, i) => {
       styleChange(containers[i], wrapper);
       if(wrappers.length - 1 === i){
@@ -32,7 +35,8 @@ const spoiler = (body, text_container, range) => {
       try {
         if(document.body.clientWidth <= range){
           wrapper.dataset.changed = 'true';
-            container.children.forEach(p => {
+            let nodes = [...container.children];
+            nodes.forEach(p => {
               if(p.dataset.hide === 'true'){
                 p.classList.add('no-display', 'animated');
               }

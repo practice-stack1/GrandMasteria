@@ -2,7 +2,6 @@ import isMobile from '../basic/checkMobile';
 
 const conection = (contacts) => {
   const tels = document.querySelectorAll(contacts);
-
   if(isMobile.any()){
     const phone = "tel:+";
     conetions(tels, phone);

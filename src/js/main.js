@@ -1,6 +1,6 @@
 import './basic/ibg';
 import './basic/webp';
-import './basic/dynamic_adaptive';
+// import './basic/dynamic_adaptive';
 import header from './modules/sections/header';
 import spoiler from './modules/spoiler';
 import navigation from './modules/sections/short_nav';

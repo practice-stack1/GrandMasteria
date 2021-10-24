@@ -1,7 +1,7 @@
 
 const navigation = (columns) => {
   const wrapper = document.querySelectorAll(columns);
-  
+
   wrapper.forEach(item => {
     item.addEventListener('click', (e) => {
       setSection(item);
@@ -10,6 +10,7 @@ const navigation = (columns) => {
   });
 
   function setSection(item){
+    console.log(item);
     let section = item.dataset.nav;
     let page = item.dataset.page;
     localStorage.setItem('page', page);

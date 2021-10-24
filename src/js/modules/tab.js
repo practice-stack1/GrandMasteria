@@ -7,7 +7,7 @@ const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector
         secondConent = document.querySelectorAll(secondSelector);
     if(content[0]){
       header.addEventListener('click', (e) => {
-
+        console.trace();
         const target = e.target;
         if(target && (target.classList.contains(tabSelector.replace(/\./, ""))
         || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))){
@@ -67,12 +67,14 @@ const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector
         const navigate = localStorage.getItem(key);
         tab.forEach((item, i) => {
           if(navigate === item.dataset.nav){
-            hideTabContent();
-            showTabContent(i);
+            // hideTabContent();
+            tab[i].click();
+            // showTabContent(i);
           }
         });
       }
       function showTabContent(i = 0) {
+        console.trace();
         content[i].style.display = display;
         content[i].classList.add('animated', 'fadeIn');
         tab[i].classList.add(activeClass);

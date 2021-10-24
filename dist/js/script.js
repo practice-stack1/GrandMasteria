@@ -1684,6 +1684,7 @@ var navigation = function navigation(columns) {
   });
 
   function setSection(item) {
+    console.log(item);
     var section = item.dataset.nav;
     var page = item.dataset.page;
     localStorage.setItem('page', page);
@@ -1735,8 +1736,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_requests__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/requests */ "./src/js/services/requests.js");
 /* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../basic/ibg */ "./src/js/basic/ibg.js");
 /* harmony import */ var _lib_fslightbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lib/fslightbox */ "./src/lib/fslightbox.js");
-/* harmony import */ var _basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../basic/checkMobile */ "./src/js/basic/checkMobile.js");
-
 
 
 
@@ -1765,12 +1764,7 @@ var showMore = function showMore() {
           item.classList.add('hide');
         }
 
-        if (!_basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__["default"].iOS()) {
-          item.innerHTML = "\n            <div class=\"galary__img\">\n              <picture>\n                <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n              </picture>\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n          ");
-        } else {
-          item.innerHTML = "\n            <div class=\"galary__img\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n          ");
-        }
-
+        item.innerHTML = "\n            <div class=\"galary__img\">\n              <picture>\n                <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n              </picture>\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n          ");
         wrap.appendChild(item);
       });
     };
@@ -1785,17 +1779,9 @@ var showMore = function showMore() {
         item.classList.add('accessories__item', 'accessories__item-art');
 
         if (wrap.classList.contains('accessories__slide-wrapper-art')) {
-          if (!_basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__["default"].iOS()) {
-            item.innerHTML = "\n              <div class=\"accessories__img accessories__img-art\">\n                <picture>\n                  <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                  <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n                </picture>\n              </div>\n              <div class=\"accessories__counter\">").concat(counter, "</div>\n            ");
-          } else {
-            item.innerHTML = "\n              <div class=\"accessories__img accessories__img-art\">\n                <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n              </div>\n              <div class=\"accessories__counter\">").concat(counter, "</div>\n            ");
-          }
+          item.innerHTML = "\n              <div class=\"accessories__img accessories__img-art\">\n                <picture>\n                  <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                  <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n                </picture>\n              </div>\n              <div class=\"accessories__counter\">").concat(counter, "</div>\n            ");
         } else {
-          if (!_basic_checkMobile__WEBPACK_IMPORTED_MODULE_3__["default"].iOS()) {
-            item.innerHTML = "\n              <div class=\"accessories__img\">\n                <picture>\n                  <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                  <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n                </picture>\n              </div>\n              <div class=\"accessories__counter\">").concat(counter, "</div>\n            ");
-          } else {
-            item.innerHTML = "\n              <div class=\"accessories__img\">\n                <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n              </div>\n              <div class=\"accessories__counter\">").concat(counter, "</div>\n            ");
-          }
+          item.innerHTML = "\n            <div class=\"accessories__img\">\n              <picture>\n                <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n              </picture>\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
         }
 
         wrap.appendChild(addLightBox(key, item, i, visible_count));
@@ -1975,8 +1961,7 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
         slides.forEach(function (slide) {
           slide.style.display = 'none';
         });
-        slides[slideIndex - 1].style.display = 'block';
-        slides[slideIndex - 1].click();
+        slides[slideIndex - 1].style.display = 'block'; // slides[slideIndex - 1].click();
       }
     };
 
@@ -2233,14 +2218,16 @@ var tab = function tab(headerSelector, tabSelector) {
 
         _tab.forEach(function (item, i) {
           if (navigate === item.dataset.nav) {
-            hideTabContent();
-            showTabContent(i);
+            // hideTabContent();
+            _tab[i].click(); // showTabContent(i);
+
           }
         });
       };
 
       var showTabContent = function showTabContent() {
         var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        console.trace();
         content[i].style.display = display;
         content[i].classList.add('animated', 'fadeIn');
 
@@ -2253,6 +2240,7 @@ var tab = function tab(headerSelector, tabSelector) {
       };
 
       header.addEventListener('click', function (e) {
+        console.trace();
         var target = e.target;
 
         if (target && (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))) {

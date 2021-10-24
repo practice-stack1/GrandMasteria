@@ -1,7 +1,6 @@
 import {getResource} from '../services/requests';
 import ibg from '../basic/ibg';
 import '../../lib/fslightbox';
-import isMobile from '../basic/checkMobile';
 const showMore = (btn__trigger = null, tab__slides = null, container, item, range, msg) => {
   const triggers = document.querySelectorAll(btn__trigger),
         slides = document.querySelectorAll(tab__slides);
@@ -44,8 +43,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
           if(i > visible_count){
             item.classList.add('hide');
           }
-          if(!isMobile.iOS()){
-            item.innerHTML = `
+          item.innerHTML = `
             <div class="galary__img">
               <picture>
                 <source srcset="${srcset}" type="image/webp">
@@ -54,14 +52,6 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
             </div>
             <div class="galary__counter">${counter}</div>
           `;
-          } else {
-            item.innerHTML = `
-            <div class="galary__img">
-              <img src="${src}" alt="Фото продукції">
-            </div>
-            <div class="galary__counter">${counter}</div>
-          `;
-          }
 
           wrap.appendChild(item);
         });
@@ -72,8 +62,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
           item.classList.add('accessories__item', 'accessories__item-art');
 
           if(wrap.classList.contains('accessories__slide-wrapper-art')){
-            if(!isMobile.iOS()){
-              item.innerHTML = `
+            item.innerHTML = `
               <div class="accessories__img accessories__img-art">
                 <picture>
                   <source srcset="${srcset}" type="image/webp">
@@ -82,34 +71,17 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
               </div>
               <div class="accessories__counter">${counter}</div>
             `;
-            } else {
-              item.innerHTML = `
-              <div class="accessories__img accessories__img-art">
-                <img src="${src}" alt="Фото продукції" data-fancy="${data}">
-              </div>
-              <div class="accessories__counter">${counter}</div>
-            `;
-            }
 
           } else {
-            if(!isMobile.iOS()){
-              item.innerHTML = `
-              <div class="accessories__img">
-                <picture>
-                  <source srcset="${srcset}" type="image/webp">
-                  <img src="${src}" alt="Фото продукції" data-fancy="${data}">
-                </picture>
-              </div>
-              <div class="accessories__counter">${counter}</div>
-            `;
-            } else {
-              item.innerHTML = `
-              <div class="accessories__img">
+            item.innerHTML = `
+            <div class="accessories__img">
+              <picture>
+                <source srcset="${srcset}" type="image/webp">
                 <img src="${src}" alt="Фото продукції" data-fancy="${data}">
-              </div>
-              <div class="accessories__counter">${counter}</div>
-            `;
-            }
+              </picture>
+            </div>
+            <div class="accessories__counter">${counter}</div>
+          `;
 
           }
           wrap.appendChild(addLightBox(key, item, i, visible_count));

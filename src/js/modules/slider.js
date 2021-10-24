@@ -79,7 +79,7 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
           slide.style.display = 'none';
         });
         slides[slideIndex - 1].style.display = 'block';
-        slides[slideIndex - 1].click();
+        // slides[slideIndex - 1].click();
       }
     }
 

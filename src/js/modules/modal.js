@@ -1,5 +1,6 @@
 import isMobile from '../basic/checkMobile';
 import ibg from '../basic/ibg';
+
 const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, modal__more, modal__info) => {
   const overlay = document.querySelector(modal__overlay),
         close = document.querySelector(modal__close),
@@ -95,6 +96,7 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
 
     function inputModalData({src, source, count, section}, modal){
       modal.querySelector('.modal__img source').setAttribute('srcset', `${source}`);
+      modal.querySelector('.modal__img source').setAttribute('type', `image/webp`);
       modal.querySelector('.modal__img img').setAttribute('src', `${src}`);
       ibg();
       modal.querySelector('.modal__section').textContent = section;

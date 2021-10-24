@@ -174,52 +174,6 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
@@ -1190,204 +1144,6 @@ var isMobile = {
 
 /***/ }),
 
-/***/ "./src/js/basic/dynamic_adaptive.js":
-/*!******************************************!*\
-  !*** ./src/js/basic/dynamic_adaptive.js ***!
-  \******************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-
-
-
-var DynamicAdapt = /*#__PURE__*/function () {
-  function DynamicAdapt(type) {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, DynamicAdapt);
-
-    this.type = type;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(DynamicAdapt, [{
-    key: "init",
-    value: function init() {
-      var _this = this;
-
-      // массив объектов
-      this.оbjects = [];
-      this.daClassname = '_dynamic_adapt_'; // массив DOM-элементов
-
-      this.nodes = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(document.querySelectorAll('[data-da]')); // наполнение оbjects объктами
-
-      this.nodes.forEach(function (node) {
-        var data = node.dataset.da.trim();
-        var dataArray = data.split(',');
-        var оbject = {};
-        оbject.element = node;
-        оbject.parent = node.parentNode;
-        оbject.destination = document.querySelector("".concat(dataArray[0].trim()));
-        оbject.breakpoint = dataArray[1] ? dataArray[1].trim() : '767';
-        оbject.place = dataArray[2] ? dataArray[2].trim() : 'last';
-        оbject.index = _this.indexInParent(оbject.parent, оbject.element);
-
-        _this.оbjects.push(оbject);
-      });
-      this.arraySort(this.оbjects); // массив уникальных медиа-запросов
-
-      this.mediaQueries = this.оbjects.map(function (_ref) {
-        var breakpoint = _ref.breakpoint;
-        return "(".concat(_this.type, "-width: ").concat(breakpoint, "px),").concat(breakpoint);
-      }).filter(function (item, index, self) {
-        return self.indexOf(item) === index;
-      }); // навешивание слушателя на медиа-запрос
-      // и вызов обработчика при первом запуске
-
-      this.mediaQueries.forEach(function (media) {
-        var mediaSplit = media.split(',');
-        var matchMedia = window.matchMedia(mediaSplit[0]);
-        var mediaBreakpoint = mediaSplit[1]; // массив объектов с подходящим брейкпоинтом
-
-        var оbjectsFilter = _this.оbjects.filter(function (_ref2) {
-          var breakpoint = _ref2.breakpoint;
-          return breakpoint === mediaBreakpoint;
-        });
-
-        matchMedia.addEventListener('change', function () {
-          _this.mediaHandler(matchMedia, оbjectsFilter);
-        });
-
-        _this.mediaHandler(matchMedia, оbjectsFilter);
-      });
-    } // Основная функция
-
-  }, {
-    key: "mediaHandler",
-    value: function mediaHandler(matchMedia, оbjects) {
-      var _this2 = this;
-
-      if (matchMedia.matches) {
-        оbjects.forEach(function (оbject) {
-          оbject.index = _this2.indexInParent(оbject.parent, оbject.element);
-
-          _this2.moveTo(оbject.place, оbject.element, оbject.destination);
-        });
-      } else {
-        оbjects.forEach(function (_ref3) {
-          var parent = _ref3.parent,
-              element = _ref3.element,
-              index = _ref3.index;
-
-          if (element.classList.contains(_this2.daClassname)) {
-            _this2.moveBack(parent, element, index);
-          }
-        });
-      }
-    } // Функция перемещения
-
-  }, {
-    key: "moveTo",
-    value: function moveTo(place, element, destination) {
-      element.classList.add(this.daClassname);
-
-      if (place === 'last' || place >= destination.children.length) {
-        destination.append(element);
-        return;
-      }
-
-      if (place === 'first') {
-        destination.prepend(element);
-        return;
-      }
-
-      destination.children[place].before(element);
-    } // Функция возврата
-
-  }, {
-    key: "moveBack",
-    value: function moveBack(parent, element, index) {
-      element.classList.remove(this.daClassname);
-
-      if (parent.children[index] !== undefined) {
-        parent.children[index].before(element);
-      } else {
-        parent.append(element);
-      }
-    } // Функция получения индекса внутри родителя
-
-  }, {
-    key: "indexInParent",
-    value: function indexInParent(parent, element) {
-      return _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(parent.children).indexOf(element);
-    } // Функция сортировки массива по breakpoint и place
-    // по возрастанию для this.type = min
-    // по убыванию для this.type = max
-
-  }, {
-    key: "arraySort",
-    value: function arraySort(arr) {
-      if (this.type === 'min') {
-        arr.sort(function (a, b) {
-          if (a.breakpoint === b.breakpoint) {
-            if (a.place === b.place) {
-              return 0;
-            }
-
-            if (a.place === 'first' || b.place === 'last') {
-              return -1;
-            }
-
-            if (a.place === 'last' || b.place === 'first') {
-              return 1;
-            }
-
-            return a.place - b.place;
-          }
-
-          return a.breakpoint - b.breakpoint;
-        });
-      } else {
-        arr.sort(function (a, b) {
-          if (a.breakpoint === b.breakpoint) {
-            if (a.place === b.place) {
-              return 0;
-            }
-
-            if (a.place === 'first' || b.place === 'last') {
-              return 1;
-            }
-
-            if (a.place === 'last' || b.place === 'first') {
-              return -1;
-            }
-
-            return b.place - a.place;
-          }
-
-          return b.breakpoint - a.breakpoint;
-        });
-        return;
-      }
-    }
-  }]);
-
-  return DynamicAdapt;
-}();
-
-var da = new DynamicAdapt("max");
-da.init();
-
-/***/ }),
-
 /***/ "./src/js/basic/ibg.js":
 /*!*****************************!*\
   !*** ./src/js/basic/ibg.js ***!
@@ -1451,24 +1207,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _basic_ibg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./basic/ibg */ "./src/js/basic/ibg.js");
 /* harmony import */ var _basic_webp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./basic/webp */ "./src/js/basic/webp.js");
 /* harmony import */ var _basic_webp__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_basic_webp__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _basic_dynamic_adaptive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./basic/dynamic_adaptive */ "./src/js/basic/dynamic_adaptive.js");
-/* harmony import */ var _modules_sections_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/sections/header */ "./src/js/modules/sections/header.js");
-/* harmony import */ var _modules_spoiler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/spoiler */ "./src/js/modules/spoiler.js");
-/* harmony import */ var _modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/sections/short_nav */ "./src/js/modules/sections/short_nav.js");
-/* harmony import */ var _modules_conections__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/conections */ "./src/js/modules/conections.js");
-/* harmony import */ var _modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/checkNumInputs */ "./src/js/modules/checkNumInputs.js");
-/* harmony import */ var _modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/checkTextInputs */ "./src/js/modules/checkTextInputs.js");
-/* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
-/* harmony import */ var _modules_tab__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/tab */ "./src/js/modules/tab.js");
-/* harmony import */ var _modules_showMore__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/showMore */ "./src/js/modules/showMore.js");
-/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
-/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
-/* harmony import */ var _modules_setPage__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/setPage */ "./src/js/modules/setPage.js");
-/* harmony import */ var _modules_up__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./modules/up */ "./src/js/modules/up.js");
-/* harmony import */ var _modules_up__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_modules_up__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _modules_checkMobile__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./modules/checkMobile */ "./src/js/modules/checkMobile.js");
+/* harmony import */ var _modules_sections_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/sections/header */ "./src/js/modules/sections/header.js");
+/* harmony import */ var _modules_spoiler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/spoiler */ "./src/js/modules/spoiler.js");
+/* harmony import */ var _modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/sections/short_nav */ "./src/js/modules/sections/short_nav.js");
+/* harmony import */ var _modules_conections__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/conections */ "./src/js/modules/conections.js");
+/* harmony import */ var _modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/checkNumInputs */ "./src/js/modules/checkNumInputs.js");
+/* harmony import */ var _modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/checkTextInputs */ "./src/js/modules/checkTextInputs.js");
+/* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
+/* harmony import */ var _modules_tab__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/tab */ "./src/js/modules/tab.js");
+/* harmony import */ var _modules_showMore__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/showMore */ "./src/js/modules/showMore.js");
+/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+/* harmony import */ var _modules_setPage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/setPage */ "./src/js/modules/setPage.js");
+/* harmony import */ var _modules_up__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/up */ "./src/js/modules/up.js");
+/* harmony import */ var _modules_up__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_modules_up__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _modules_checkMobile__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./modules/checkMobile */ "./src/js/modules/checkMobile.js");
 
-
+ // import './basic/dynamic_adaptive';
 
 
 
@@ -1488,26 +1243,26 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', function () {
   "use strict";
 
-  Object(_modules_checkMobile__WEBPACK_IMPORTED_MODULE_16__["default"])();
+  Object(_modules_checkMobile__WEBPACK_IMPORTED_MODULE_15__["default"])();
   Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  Object(_modules_sections_header__WEBPACK_IMPORTED_MODULE_3__["default"])('.header__burger', '.header__menu', '.header__item a');
-  Object(_modules_conections__WEBPACK_IMPORTED_MODULE_6__["default"])('.header__contacts a');
-  Object(_modules_conections__WEBPACK_IMPORTED_MODULE_6__["default"])('.footer__phone_tel a');
-  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_4__["default"])('.about__body', '.about__body .about__text', 500);
-  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_4__["default"])('.answears__body', '.answears__body .answears__text', 767);
-  Object(_modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_5__["default"])('.short-nav__column');
-  Object(_modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_5__["default"])('.info__text a');
-  Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_14__["default"])('.header__item a');
-  Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_14__["default"])('.short-nav__btn a');
-  Object(_modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_7__["default"])('._no-symbol');
-  Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_8__["default"])('._no-num');
-  Object(_modules_mask__WEBPACK_IMPORTED_MODULE_9__["default"])('[name="phone"]');
-  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_10__["default"])('.tab', '.tab__item', '.accessories__slide', '[data-tab]', 'active', 'block', 'flex');
-  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_10__["default"])('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
-  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_12__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
-  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_11__["default"])('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
-  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_11__["default"])('.accessories__slide', '[data-section]', '.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_13__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
+  Object(_modules_sections_header__WEBPACK_IMPORTED_MODULE_2__["default"])('.header__burger', '.header__menu', '.header__item a');
+  Object(_modules_conections__WEBPACK_IMPORTED_MODULE_5__["default"])('.header__contacts a');
+  Object(_modules_conections__WEBPACK_IMPORTED_MODULE_5__["default"])('.footer__phone_tel a');
+  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_3__["default"])('.about__body', '.about__body .about__text', 500);
+  Object(_modules_spoiler__WEBPACK_IMPORTED_MODULE_3__["default"])('.answears__body', '.answears__body .answears__text', 767);
+  Object(_modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_4__["default"])('.short-nav__column');
+  Object(_modules_sections_short_nav__WEBPACK_IMPORTED_MODULE_4__["default"])('.info__text a');
+  Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_13__["default"])('.header__item a');
+  Object(_modules_setPage__WEBPACK_IMPORTED_MODULE_13__["default"])('.short-nav__btn a');
+  Object(_modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_6__["default"])('._no-symbol');
+  Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_7__["default"])('._no-num');
+  Object(_modules_mask__WEBPACK_IMPORTED_MODULE_8__["default"])('[name="phone"]');
+  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.accessories__slide', '[data-tab]', 'active', 'block', 'flex');
+  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
+  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_11__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
+  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_10__["default"])('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
+  Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_10__["default"])('.accessories__slide', '[data-section]', '.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_12__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
 

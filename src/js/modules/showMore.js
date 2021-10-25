@@ -1,6 +1,7 @@
 import {getResource} from '../services/requests';
 import ibg from '../basic/ibg';
 import '../../lib/fslightbox';
+
 const showMore = (btn__trigger = null, tab__slides = null, container, item, range, msg) => {
   const triggers = document.querySelectorAll(btn__trigger),
         slides = document.querySelectorAll(tab__slides);
@@ -36,7 +37,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
       });
 
       function createItem(response, wrap, visible_count){
-        response.forEach(({src, srcset, counter}, i) => {
+        response.forEach(({src, counter}, i) => {
           let item = document.createElement('div');
           item.classList.add('galary__item');
           item.setAttribute('data-count', i);
@@ -45,10 +46,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
           }
           item.innerHTML = `
             <div class="galary__img">
-              <picture>
-                <source srcset="${srcset}" type="image/webp">
-                <img src="${src}" alt="Фото продукції">
-              </picture>
+              <img src="${src}" alt="Фото продукції">
             </div>
             <div class="galary__counter">${counter}</div>
           `;
@@ -64,10 +62,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
           if(wrap.classList.contains('accessories__slide-wrapper-art')){
             item.innerHTML = `
               <div class="accessories__img accessories__img-art">
-                <picture>
-                  <source srcset="${srcset}" type="image/webp">
-                  <img src="${src}" alt="Фото продукції" data-fancy="${data}">
-                </picture>
+                <img src="${src}" alt="Фото продукції" data-fancy="${data}">
               </div>
               <div class="accessories__counter">${counter}</div>
             `;
@@ -75,10 +70,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
           } else {
             item.innerHTML = `
             <div class="accessories__img">
-              <picture>
-                <source srcset="${srcset}" type="image/webp">
-                <img src="${src}" alt="Фото продукції" data-fancy="${data}">
-              </picture>
+              <img src="${src}" alt="Фото продукції" data-fancy="${data}">
             </div>
             <div class="accessories__counter">${counter}</div>
           `;
@@ -89,7 +81,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
         });
       }
       function addLightBox(key, item, i, visible){
-        const href = item.querySelector('img').getAttribute('data-fancy');
+        const href = item.querySelector('img').getAttribute('src');
         const a = document.createElement('a');
         if(i > visible) {
           a.classList.add('hide');

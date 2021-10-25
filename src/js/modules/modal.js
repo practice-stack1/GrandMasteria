@@ -95,8 +95,8 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
     }
 
     function inputModalData({src, source, count, section}, modal){
-      modal.querySelector('.modal__img source').setAttribute('srcset', `${source}`);
-      modal.querySelector('.modal__img source').setAttribute('type', `image/webp`);
+      // modal.querySelector('.modal__img source').setAttribute('srcset', `${source}`);
+      // modal.querySelector('.modal__img source').setAttribute('type', `image/webp`);
       modal.querySelector('.modal__img img').setAttribute('src', `${src}`);
       ibg();
       modal.querySelector('.modal__section').textContent = section;
@@ -104,25 +104,26 @@ const modal = (galary__wrapper, modal__wrapper, modal__overlay, modal__close, mo
     }
     function getItemData(item){
       const img = item.querySelector('.galary__img img').getAttribute('src'),
-            source = item.querySelector('.galary__img source').getAttribute('srcset'),
+            // source = item.querySelector('.galary__img source').getAttribute('srcset'),
             count = item.querySelector('.galary__counter').textContent,
             section = item.parentNode.previousElementSibling.textContent,
             data = {};
 
-      const newPath = makeNewPath(img, source, '.jpg', '.webp');
+      const newPath = makeNewPath(img, '.jpg');
       data.src = newPath.img;
-      data.source = newPath.source;
+      // data.source = newPath.source;
+      // data.src = img;
       data.count = count;
       data.section = section;
 
       return data;
     }
-    function makeNewPath(img, source, typeImg, typeSource){
+    function makeNewPath(img, typeImg){
       let newSrc = `${img.substr(0, +img.lastIndexOf('-min'))}${typeImg}`;
-      let newSource = `${source.substr(0, +source.lastIndexOf('-min'))}${typeSource}`;
+      // let newSource = `${source.substr(0, +source.lastIndexOf('-min'))}${typeSource}`;
       return {
         img: newSrc,
-        source: newSource
+        // source: newSource
       }
     }
     function activateModal(){

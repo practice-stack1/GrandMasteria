@@ -7,7 +7,6 @@ const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector
         secondConent = document.querySelectorAll(secondSelector);
     if(content[0]){
       header.addEventListener('click', (e) => {
-        console.trace();
         const target = e.target;
         if(target && (target.classList.contains(tabSelector.replace(/\./, ""))
         || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))){
@@ -74,7 +73,6 @@ const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector
         });
       }
       function showTabContent(i = 0) {
-        console.trace();
         content[i].style.display = display;
         content[i].classList.add('animated', 'fadeIn');
         tab[i].classList.add(activeClass);

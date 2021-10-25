@@ -1214,10 +1214,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/checkNumInputs */ "./src/js/modules/checkNumInputs.js");
 /* harmony import */ var _modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/checkTextInputs */ "./src/js/modules/checkTextInputs.js");
 /* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
-/* harmony import */ var _modules_tab__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/tab */ "./src/js/modules/tab.js");
+/* harmony import */ var _modules_tab_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/tab.js */ "./src/js/modules/tab.js");
 /* harmony import */ var _modules_showMore__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/showMore */ "./src/js/modules/showMore.js");
 /* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
-/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+/* harmony import */ var _modules_slider_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/slider.js */ "./src/js/modules/slider.js");
 /* harmony import */ var _modules_setPage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modules/setPage */ "./src/js/modules/setPage.js");
 /* harmony import */ var _modules_up__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./modules/up */ "./src/js/modules/up.js");
 /* harmony import */ var _modules_up__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_modules_up__WEBPACK_IMPORTED_MODULE_14__);
@@ -1257,12 +1257,12 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_6__["default"])('._no-symbol');
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_7__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_8__["default"])('[name="phone"]');
-  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.accessories__slide', '[data-tab]', 'active', 'block', 'flex');
-  Object(_modules_tab__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
+  Object(_modules_slider_js__WEBPACK_IMPORTED_MODULE_12__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
+  Object(_modules_tab_js__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.accessories__slide', '[data-tab]', 'active', 'block', 'flex');
+  Object(_modules_tab_js__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_11__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_10__["default"])('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_10__["default"])('.accessories__slide', '[data-section]', '.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_12__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
 
@@ -1503,8 +1503,8 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
           source = _ref.source,
           count = _ref.count,
           section = _ref.section;
-      modal.querySelector('.modal__img source').setAttribute('srcset', "".concat(source));
-      modal.querySelector('.modal__img source').setAttribute('type', "image/webp");
+      // modal.querySelector('.modal__img source').setAttribute('srcset', `${source}`);
+      // modal.querySelector('.modal__img source').setAttribute('type', `image/webp`);
       modal.querySelector('.modal__img img').setAttribute('src', "".concat(src));
       Object(_basic_ibg__WEBPACK_IMPORTED_MODULE_1__["default"])();
       modal.querySelector('.modal__section').textContent = section;
@@ -1513,24 +1513,25 @@ var modal = function modal(galary__wrapper, modal__wrapper, modal__overlay, moda
 
     var getItemData = function getItemData(item) {
       var img = item.querySelector('.galary__img img').getAttribute('src'),
-          source = item.querySelector('.galary__img source').getAttribute('srcset'),
-          count = item.querySelector('.galary__counter').textContent,
+          // source = item.querySelector('.galary__img source').getAttribute('srcset'),
+      count = item.querySelector('.galary__counter').textContent,
           section = item.parentNode.previousElementSibling.textContent,
           data = {};
-      var newPath = makeNewPath(img, source, '.jpg', '.webp');
-      data.src = newPath.img;
-      data.source = newPath.source;
+      var newPath = makeNewPath(img, '.jpg');
+      data.src = newPath.img; // data.source = newPath.source;
+      // data.src = img;
+
       data.count = count;
       data.section = section;
       return data;
     };
 
-    var makeNewPath = function makeNewPath(img, source, typeImg, typeSource) {
-      var newSrc = "".concat(img.substr(0, +img.lastIndexOf('-min'))).concat(typeImg);
-      var newSource = "".concat(source.substr(0, +source.lastIndexOf('-min'))).concat(typeSource);
+    var makeNewPath = function makeNewPath(img, typeImg) {
+      var newSrc = "".concat(img.substr(0, +img.lastIndexOf('-min'))).concat(typeImg); // let newSource = `${source.substr(0, +source.lastIndexOf('-min'))}${typeSource}`;
+
       return {
-        img: newSrc,
-        source: newSource
+        img: newSrc // source: newSource
+
       };
     };
 
@@ -1754,7 +1755,6 @@ var showMore = function showMore() {
     var createItem = function createItem(response, wrap, visible_count) {
       response.forEach(function (_ref, i) {
         var src = _ref.src,
-            srcset = _ref.srcset,
             counter = _ref.counter;
         var item = document.createElement('div');
         item.classList.add('galary__item');
@@ -1764,7 +1764,7 @@ var showMore = function showMore() {
           item.classList.add('hide');
         }
 
-        item.innerHTML = "\n            <div class=\"galary__img\">\n              <picture>\n                <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n              </picture>\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n          ");
+        item.innerHTML = "\n            <div class=\"galary__img\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\">\n            </div>\n            <div class=\"galary__counter\">").concat(counter, "</div>\n          ");
         wrap.appendChild(item);
       });
     };
@@ -1779,9 +1779,9 @@ var showMore = function showMore() {
         item.classList.add('accessories__item', 'accessories__item-art');
 
         if (wrap.classList.contains('accessories__slide-wrapper-art')) {
-          item.innerHTML = "\n              <div class=\"accessories__img accessories__img-art\">\n                <picture>\n                  <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                  <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n                </picture>\n              </div>\n              <div class=\"accessories__counter\">").concat(counter, "</div>\n            ");
+          item.innerHTML = "\n              <div class=\"accessories__img accessories__img-art\">\n                <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n              </div>\n              <div class=\"accessories__counter\">").concat(counter, "</div>\n            ");
         } else {
-          item.innerHTML = "\n            <div class=\"accessories__img\">\n              <picture>\n                <source srcset=\"".concat(srcset, "\" type=\"image/webp\">\n                <img src=\"").concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n              </picture>\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
+          item.innerHTML = "\n            <div class=\"accessories__img\">\n              <img src=\"".concat(src, "\" alt=\"\u0424\u043E\u0442\u043E \u043F\u0440\u043E\u0434\u0443\u043A\u0446\u0456\u0457\" data-fancy=\"").concat(data, "\">\n            </div>\n            <div class=\"accessories__counter\">").concat(counter, "</div>\n          ");
         }
 
         wrap.appendChild(addLightBox(key, item, i, visible_count));
@@ -1790,7 +1790,7 @@ var showMore = function showMore() {
     };
 
     var addLightBox = function addLightBox(key, item, i, visible) {
-      var href = item.querySelector('img').getAttribute('data-fancy');
+      var href = item.querySelector('img').getAttribute('src');
       var a = document.createElement('a');
 
       if (i > visible) {
@@ -2227,7 +2227,6 @@ var tab = function tab(headerSelector, tabSelector) {
 
       var showTabContent = function showTabContent() {
         var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-        console.trace();
         content[i].style.display = display;
         content[i].classList.add('animated', 'fadeIn');
 
@@ -2240,7 +2239,6 @@ var tab = function tab(headerSelector, tabSelector) {
       };
 
       header.addEventListener('click', function (e) {
-        console.trace();
         var target = e.target;
 
         if (target && (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))) {

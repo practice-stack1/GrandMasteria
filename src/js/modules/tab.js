@@ -18,6 +18,7 @@ const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector
           });
         }
       });
+
       hideTabContent();
       showDefaultTabContent();
       function hideTabContent() {
@@ -63,12 +64,16 @@ const tab = (headerSelector, tabSelector, contentSelector = null, secondSelector
         }
       }
       function setItem(key){
-        const navigate = localStorage.getItem(key);
+        let navigate = localStorage.getItem(key);
+        if(!navigate){
+          localStorage.setItem('galary-tab-section', 'single');
+          localStorage.setItem('accessories-tab-section', 'art');
+        }
+        navigate = localStorage.getItem(key);
         tab.forEach((item, i) => {
           if(navigate === item.dataset.nav){
-            // hideTabContent();
-            tab[i].click();
-            // showTabContent(i);
+            hideTabContent();
+            showTabContent(i);
           }
         });
       }

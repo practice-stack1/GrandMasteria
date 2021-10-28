@@ -1257,9 +1257,9 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_6__["default"])('._no-symbol');
   Object(_modules_checkTextInputs__WEBPACK_IMPORTED_MODULE_7__["default"])('._no-num');
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_8__["default"])('[name="phone"]');
-  Object(_modules_slider_js__WEBPACK_IMPORTED_MODULE_12__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   Object(_modules_tab_js__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.accessories__slide', '[data-tab]', 'active', 'block', 'flex');
   Object(_modules_tab_js__WEBPACK_IMPORTED_MODULE_9__["default"])('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
+  Object(_modules_slider_js__WEBPACK_IMPORTED_MODULE_12__["default"])('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_11__["default"])('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_10__["default"])('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
   Object(_modules_showMore__WEBPACK_IMPORTED_MODULE_10__["default"])('.accessories__slide', '[data-section]', '.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');
@@ -1922,59 +1922,83 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
     };
 
     var showSlides = function showSlides() {
-      var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-      if (document.body.clientWidth <= 900 && document.body.clientWidth > 768) {
-        if (n >= slides.length - 1) {
-          slideIndex = 1;
-        } else if (n <= 0 || n > 1) {
-          slideIndex = slides.length;
+      if (n >= slides.length) {
+        slideIndex = 0;
+      } else if (n < 0) {
+        slideIndex = slides.length - 1;
+      }
+
+      slides.forEach(function (slide) {
+        slide.style.display = 'none';
+      });
+      console.trace();
+      slides[slideIndex].style.display = 'block';
+      slides[slideIndex].click();
+    };
+
+    var activateTabSlider = function activateTabSlider(bool) {
+      if (document.documentElement.clientWidth <= 900) {
+        if (bool) {
+          var page = localStorage.getItem('page');
+
+          switch (page) {
+            case 'galary':
+              getItem('galary-tab-section');
+              break;
+
+            case 'accessories':
+              getItem('accessories-tab-section');
+              break;
+          }
         }
 
+        showSlides(slideIndex);
+        wrapper.style.cssText = "\n            justify-content: center;\n          ";
+      } else {
+        wrapper.style.cssText = "\n            justify-content: space-between;\n          ";
         slides.forEach(function (slide) {
           slide.style.display = 'block';
         });
-        slides[slideIndex - 1].style.display = 'none';
-      }
-
-      if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
-        if (n > slides.length) {
-          slideIndex = 2;
-        } else if (n < 2) {
-          slideIndex = slides.length;
-        }
-
-        slides.forEach(function (slide) {
-          slide.style.display = 'block';
-        });
-        slides[slideIndex - 1].style.display = 'none';
-        slides[slideIndex - 2].style.display = 'none';
-      }
-
-      if (document.body.clientWidth <= 490) {
-        if (n >= slides.length + 1) {
-          slideIndex = 1;
-        } else if (n <= 0) {
-          slideIndex = slides.length;
-        }
-
-        slides.forEach(function (slide) {
-          slide.style.display = 'none';
-        });
-        slides[slideIndex - 1].style.display = 'block'; // slides[slideIndex - 1].click();
       }
     };
 
-    var activateTabSlider = function activateTabSlider() {
-      if (document.body.clientWidth <= 900) {
-        if (document.body.clientWidth < 490) {
-          slideIndex = 1;
-        } else {
-          slideIndex = 4;
-        }
+    var getItem = function getItem(key) {
+      var navigate = localStorage.getItem(key);
 
-        showSlides();
-        wrapper.style.cssText = "\n            justify-content: space-around;\n          ";
+      switch (navigate) {
+        case 'single':
+          slideIndex = 0;
+          break;
+
+        case 'art':
+          slideIndex = 0;
+          break;
+
+        case 'double':
+          slideIndex = 1;
+          break;
+
+        case 'inscriptions':
+          slideIndex = 1;
+          break;
+
+        case 'triple':
+          slideIndex = 2;
+          break;
+
+        case 'accessories':
+          slideIndex = 2;
+          break;
+
+        case 'granit':
+          slideIndex = 3;
+          break;
+
+        case 'child':
+          slideIndex = 3;
+          break;
       }
     };
 
@@ -1983,36 +2007,21 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
         arrL = document.querySelector(arrows__left),
         arrR = document.querySelector(arrows__right);
     var slideIndex = 0;
-    activateTabSlider();
+    activateTabSlider(true);
 
     try {
-      window.addEventListener('orientationchange', function () {
-        if (document.body.clientWidth <= 900) {
-          activateTabSlider();
-        } else {
-          wrapper.style.cssText = "\n            justify-content: space-between;\n          ";
-          slides.forEach(function (slide) {
-            slide.style.display = 'block';
-          });
-        }
+      window.addEventListener('resize', function () {
+        activateTabSlider(false);
       });
     } catch (error) {
       console.log(error);
     }
 
     arrL.addEventListener('click', function () {
-      if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
-        plusSlide(-2);
-      } else {
-        plusSlide(-1);
-      }
+      plusSlide(-1);
     });
     arrR.addEventListener('click', function () {
-      if (document.body.clientWidth <= 768 && document.body.clientWidth > 490) {
-        plusSlide(2);
-      } else {
-        plusSlide(1);
-      }
+      plusSlide(1);
     });
   } catch (error) {
     console.log(error);
@@ -2216,11 +2225,17 @@ var tab = function tab(headerSelector, tabSelector) {
       var setItem = function setItem(key) {
         var navigate = localStorage.getItem(key);
 
+        if (!navigate) {
+          localStorage.setItem('galary-tab-section', 'single');
+          localStorage.setItem('accessories-tab-section', 'art');
+        }
+
+        navigate = localStorage.getItem(key);
+
         _tab.forEach(function (item, i) {
           if (navigate === item.dataset.nav) {
-            // hideTabContent();
-            _tab[i].click(); // showTabContent(i);
-
+            hideTabContent();
+            showTabContent(i);
           }
         });
       };

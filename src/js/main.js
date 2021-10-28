@@ -20,6 +20,7 @@ import checkerMobile from './modules/checkMobile';
 
 window.addEventListener('DOMContentLoaded', () => {
   "use strict"
+
   checkerMobile();
   ibg();
   header('.header__burger', '.header__menu', '.header__item a');
@@ -34,9 +35,9 @@ window.addEventListener('DOMContentLoaded', () => {
   checkNumInput('._no-symbol');
   checkTextInputs('._no-num');
   mask('[name="phone"]');
-  tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   tab('.tab', '.tab__item','.accessories__slide' , '[data-tab]', 'active', 'block', 'flex');
   tab('.tab', '.tab__item', '.galary__slide', null, 'active', 'block');
+  tabSlider('.tab__wrapper', '.tab__item', '.tab__arrow_left', '.tab__arrow_right');
   modal('.galary__slide-wrapper', '.modal__wrapper', '.overlay', '.modal__close img', '.modal__more', '.modal__info', '.galary__btn');
   showMore('.galary__slide', '[data-section]', '.galary__slide-wrapper', '.galary__item', 9, 'Завантажити більше');
   showMore('.accessories__slide', '[data-section]','.accessories__slide-wrapper', '.accessories__slide-wrapper a', 9, 'Завантажити більше');

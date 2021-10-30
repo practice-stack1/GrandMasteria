@@ -38,7 +38,6 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
       slides.forEach(slide => {
         slide.style.display = 'none';
       });
-      console.trace();
       slides[slideIndex].style.display = 'block';
       slides[slideIndex].click();
     }
@@ -76,6 +75,7 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
 
     function getItem(key){
       let navigate = localStorage.getItem(key);
+      console.log(navigate);
       switch(navigate){
         case 'single':
           slideIndex = 0;
@@ -86,24 +86,21 @@ const tabSlider = (tab__wrapper, tab__slides, arrows__left, arrows__right) => {
         case 'double':
           slideIndex = 1;
           break;
-        case 'inscriptions':
-          slideIndex = 1;
-          break;
         case 'triple':
           slideIndex = 2;
           break;
         case 'accessories':
-          slideIndex = 2;
+          slideIndex = 1;
           break;
         case 'granit':
-          slideIndex = 3;
+          slideIndex = 2;
           break;
         case 'child':
           slideIndex = 3;
           break;
 
       }
-
+      console.log(slideIndex);
     }
 
   } catch (error) {

@@ -55,7 +55,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
         });
       }
       function createAccessoriesItem(response, wrap, visible_count, key){
-        response.forEach(({src, srcset, data, counter}, i) => {
+        response.forEach(({src, data, counter}, i) => {
           let item = document.createElement('div');
           item.classList.add('accessories__item', 'accessories__item-art');
 
@@ -81,7 +81,7 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
         });
       }
       function addLightBox(key, item, i, visible){
-        const href = item.querySelector('img').getAttribute('src');
+        const href = item.querySelector('img').getAttribute('data-fancy');
         const a = document.createElement('a');
         if(i > visible) {
           a.classList.add('hide');
@@ -94,39 +94,39 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
       function switchSection(res, wrap, section, range) {
         switch (section) {
           case 'single':
-            createItem(res.single, wrap, range);
+            createItem(res.single, wrap, range - 1);
             createMoreBtn(msg, range, wrap, res.single.length);
             break;
           case 'double':
-            createItem(res.double, wrap, range);
+            createItem(res.double, wrap, range - 1);
             createMoreBtn(msg, range, wrap, res.double.length);
             break;
           case 'triple':
-            createItem(res.triple, wrap, range);
+            createItem(res.triple, wrap, range - 1);
             createMoreBtn(msg, range, wrap, res.triple.length);
             break;
           case 'child':
-            createItem(res.child, wrap, range);
+            createItem(res.child, wrap, range - 1);
             createMoreBtn(msg, range, wrap, res.child.length);
             break;
           case 'art':
-            createAccessoriesItem(res.art, wrap, range, 'art');
+            createAccessoriesItem(res.art, wrap, range - 1, 'art');
             createMoreBtn(msg, range, wrap, res.art.length);
             break;
           case 'vase':
-            createAccessoriesItem(res.vase, wrap, range, 'vase');
+            createAccessoriesItem(res.vase, wrap, range - 1, 'vase');
             createMoreBtn(msg, range, wrap, res.vase.length);
             break;
           case 'bronse':
-            createAccessoriesItem(res.bronse, wrap, range, 'bronse');
+            createAccessoriesItem(res.bronse, wrap, range - 1, 'bronse');
             createMoreBtn(msg, range, wrap, res.bronse.length);
             break;
           case 'inscriptions':
-            createAccessoriesItem(res.inscriptions, wrap, range, 'inscription');
+            createAccessoriesItem(res.inscriptions, wrap, range - 1, 'inscription');
             createMoreBtn(msg, range, wrap, res.inscriptions.length);
             break;
           case 'granit':
-            createAccessoriesItem(res.granit, wrap, range, 'granit');
+            createAccessoriesItem(res.granit, wrap, range - 1, 'granit');
             createMoreBtn(msg, range, wrap, res.granit.length);
             break;
           default:
@@ -134,7 +134,8 @@ const showMore = (btn__trigger = null, tab__slides = null, container, item, rang
         }
       }
       function createMoreBtn(msg, range, wrap, length){
-        if(length >= range){
+
+        if(length > range){
           const btn = document.createElement('div'),
                 span = document.createElement('span');
           span.textContent = msg;

@@ -16,7 +16,7 @@
     margin: 0 auto 32px auto;
   }
   &__wrapper{
-    width: 100%;
+    width: calc(100% + 32px);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -30,36 +30,35 @@
       margin: 0 auto 24px auto;
     }
   }
-  &__row{
-    max-width: 554px;
-    display: flex;
-    flex-wrap: wrap;
-    &:first-child{
-      margin: 0 32px 0 0;
-    }
-    @media(max-width: 1170px){
-      &:first-child{
-        margin: 0 0 32px 0;
-      }
-    }
-    @media(max-width: 612px){
-        justify-content: center;
-    }
-  }
+  // &__row{
+  //   max-width: 554px;
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   &:first-child{
+  //     margin: 0 32px 0 0;
+  //   }
+  //   @media(max-width: 1170px){
+  //     &:first-child{
+  //       margin: 0 0 32px 0;
+  //     }
+  //   }
+  //   @media(max-width: 612px){
+  //       justify-content: center;
+  //   }
+  // }
   &__column{
     position: relative;
-    width: 261px;
+    width: 293px;
     min-height: 291px;
     cursor: pointer;
-    &:first-child{
-      margin: 0 32px 0 0;
-    }
+    padding: 16px;
     &:after{
       content: '';
       position: absolute;
       opacity: 0;
-      top: 0;
-      left: 0;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
       display: block;
       width: 261px;
       height: 291px;
@@ -78,10 +77,11 @@
     }
     span{
       position: absolute;
-      bottom: 0;
-      left: 0;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
       display: block;
-      width: 100%;
+      width: 261px;
       min-height: 75px;
       font-family: "CenturyGothic", sans-serif;
       font-weight: 700;
@@ -93,11 +93,11 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 35.94%, rgba(0, 0, 0, 0.65) 66.67%, rgba(0, 0, 0, 0.75) 100%);
       transition: all 0.5s ease;
     }
-    @media(max-width: 612px){
-      &:first-child{
-        margin: 0 0 24px 0;
-      }
-    }
+    // @media(max-width: 612px){
+    //   &:first-child{
+    //     margin: 0 0 24px 0;
+    //   }
+    // }
   }
 }
 .mbn{

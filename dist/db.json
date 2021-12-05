@@ -132,6 +132,27 @@
       "counter": "19",
       "price": "Ціна: 5 678 грн",
       "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/20-min.jpg",
+      "srcset": "img/galary/single/20-min.jpg",
+      "counter": "20",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/21-min.jpg",
+      "srcset": "img/galary/single/21-min.jpg",
+      "counter": "21",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/single/22-min.jpg",
+      "srcset": "img/galary/single/22-min.jpg",
+      "counter": "22",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
     }
   ],
   "double": [
@@ -436,6 +457,20 @@
       "counter": "43",
       "price": "Ціна: 5 678 грн",
       "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/45-min.jpg",
+      "srcset": "img/galary/double/45-min.jpg",
+      "counter": "44",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/double/46-min.jpg",
+      "srcset": "img/galary/double/46-min.jpg",
+      "counter": "45",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
     }
   ],
   "triple": [
@@ -520,6 +555,13 @@
       "src": "img/galary/triple/12-min.jpg",
       "srcset": "img/galary/triple/12-min.jpg",
       "counter": "12",
+      "price": "Ціна: 5 678 грн",
+      "size": "Розмір: 234*167*68"
+    },
+    {
+      "src": "img/galary/triple/13-min.jpg",
+      "srcset": "img/galary/triple/13-min.jpg",
+      "counter": "13",
       "price": "Ціна: 5 678 грн",
       "size": "Розмір: 234*167*68"
     }

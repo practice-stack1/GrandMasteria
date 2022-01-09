@@ -165,33 +165,7 @@ function js() {
                 .on("end", browsersync.reload);
 }
 
-// function js_project() {
-//     return gulp.src(path.src.js)
-//                 .pipe(webpack({
-//                     mode: 'production',
-//                     output: {
-//                         filename: 'script.min.js'
-//                     },
-//                     module: {
-//                         rules: [
-//                           {
-//                             test: /\.m?js$/,
-//                             exclude: /(node_modules|bower_components)/,
-//                             use: {
-//                               loader: 'babel-loader',
-//                               options: {
-//                                 presets: [['@babel/preset-env', {
-//                                     corejs: 3,
-//                                     useBuiltIns: "usage"
-//                                 }]]
-//                               }
-//                             }
-//                           }
-//                         ]
-//                       }
-//                 }))
-//                 .pipe(gulp.dest(path.build.js));
-// }
+
 
 function lib(){
     return gulp.src(path.src.lib)

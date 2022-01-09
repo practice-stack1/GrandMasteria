@@ -1685,7 +1685,6 @@ var navigation = function navigation(columns) {
   });
 
   function setSection(item) {
-    console.log(item);
     var section = item.dataset.nav;
     var page = item.dataset.page;
     localStorage.setItem('page', page);
@@ -1964,7 +1963,6 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
 
     var getItem = function getItem(key) {
       var navigate = localStorage.getItem(key);
-      console.log(navigate);
 
       switch (navigate) {
         case 'single':
@@ -1996,7 +1994,6 @@ var tabSlider = function tabSlider(tab__wrapper, tab__slides, arrows__left, arro
           break;
       }
 
-      console.log(slideIndex);
     };
 
     var wrapper = document.querySelector(tab__wrapper),
@@ -2221,7 +2218,6 @@ var tab = function tab(headerSelector, tabSelector) {
 
       var setItem = function setItem(key) {
         var navigate = localStorage.getItem(key);
-
         if (!navigate) {
           localStorage.setItem('galary-tab-section', 'single');
           localStorage.setItem('accessories-tab-section', 'art');

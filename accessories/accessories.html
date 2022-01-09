@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Grand Masteria | Гранітні пам'ятники Тернопіль</title>
+    <base href="http://127.0.0.1:5500/" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
@@ -188,7 +189,7 @@
               <ul class="header__items">
                 <li class="header__item">
                   <a
-                    data-path="/"
+                    data-path="index.html"
                     class="active"
                     data-page="default"
                     href="/"
@@ -225,199 +226,106 @@
         </div>
       </header>
       <main>
-        <section class="about">
-          <div class="about__content">
-            <div class="about__container">
-              <div class="about__body-inner">
-                <h1 class="about__title title">ПРО НАС</h1>
-                <div class="about__text">
-                  <p>
-                    Нам дуже приємно, що ви завітали на цю сторінку. Це вказує
-                    на те, що ви потребуєте наших послуг, які ми можемо вам
-                    забезпечити. Досвід здобутий роками плідної праці і вміння
-                    знаходити спільну мову із кожним клієнтом – запорука нашого
-                    успіху.
-                  </p>
-                  <p>
-                    Основним видом діяльності є виготовлення надмогильних
-                    пам’ятників. Весь комплекс послуг включає в себе якісну
-                    консультацію, допомогу в створенні замовлення і подальше
-                    встановлення обраного об’єкту на цвинтарі. Весь спектр
-                    послуг ми можете переглянути
-                    <a href="answears/answears.html">тут</a>.
-                  </p>
-                </div>
+        <div class="container">
+          <section class="info" data-tab="true">
+            <div class="info__content">
+              <h2 class="title info__title mb-15">ХУДОЖНІ РОБОТИ</h2>
+              <div class="info__text">
+                <p>
+                  Нанесення фотографії покійного і текстової інформації про
+                  нього, а також при бажанні клієнта обробка декоративними
+                  елементами є невід’ємною частиною виготовлення будь-якого
+                  пам’ятника.
+                </p>
               </div>
-              <div class="about__body" data-changed="false">
-                <h2 class="about__title title">ПРО НАС</h2>
-                <div class="about__text">
-                  <p>
-                    Нам дуже приємно, що ви завітали на цю сторінку. Це вказує
-                    на те, що ви потребуєте наших послуг, які ми можемо вам
-                    забезпечити. Досвід здобутий роками плідної праці і вміння
-                    знаходити спільну мову із кожним клієнтом – запорука нашого
-                    успіху.
-                  </p>
-                  <p data-hide="true">
-                    Основним видом діяльності є виготовлення надмогильних
-                    пам’ятників. Весь комплекс послуг включає в себе якісну
-                    консультацію, допомогу в створенні замовлення і подальше
-                    встановлення обраного об’єкту на цвинтарі. Весь спектр
-                    послуг ми можете переглянути
-                    <a href="answears/answears.html">тут</a>.
-                  </p>
-                </div>
+            </div>
+            <div class="info__img">
+              <img src="img/info/galary.jpg" alt="Інформативна картинка" />
+            </div>
+          </section>
+          <section class="info" data-tab="true">
+            <div class="info__content">
+              <h2 class="title info__title mb-15">НАПИСИ</h2>
+              <div class="info__text">
+                <p>
+                  Всі ці художні елементи ми створюємо завдяки ручному
+                  гравіруванню, найбільш складному способу, адже вимагає
+                  майстерності, але дозволяє використовувати будь-який шрифт і
+                  навіть з’єднання різних шрифтів в одному тексті
+                </p>
+              </div>
+            </div>
+            <div class="info__img">
+              <img src="img/info/galary.jpg" alt="Інформативна картинка" />
+            </div>
+          </section>
+          <section class="info" data-tab="true">
+            <div class="info__content">
+              <h2 class="title info__title mb-15">ВИДИ ГРАНІТУ</h2>
+              <div class="info__text">
+                <p>
+                  В нашій роботі ми використовуємо вітчизняний граніт, так як
+                  він має значні переваги перед імпортним із (Туреччини, Індії,
+                  Китаю, ПАР, Бразилії).
+                </p>
+                <p>
+                  Першою перевагою є щільність українського граніту, завдяки
+                  плавним перепадам температури в наших широтах. Також відомо,
+                  що граніт один із тих матеріалів, які накопичують радіацію,
+                  але це залежить від родовищ, які на території України
+                  розміщені в екологічно чистих зонах, що робить його безпечним.
+                </p>
+                <p>
+                  Головною перевагою вітчизняного каменю є те, що завдяки
+                  відсутності витрат на імпорт, вартість граніту більш лояльна.
+                </p>
+              </div>
+            </div>
+            <div class="info__img">
+              <img src="img/media/granit.jpg" alt="Інформативна картинка" />
+            </div>
+          </section>
+          <div class="tab">
+            <div class="tab__wrapper">
+              <div class="tab__item active" data-nav="art">Художні роботи</div>
+              <div class="tab__item" data-nav="accessories">Аксесуари</div>
+              <div class="tab__item" data-nav="granit">Види граніту</div>
+              <div class="tab__arrow tab__arrow_left">
+                <img src="icons/arrow_l.svg" alt="стрілка вліво" />
+              </div>
+              <div class="tab__arrow tab__arrow_right">
+                <img src="icons/arrow_r.svg" alt="стрілка в право" />
               </div>
             </div>
           </div>
-          <div class="about__image">
-            <img src="img/media/main1.jpg" alt="Про нас" />
-          </div>
-        </section>
-        <section class="services">
-          <div class="services__content">
-            <div class="services__container list">
-              <div class="services__body">
-                <h2 class="services__title title">Послуги</h2>
-                <ul class="services__list">
-                  <li class="services__item"><span>Виїзд на заміри</span></li>
-                  <li class="services__item">
-                    <span>Установка надгробних памятників</span>
-                  </li>
-                  <li class="services__item">
-                    <span>Демонтаж старих заливок</span>
-                  </li>
-                  <li class="services__item">
-                    <span>Заливка бетонних могил</span>
-                  </li>
-                  <li class="services__item">
-                    <span>Установка підвіконників</span>
-                  </li>
-                  <li class="services__item">
-                    <span>Установка гранітних плит</span>
-                  </li>
-                  <li class="services__item"><span>Художні роботи</span></li>
-                  <li class="services__item">
-                    <span>Розробка макету памятника</span>
-                  </li>
-                </ul>
-              </div>
+          <section
+            class="accessories__slide accessories__slide-art"
+            data-section="art"
+          >
+            <div
+              class="accessories__slide-wrapper accessories__slide-wrapper-art"
+            ></div>
+          </section>
+          <section
+            class="accessories__slide accessories__slide-art"
+            data-section="accessories"
+          >
+            <div class="inner__slide" data-section="bronse">
+              <h2 class="title accessories__title">БРОНЗА</h2>
+              <div class="accessories__slide-wrapper"></div>
             </div>
-          </div>
-          <div class="services__image">
-            <img src="img/media/main2.jpg" alt="Наші послуги" />
-          </div>
-        </section>
-        <section class="short-nav">
-          <div class="container">
-            <h2 class="short-nav__title title">Галерея</h2>
-            <div class="short-nav__wrapper">
-              <div
-                class="short-nav__column"
-                data-nav="single"
-                data-page="galary"
-              >
-                <a href="galary/galary.html">
-                  <img
-                    src="img/main/short-nav/single.jpg"
-                    alt="Одинарні пам'ятники"
-                  />
-                </a>
-                <span>Одинарні пам'ятники</span>
-              </div>
-              <div
-                class="short-nav__column"
-                data-nav="double"
-                data-page="galary"
-              >
-                <a href="galary/galary.html">
-                  <img
-                    src="img/main/short-nav/couple.jpg"
-                    alt="Подвійні пам'ятники"
-                  />
-                </a>
-                <span>Подвійні пам'ятники</span>
-              </div>
-              <div
-                class="short-nav__column"
-                data-nav="triple"
-                data-page="galary"
-              >
-                <a href="galary/galary.html">
-                  <img
-                    src="img/main/short-nav/tripl.jpg"
-                    alt="Потрійні пам'ятники"
-                  />
-                </a>
-                <span>Потрійні пам'ятники</span>
-              </div>
-              <div
-                class="short-nav__column"
-                data-nav="child"
-                data-page="galary"
-              >
-                <a href="galary/galary.html">
-                  <img
-                    src="img/main/short-nav/child.jpg"
-                    alt="Дитячі пам'ятники"
-                  />
-                </a>
-                <span>Дитячі пам'ятники</span>
-              </div>
+            <div class="inner__slide" data-section="vase">
+              <h2 class="title accessories__title">ВАЗИ ТА ЛАМПАДКИ</h2>
+              <div class="accessories__slide-wrapper"></div>
             </div>
-            <div class="short-nav__btn button">
-              <a href="galary/galary.html" data-page="galary">Перейти у галерею</a>
-            </div>
-          </div>
-        </section>
-        <section class="short-nav mbn">
-          <div class="container">
-            <h2 class="short-nav__title title">ХУДОЖНЄ ОФОРМЛЕННЯ</h2>
-            <div class="short-nav__wrapper">
-              <div
-                class="short-nav__column"
-                data-nav="art"
-                data-page="accessories"
-              >
-                <a href="accessories/accessories.html">
-                  <img
-                    src="img/main/short-nav/works_of_art.jpg"
-                    alt="Художні роботи"
-                  />
-                </a>
-                <span>Художні роботи</span>
-              </div>
-              <div
-                class="short-nav__column"
-                data-nav="accessories"
-                data-page="accessories"
-              >
-                <a href="accessories/accessories.html">
-                  <img src="img/main/short-nav/vaza.jpg" alt="Аксесуари" />
-                </a>
-                <span>Аксесуари</span>
-              </div>
-              <div
-                class="short-nav__column"
-                data-nav="granit"
-                data-page="accessories"
-              >
-                <a href="accessories/accessories.html">
-                  <img
-                    src="img/main/short-nav/type_of_hyanite.jpg"
-                    alt="Види граніту"
-                  />
-                </a>
-                <span>Види граніту</span>
-              </div>
-            </div>
-            <div class="short-nav__btn button">
-              <a href="accessories/accessories.html" data-page="accessories"
-                >Переглянути детальніше</a
-              >
-            </div>
-          </div>
-        </section>
+          </section>
+          <section
+            class="accessories__slide accessories__slide-art"
+            data-section="granit"
+          >
+            <div class="accessories__slide-wrapper"></div>
+          </section>
+        </div>
       </main>
       <footer class="footer ibg">
         <img src="img/main/footer/footer.jpg" alt="Фон підвалу" />
@@ -457,6 +365,7 @@
       </a>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="lib/fslightbox.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

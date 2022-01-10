@@ -1,0 +1,14 @@
+User-agent: *
+
+Allow: */*.js
+Allow: */*.png
+Allow: */*.jpeg
+Allow: */*.jpg
+Allow: */*.gif
+Allow: */*.svg
+
+
+Host: https://grandmasteria.site/
+
+Sitemap: 
+https://grandmasteria.site/sitemap.xml
